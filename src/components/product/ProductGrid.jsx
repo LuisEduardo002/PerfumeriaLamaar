@@ -5,7 +5,7 @@ import ProductCardSkeleton from './ProductCardSkeleton';
 
 export default function ProductGrid({ products = [], loading = false, emptyMessage = 'No se encontraron perfumes que coincidan con tu búsqueda.' }) {
   if (loading) {
-    return <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">{Array.from({ length: 8 }, (_, index) => <ProductCardSkeleton key={index} />)}</div>;
+    return <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">{Array.from({ length: 8 }, (_, index) => <ProductCardSkeleton key={index} />)}</div>;
   }
 
   if (products.length === 0) {
@@ -13,7 +13,7 @@ export default function ProductGrid({ products = [], loading = false, emptyMessa
   }
 
   return (
-    <motion.div initial="hidden" animate="show" variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <motion.div initial="hidden" animate="show" variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } }} className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {products.map((perfume) => <ProductCard key={perfume.id} perfume={perfume} />)}
     </motion.div>
   );

@@ -96,7 +96,7 @@ export default function Product() {
               <img
                 src={images[selectedImage]}
                 alt={product.nombre}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain p-8"
                 onError={(event) => { event.currentTarget.style.display = 'none'; }}
               />
               <div className="flex h-full items-center justify-center font-serif text-3xl text-stone-300">

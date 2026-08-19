@@ -8,8 +8,8 @@ import Button from '../components/common/Button';
 import { getFeaturedProducts } from '../services/productService';
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
 import bannerImg from "../assets/images/banner.jpeg";
-import caballeroImage from '../assets/images/sauvageedp.jpeg';
-import damaImage from '../assets/images/goodgirl.jpeg';
+import caballeroImage from '../assets/images/Asad.webp';
+import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);

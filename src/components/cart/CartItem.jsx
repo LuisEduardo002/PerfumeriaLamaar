@@ -6,8 +6,8 @@ export default function CartItem({ item, onDecrease, onIncrease, onRemove }) {
 
   return (
     <article className="flex gap-4 py-5">
-      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-stone-100">
-        <img src={item.imagen} alt={item.nombre} className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
+      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-white">
+        <img src={item.imagen} alt={item.nombre} className="h-full w-full object-contain p-1" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-3">

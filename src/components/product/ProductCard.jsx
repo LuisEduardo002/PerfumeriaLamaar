@@ -32,10 +32,10 @@ export default function ProductCard({ perfume }) {
       </div>
 
       <Link to={`/producto/${perfume.id}`} className="block flex-1" aria-label={`Ver ${perfume.nombre}`}>
-        <div className="relative mb-4 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl bg-stone-100">
-          {imageStatus === 'loading' && <div aria-hidden="true" className="absolute inset-0 animate-pulse bg-gradient-to-br from-stone-100 via-stone-50 to-stone-200" />}
+        <div className="relative mb-4 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl bg-white">
+          {imageStatus === 'loading' && <div aria-hidden="true" className="absolute inset-0 animate-pulse bg-gradient-to-br from-white via-stone-50 to-stone-100" />}
           {imageStatus !== 'error' ? (
-            <img src={perfume.imagen} alt={perfume.nombre} className={`h-full w-full object-cover transition-all duration-500 group-hover:scale-105 ${imageStatus === 'loaded' ? 'opacity-100' : 'opacity-0'}`} onLoad={() => setImageStatus('loaded')} onError={() => setImageStatus('error')} />
+            <img src={perfume.imagen} alt={perfume.nombre} className={`h-full w-full object-contain p-4 transition-all duration-500 group-hover:scale-105 ${imageStatus === 'loaded' ? 'opacity-100' : 'opacity-0'}`} onLoad={() => setImageStatus('loaded')} onError={() => setImageStatus('error')} />
           ) : (
             <div className="flex flex-col items-center px-4 text-center"><span className="font-serif text-2xl text-stone-300">{perfume.marca}</span><span className="mt-1 text-xs uppercase tracking-wider text-slate-400">{perfume.nombre}</span></div>
           )}
