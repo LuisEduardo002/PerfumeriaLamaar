@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Check, ChevronLeft, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
@@ -18,12 +18,19 @@ const noteGroups = [
 
 export default function Product() {
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const addToCart = useCartStore((state) => state.addToCart);
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+
+  // Todas las entradas de detalle comienzan en la fotografía principal.
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   useEffect(() => {
     let active = true;
@@ -83,12 +90,22 @@ export default function Product() {
     setQuantity((current) => Math.min(product.stock, Math.max(1, current + change)));
   };
 
+  const handleBackToCatalog = () => {
+    // Volvemos a la entrada original para que React Router restaure el scroll.
+    if (location.state?.fromCatalog) {
+      navigate(-1);
+      return;
+    }
+
+    navigate('/catalogo');
+  };
+
   return (
     <main className="flex-grow bg-[#FAF9F6] py-8 md:py-14">
       <Container>
-        <Link to="/catalogo" className="mb-8 inline-flex items-center gap-2 text-sm text-slate-600 transition-colors hover:text-slate-950">
+        <button type="button" onClick={handleBackToCatalog} className="mb-8 inline-flex items-center gap-2 text-sm text-slate-600 transition-colors hover:text-slate-950">
           <ChevronLeft className="h-4 w-4" /> Volver al catálogo
-        </Link>
+        </button>
 
         <section className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>

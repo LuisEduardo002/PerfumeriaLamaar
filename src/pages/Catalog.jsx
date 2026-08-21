@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLoaderData, useNavigationType, useSearchParams } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Container from '../components/layout/Container';
@@ -12,22 +12,20 @@ import { useProducts } from '../hooks/useProducts';
 import { SlidersHorizontal, X } from 'lucide-react';
 import Button from '../components/common/Button';
 
-/**
- * Catalog — Página de catálogo de la tienda de perfumes.
- */
+const CATALOG_STATE_KEY = 'lammar-catalog-state';
+
 export default function Catalog() {
   const [searchParams] = useSearchParams();
   const navigationType = useNavigationType();
   const catalogData = useLoaderData();
-  const [restoredCatalogState] = useState(() => {
-    if (navigationType !== 'POP') return {};
 
-    try {
-      return JSON.parse(sessionStorage.getItem('lammar-catalog-state')) || {};
-    } catch {
-      return {};
+  // Desactivar la restauración nativa del navegador
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
     }
-  });
+  }, []);
+
   const {
     products,
     totalCount,
@@ -48,24 +46,29 @@ export default function Catalog() {
     setSelectedGender,
     setSortBy,
     resetFilters,
-  } = useProducts(restoredCatalogState, catalogData);
+  } = useProducts({}, catalogData);
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const restoredScrollRef = useRef(false);
 
+  // Sincronizar género desde la URL solo si viene explícito en query params
   useEffect(() => {
     const gender = searchParams.get('genero');
-    if (['Masculino', 'Femenino', 'Unisex'].includes(gender)) {
+    if (gender && ['Masculino', 'Femenino', 'Unisex'].includes(gender) && gender !== selectedGender) {
       setSelectedGender(gender);
     }
-  }, [searchParams, setSelectedGender]);
+  }, [searchParams]);
 
-  // Guardamos el contexto de la lista para que Atrás restaure también filtros
-  // y los bloques que el usuario ya había desplegado.
+  // Persistir el estado del catálogo en sessionStorage de forma continua
   useEffect(() => {
+    if (loading || products.length === 0) return;
+
     try {
+      const existing = JSON.parse(sessionStorage.getItem(CATALOG_STATE_KEY)) || {};
       sessionStorage.setItem(
-        'lammar-catalog-state',
+        CATALOG_STATE_KEY,
         JSON.stringify({
+          ...existing,
           searchTerm,
           selectedCategory,
           selectedBrand,
@@ -74,13 +77,72 @@ export default function Catalog() {
           visibleCount,
         })
       );
-    } catch {
-      // El catálogo sigue funcionando si sessionStorage no está disponible.
-    }
-  }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy, visibleCount]);
+    } catch { }
+  }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy, visibleCount, loading, products.length]);
 
-  // Cada entrada describe cómo mostrar y cómo quitar un filtro individual.
-  // Aquí se pueden añadir filtros futuros, por ejemplo: precio o notas olfativas.
+  // Guardar la tarjeta en la que se hizo clic y la posición del scroll
+  const handleProductNavigation = (productId) => {
+    try {
+      const currentState = JSON.parse(sessionStorage.getItem(CATALOG_STATE_KEY)) || {};
+      sessionStorage.setItem(
+        CATALOG_STATE_KEY,
+        JSON.stringify({
+          ...currentState,
+          lastProductId: productId,
+          lastScrollY: window.scrollY,
+        })
+      );
+    } catch { }
+  };
+
+  // Restaurar Scroll esperando a que las tarjetas existan físicamente en el DOM
+  useEffect(() => {
+    if (loading || products.length === 0 || restoredScrollRef.current) return;
+
+    let savedState = null;
+    try {
+      savedState = JSON.parse(sessionStorage.getItem(CATALOG_STATE_KEY));
+    } catch { }
+
+    if (!savedState || navigationType !== 'POP') {
+      if (navigationType !== 'POP') window.scrollTo(0, 0);
+      return;
+    }
+
+    const targetId = savedState.lastProductId;
+    const savedY = savedState.lastScrollY;
+
+    let attempts = 0;
+    const maxAttempts = 30; // Monitorea durante 1.5s hasta que se renderice todo
+
+    const interval = setInterval(() => {
+      attempts++;
+
+      const targetElement = targetId
+        ? document.querySelector(`[data-product-id="${targetId}"]`)
+        : null;
+
+      // 1. Si encuentra la tarjeta del producto, centra la pantalla en ella
+      if (targetElement && targetElement.getBoundingClientRect().top !== 0) {
+        targetElement.scrollIntoView({ block: 'center', behavior: 'instant' });
+        restoredScrollRef.current = true;
+        clearInterval(interval);
+      }
+      // 2. Si no encuentra la tarjeta pero la altura del DOM ya sobrepasa la posición guardada
+      else if (savedY && document.documentElement.scrollHeight > savedY) {
+        window.scrollTo(0, savedY);
+        restoredScrollRef.current = true;
+        clearInterval(interval);
+      }
+      // 3. Límite de reintentos
+      else if (attempts >= maxAttempts) {
+        clearInterval(interval);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [loading, products.length, navigationType]);
+
   const activeFilters = [
     searchTerm && {
       id: 'search',
@@ -107,13 +169,11 @@ export default function Catalog() {
   return (
     <main className="flex-grow bg-slate-50/50 py-10">
       <Container>
-        {/* Banner de Cabecera */}
         <SectionTitle
           title="Catálogo de Fragancias"
-          subtitle="Explora nuestra exclusiva selección de perfumes de diseñador, arabes y fragancias nicho."
+          subtitle="Explora nuestra exclusiva selección de perfumes de diseñador, árabes y fragancias nicho."
         />
 
-        {/* Barra superior de Búsqueda y Ordenamiento */}
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
           <div className="w-full md:w-96">
             <SearchBar
@@ -124,7 +184,6 @@ export default function Catalog() {
           </div>
 
           <div className="flex items-center justify-between w-full md:w-auto gap-4">
-            {/* Botón de Filtros para Mobile */}
             <Button
               variant="outline"
               size="sm"
@@ -150,9 +209,7 @@ export default function Catalog() {
           )}
         </AnimatePresence>
 
-        {/* Layout Principal: Sidebar + Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-          {/* Desktop Filter Sidebar */}
           <div className="hidden md:block col-span-1 sticky top-28">
             <FilterSidebar
               categories={categories}
@@ -167,7 +224,6 @@ export default function Catalog() {
             />
           </div>
 
-          {/* Mobile Filter Drawer Modal */}
           {mobileFiltersOpen && (
             <div className="fixed inset-0 z-50 flex md:hidden bg-slate-900/50 backdrop-blur-xs">
               <div className="w-4/5 max-w-xs bg-white h-full p-6 overflow-y-auto shadow-2xl flex flex-col justify-between">
@@ -210,13 +266,17 @@ export default function Catalog() {
             </div>
           )}
 
-          {/* Product Grid Area */}
           <div className="col-span-1 md:col-span-3">
             {loading ? (
               <div className="py-20 text-center text-slate-400">Cargando catálogo...</div>
             ) : (
               <>
-                <ProductGrid products={products} />
+                // En Catalog.jsx, busca la línea del ProductGrid y modifícala:
+                <ProductGrid
+                  products={products}
+                  onProductNavigate={handleProductNavigation}
+                  isRestoring={navigationType === 'POP'}
+                />
                 {hasMore && (
                   <div className="mt-10 text-center">
                     <Button variant="outline" size="md" onClick={loadMore}>

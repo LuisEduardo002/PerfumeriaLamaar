@@ -1,29 +1,39 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { getAllProducts, getCategories, getBrands } from '../services/productService';
 
 const PAGE_SIZE = 30;
+const STORAGE_KEY = 'lammar-catalog-state';
+
+function getSavedState() {
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
+  } catch {
+    return {};
+  }
+}
 
 /**
  * Custom Hook useProducts — Separa la lógica de filtrado, búsqueda y ordenamiento de la UI.
  */
 export function useProducts(initialState = {}, initialData = null) {
+  const saved = getSavedState();
+  const mergedState = { ...saved, ...initialState };
+
   const [products, setProducts] = useState(initialData?.products || []);
   const [categories, setCategories] = useState(initialData?.categories || []);
   const [brands, setBrands] = useState(initialData?.brands || []);
   const [loading, setLoading] = useState(!initialData);
 
-  // Estados de Filtros
-  const [searchTerm, setSearchTerm] = useState(initialState.searchTerm || '');
-  const [selectedCategory, setSelectedCategory] = useState(initialState.selectedCategory || '');
-  const [selectedBrand, setSelectedBrand] = useState(initialState.selectedBrand || '');
-  const [selectedGender, setSelectedGender] = useState(initialState.selectedGender || '');
-  const [sortBy, setSortBy] = useState(initialState.sortBy || 'featured');
-  const [visibleCount, setVisibleCount] = useState(initialState.visibleCount || PAGE_SIZE);
-  const hasHydratedInitialFilters = useRef(false);
+  // Estados de Filtros e Inicialización (priorizando sessionStorage al regresar)
+  const [searchTerm, setSearchTermState] = useState(mergedState.searchTerm || '');
+  const [selectedCategory, setSelectedCategoryState] = useState(mergedState.selectedCategory || '');
+  const [selectedBrand, setSelectedBrandState] = useState(mergedState.selectedBrand || '');
+  const [selectedGender, setSelectedGenderState] = useState(mergedState.selectedGender || '');
+  const [sortBy, setSortByState] = useState(mergedState.sortBy || 'featured');
+  const [visibleCount, setVisibleCount] = useState(mergedState.visibleCount || PAGE_SIZE);
 
   useEffect(() => {
-    // El loader de React Router entrega los datos antes de montar el catálogo.
-    // Esto permite restaurar el scroll cuando el documento ya tiene su altura final.
     if (initialData) {
       setProducts(initialData.products);
       setCategories(initialData.categories);
@@ -43,31 +53,55 @@ export function useProducts(initialState = {}, initialData = null) {
     );
   }, [initialData]);
 
+  // Setters que reinician visibleCount SOLO ante interacción directa del usuario
+  const setSearchTerm = useCallback((val) => {
+    setSearchTermState(val);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
+  const setSelectedCategory = useCallback((val) => {
+    setSelectedCategoryState(val);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
+  const setSelectedBrand = useCallback((val) => {
+    setSelectedBrandState(val);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
+  const setSelectedGender = useCallback((val) => {
+    setSelectedGenderState((prev) => {
+      if (prev !== val) setVisibleCount(PAGE_SIZE);
+      return val;
+    });
+  }, []);
+
+  const setSortBy = useCallback((val) => {
+    setSortByState(val);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
   // Lógica memorizada para filtrar y ordenar productos
   const filteredProducts = useMemo(() => {
     return products
       .filter((product) => {
-        // Filtro por búsqueda
         const matchesSearch =
           searchTerm === '' ||
-          product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.marca.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.descripcion.toLowerCase().includes(searchTerm.toLowerCase());
+          product.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.marca?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.descripcion?.toLowerCase().includes(searchTerm.toLowerCase());
 
-        // Filtro por categoría
         const matchesCategory =
           selectedCategory === '' ||
-          product.categoria.toLowerCase() === selectedCategory.toLowerCase();
+          product.categoria?.toLowerCase() === selectedCategory.toLowerCase();
 
-        // Filtro por marca
         const matchesBrand =
           selectedBrand === '' ||
-          product.marca.toLowerCase() === selectedBrand.toLowerCase();
+          product.marca?.toLowerCase() === selectedBrand.toLowerCase();
 
-        // Filtro por género
         const matchesGender =
           selectedGender === '' ||
-          product.genero.toLowerCase() === selectedGender.toLowerCase();
+          product.genero?.toLowerCase() === selectedGender.toLowerCase();
 
         return matchesSearch && matchesCategory && matchesBrand && matchesGender;
       })
@@ -75,37 +109,27 @@ export function useProducts(initialState = {}, initialData = null) {
         if (sortBy === 'price-asc') return a.precio - b.precio;
         if (sortBy === 'price-desc') return b.precio - a.precio;
         if (sortBy === 'name-asc') return a.nombre.localeCompare(b.nombre);
-        // 'featured' por defecto
         return (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0);
       });
   }, [products, searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy]);
-
-  // Al cambiar una búsqueda, filtro u orden, el catálogo vuelve al primer bloque.
-  useEffect(() => {
-    // No sobrescribimos el bloque visible que se está restaurando al volver.
-    if (!hasHydratedInitialFilters.current) {
-      hasHydratedInitialFilters.current = true;
-      return;
-    }
-    setVisibleCount(PAGE_SIZE);
-  }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy]);
 
   const visibleProducts = useMemo(
     () => filteredProducts.slice(0, visibleCount),
     [filteredProducts, visibleCount]
   );
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     setVisibleCount((currentCount) => currentCount + PAGE_SIZE);
-  };
+  }, []);
 
-  const resetFilters = () => {
-    setSearchTerm('');
-    setSelectedCategory('');
-    setSelectedBrand('');
-    setSelectedGender('');
-    setSortBy('featured');
-  };
+  const resetFilters = useCallback(() => {
+    setSearchTermState('');
+    setSelectedCategoryState('');
+    setSelectedBrandState('');
+    setSelectedGenderState('');
+    setSortByState('featured');
+    setVisibleCount(PAGE_SIZE);
+  }, []);
 
   return {
     products: visibleProducts,
@@ -117,13 +141,11 @@ export function useProducts(initialState = {}, initialData = null) {
     categories,
     brands,
     loading,
-    // Estados
     searchTerm,
     selectedCategory,
     selectedBrand,
     selectedGender,
     sortBy,
-    // Setters
     setSearchTerm,
     setSelectedCategory,
     setSelectedBrand,

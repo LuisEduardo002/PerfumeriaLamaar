@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useNavigation } from 'react-router-dom';
 
 // Layout Components
 import Navbar from '../components/layout/Navbar';
@@ -21,14 +21,29 @@ async function catalogLoader() {
   return { products, categories, brands };
 }
 
+function RouteLoadingState() {
+  return (
+    <main className="flex flex-1 items-center justify-center bg-[#FAF9F6] px-4 py-24" aria-live="polite" aria-busy="true">
+      <div className="flex flex-col items-center text-center">
+        <span className="h-10 w-10 animate-spin rounded-full border-2 border-[#C8A450]/30 border-t-[#4B1E28]" aria-hidden="true" />
+        <p className="mt-4 font-serif text-xl text-[#111111]">Cargando catálogo</p>
+        <p className="mt-1 text-sm text-slate-500">Estamos preparando tus fragancias.</p>
+      </div>
+    </main>
+  );
+}
+
 // Main Layout that wraps all pages with Navbar and Footer
 const MainLayout = () => {
+  const navigation = useNavigation();
+  const isLoadingCatalog =
+    navigation.state === 'loading' && navigation.location?.pathname === '/catalogo';
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <ScrollRestoration getKey={(location) => location.key} />
       <div className="flex flex-1 flex-col">
-        <Outlet />
+        {isLoadingCatalog ? <RouteLoadingState /> : <Outlet />}
       </div>
       <Footer />
     </div>
@@ -59,5 +74,5 @@ const router = createBrowserRouter([
 ]);
 
 export default function Router() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} fallbackElement={<RouteLoadingState />} />;
 }
