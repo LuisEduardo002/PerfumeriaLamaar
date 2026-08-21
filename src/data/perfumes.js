@@ -1,5 +1,8 @@
 import img_lattafa_honor from '../assets/images/BadeeAlOudHonorAndGlory.webp';
+import img_lattafa_glory from '../assets/images/OudForGlory.webp';
 import img_lattafa_angham from '../assets/images/angham lattafa.jpg';
+import img_lattafa_quiamgodset from '../assets/images/PrideAlQiamGoldSETX3PCS.webp';
+
 import img_lattafa_0 from '../assets/images/AlNobleAmeer.webp';
 import img_lattafa_1 from '../assets/images/AlNobleSafeer.webp';
 import img_lattafa_2 from '../assets/images/AlNobleWazeer.webp';
@@ -29,6 +32,7 @@ import img_lattafa_25 from '../assets/images/Asad.webp';
 import img_lattafa_26 from '../assets/images/AsadZanzibarLimited2025.webp';
 import img_lattafa_27 from '../assets/images/AsadBourbon.webp';
 import img_lattafa_28 from '../assets/images/AsadElixir.webp';
+
 import img_lattafa_29 from '../assets/images/MussamanWhiteIntense.webp';
 import img_lattafa_30 from '../assets/images/MussamanBlackIntense.webp';
 import img_lattafa_31 from '../assets/images/Haya.webp';
@@ -63,6 +67,7 @@ import img_armaf_cdni_sillage from '../assets/images/ClubDeNuitSillage.webp';
 import img_armaf_cdni_maleka from '../assets/images/ClubDeNuitMaleka.webp';
 import img_armaf_cdni_bling from '../assets/images/ClubDeNuitBling.webp';
 import img_armaf_cdni_precieux from '../assets/images/ClubDeNuitPrecieuxI.webp';
+import img_armaf_cdni_iconic from '../assets/images/ClubDeNuitIconic.webp';
 import img_armaf_cdni_untold from '../assets/images/ClubDeNuitUntold.webp';
 import img_armaf_cdni_urban from '../assets/images/ClubDeNuitUrbanManElixir.webp';
 import img_armaf_beach_party from '../assets/images/BeachPartyPeach.webp';
@@ -448,8 +453,8 @@ export const perfumes = [
       corazon: ["Oud (madera de agar)", "pachulí"],
       fondo: ["Oud", "pachulí", "almizcle"]
     },
-    imagen: "",
-    imagenes: [],
+    imagen: img_lattafa_glory,
+    imagenes: [img_lattafa_glory],
     destacado: false,
   },
   {
@@ -961,8 +966,8 @@ export const perfumes = [
       corazon: ["Cuero", "pachulí"],
       fondo: ["Oud", "guayaco", "Ámbar", "benjuí"]
     },
-    imagen: "",
-    imagenes: [],
+    imagen: img_lattafa_quiamgodset,
+    imagenes: [img_lattafa_quiamgodset],
     destacado: false,
   },
   {
@@ -1455,8 +1460,8 @@ export const perfumes = [
       corazon: ["Jengibre", "nuez moscada", "jazmín", "melón"],
       fondo: ["Incienso", "ámbar", "cedro", "sándalo", "pachulí", "labdanum", "maderas"]
     },
-    imagen: "",
-    imagenes: [],
+    imagen: img_armaf_cdni_iconic,
+    imagenes: [img_armaf_cdni_iconic],
     destacado: false,
   },
   {

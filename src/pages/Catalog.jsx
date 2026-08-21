@@ -166,6 +166,32 @@ export default function Catalog() {
     },
   ].filter(Boolean);
 
+
+  // 1. Crear la referencia
+  const observerTarget = useRef(null);
+
+  // 2. Configurar el observador
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Si el usuario llega al final (hace contacto con el sensor)
+        if (entries[0].isIntersecting) {
+          loadMore(); // Ejecutamos tu función exacta
+        }
+      },
+      { rootMargin: '100px' } // El sensor se activa 100px antes de que el usuario llegue al final
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, [loadMore]); // Escuchamos a loadMore
   return (
     <main className="flex-grow bg-slate-50/50 py-10">
       <Container>
@@ -276,14 +302,18 @@ export default function Catalog() {
                   onProductNavigate={handleProductNavigation}
                   isRestoring={navigationType === 'POP'}
                 />
+
+                {/* Sensor de Scroll Infinito que reemplaza al botón */}
                 {hasMore && (
-                  <div className="mt-10 text-center">
-                    <Button variant="outline" size="md" onClick={loadMore}>
-                      Cargar más fragancias
-                    </Button>
-                    <p className="mt-3 text-xs text-slate-500">
-                      Se cargarán hasta 30 fragancias más
-                    </p>
+                  <div
+                    ref={observerTarget}
+                    className="mt-10 flex h-16 w-full items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    {/* Un texto sutil que aparece mientras carga */}
+                    <span className="animate-pulse text-sm text-slate-400">
+                      Cargando más fragancias...
+                    </span>
                   </div>
                 )}
               </>
