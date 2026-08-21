@@ -1,21 +1,25 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { getAllProducts, getCategories, getBrands } from '../services/productService';
+
+const PAGE_SIZE = 30;
 
 /**
  * Custom Hook useProducts — Separa la lógica de filtrado, búsqueda y ordenamiento de la UI.
  */
-export function useProducts() {
+export function useProducts(initialState = {}) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Estados de Filtros
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedGender, setSelectedGender] = useState('');
-  const [sortBy, setSortBy] = useState('featured');
+  const [searchTerm, setSearchTerm] = useState(initialState.searchTerm || '');
+  const [selectedCategory, setSelectedCategory] = useState(initialState.selectedCategory || '');
+  const [selectedBrand, setSelectedBrand] = useState(initialState.selectedBrand || '');
+  const [selectedGender, setSelectedGender] = useState(initialState.selectedGender || '');
+  const [sortBy, setSortBy] = useState(initialState.sortBy || 'featured');
+  const [visibleCount, setVisibleCount] = useState(initialState.visibleCount || PAGE_SIZE);
+  const hasHydratedInitialFilters = useRef(false);
 
   useEffect(() => {
     setLoading(true);
@@ -66,6 +70,25 @@ export function useProducts() {
       });
   }, [products, searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy]);
 
+  // Al cambiar una búsqueda, filtro u orden, el catálogo vuelve al primer bloque.
+  useEffect(() => {
+    // No sobrescribimos el bloque visible que se está restaurando al volver.
+    if (!hasHydratedInitialFilters.current) {
+      hasHydratedInitialFilters.current = true;
+      return;
+    }
+    setVisibleCount(PAGE_SIZE);
+  }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy]);
+
+  const visibleProducts = useMemo(
+    () => filteredProducts.slice(0, visibleCount),
+    [filteredProducts, visibleCount]
+  );
+
+  const loadMore = () => {
+    setVisibleCount((currentCount) => currentCount + PAGE_SIZE);
+  };
+
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedCategory('');
@@ -75,8 +98,11 @@ export function useProducts() {
   };
 
   return {
-    products: filteredProducts,
+    products: visibleProducts,
     totalCount: filteredProducts.length,
+    visibleCount: visibleProducts.length,
+    hasMore: visibleProducts.length < filteredProducts.length,
+    loadMore,
     allCount: products.length,
     categories,
     brands,

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigationType, useSearchParams } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Container from '../components/layout/Container';
 import SectionTitle from '../components/common/SectionTitle';
 import SearchBar from '../components/common/SearchBar';
 import FilterSidebar from '../components/common/FilterSidebar';
 import SortSelect from '../components/common/SortSelect';
+import ActiveFilters from '../components/common/ActiveFilters';
 import ProductGrid from '../components/product/ProductGrid';
 import { useProducts } from '../hooks/useProducts';
+import useScrollRestoration from '../hooks/useScrollRestoration';
 import { SlidersHorizontal, X } from 'lucide-react';
 import Button from '../components/common/Button';
 
@@ -15,9 +18,22 @@ import Button from '../components/common/Button';
  */
 export default function Catalog() {
   const [searchParams] = useSearchParams();
+  const navigationType = useNavigationType();
+  const [restoredCatalogState] = useState(() => {
+    if (navigationType !== 'POP') return {};
+
+    try {
+      return JSON.parse(sessionStorage.getItem('lammar-catalog-state')) || {};
+    } catch {
+      return {};
+    }
+  });
   const {
     products,
     totalCount,
+    visibleCount,
+    hasMore,
+    loadMore,
     categories,
     brands,
     loading,
@@ -32,7 +48,7 @@ export default function Catalog() {
     setSelectedGender,
     setSortBy,
     resetFilters,
-  } = useProducts();
+  } = useProducts(restoredCatalogState);
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -42,6 +58,53 @@ export default function Catalog() {
       setSelectedGender(gender);
     }
   }, [searchParams, setSelectedGender]);
+
+  // Guardamos el contexto de la lista para que Atrás restaure también filtros
+  // y los bloques que el usuario ya había desplegado.
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(
+        'lammar-catalog-state',
+        JSON.stringify({
+          searchTerm,
+          selectedCategory,
+          selectedBrand,
+          selectedGender,
+          sortBy,
+          visibleCount,
+        })
+      );
+    } catch {
+      // El catálogo sigue funcionando si sessionStorage no está disponible.
+    }
+  }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy, visibleCount]);
+
+  useScrollRestoration({ isReady: !loading, pageId: 'catalogo' });
+
+  // Cada entrada describe cómo mostrar y cómo quitar un filtro individual.
+  // Aquí se pueden añadir filtros futuros, por ejemplo: precio o notas olfativas.
+  const activeFilters = [
+    searchTerm && {
+      id: 'search',
+      label: `Búsqueda: ${searchTerm}`,
+      onRemove: () => setSearchTerm(''),
+    },
+    selectedCategory && {
+      id: 'category',
+      label: `Categoría: ${selectedCategory}`,
+      onRemove: () => setSelectedCategory(''),
+    },
+    selectedBrand && {
+      id: 'brand',
+      label: `Marca: ${selectedBrand}`,
+      onRemove: () => setSelectedBrand(''),
+    },
+    selectedGender && {
+      id: 'gender',
+      label: `Género: ${selectedGender}`,
+      onRemove: () => setSelectedGender(''),
+    },
+  ].filter(Boolean);
 
   return (
     <main className="flex-grow bg-slate-50/50 py-10">
@@ -76,12 +139,18 @@ export default function Catalog() {
 
             <div className="flex items-center gap-3">
               <span className="text-xs text-slate-500 hidden sm:inline">
-                Mostrando <strong className="text-slate-900">{totalCount}</strong> fragancias
+                Mostrando <strong className="text-slate-900">{visibleCount}</strong> de <strong className="text-slate-900">{totalCount}</strong> fragancias
               </span>
               <SortSelect value={sortBy} onChange={setSortBy} />
             </div>
           </div>
         </div>
+
+        <AnimatePresence>
+          {activeFilters.length > 0 && (
+            <ActiveFilters filters={activeFilters} onClearAll={resetFilters} />
+          )}
+        </AnimatePresence>
 
         {/* Layout Principal: Sidebar + Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
@@ -148,7 +217,19 @@ export default function Catalog() {
             {loading ? (
               <div className="py-20 text-center text-slate-400">Cargando catálogo...</div>
             ) : (
-              <ProductGrid products={products} />
+              <>
+                <ProductGrid products={products} />
+                {hasMore && (
+                  <div className="mt-10 text-center">
+                    <Button variant="outline" size="md" onClick={loadMore}>
+                      Cargar más fragancias
+                    </Button>
+                    <p className="mt-3 text-xs text-slate-500">
+                      Se cargarán hasta 30 fragancias más
+                    </p>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

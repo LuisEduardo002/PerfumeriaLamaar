@@ -1,6 +1,6 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { createBrowserRouter, RouterProvider, Outlet, useLocation, useNavigationType } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Layout Components
@@ -15,10 +15,37 @@ import NotFound from '../pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!('scrollRestoration' in window.history)) return undefined;
+
+    const previousMode = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+
+    return () => {
+      window.history.scrollRestoration = previousMode;
+    };
+  }, []);
+
+  useEffect(() => {
+    // Capturamos la posición antes de desplazar la ruta nueva al inicio.
+    // Esto es necesario porque AnimatePresence conserva la vista saliente
+    // durante su animación y podría guardar posteriormente un valor 0.
+    if (previousPathname.current === '/catalogo' && pathname !== '/catalogo') {
+      sessionStorage.setItem(
+        'lammar-scroll-position:catalogo',
+        JSON.stringify({ x: window.scrollX, y: window.scrollY })
+      );
+      sessionStorage.setItem('lammar-is-leaving-catalog', 'true');
+    }
+
+    // Atrás/Adelante delega la posición al hook de cada página.
+    if (navigationType !== 'POP') window.scrollTo(0, 0);
+
+    previousPathname.current = pathname;
+  }, [pathname, navigationType]);
 
   return null;
 }
