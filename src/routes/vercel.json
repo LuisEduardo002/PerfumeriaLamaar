@@ -1,0 +1,20 @@
+{
+    "rewrites": [
+        {
+            "source": "/catalogo",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/producto/:id",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/privacidad",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/terminos",
+            "destination": "/index.html"
+        }
+    ]
+}
