@@ -36,7 +36,7 @@ const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "573001234567";
  *
  * Total: $95
  *
- * Mi nombre es:
+
  */
 export function buildWhatsAppMessage(cartItems, total) {
   const itemLines = cartItems
@@ -45,7 +45,7 @@ export function buildWhatsAppMessage(cartItems, total) {
 
   const message = `Hola 
 
-Realicé una compra en LAMMAR Perfumes, mi nombre es:
+Realicé una compra en LAMMAR Perfumes y mi pedido es:
 
 ${itemLines}
 

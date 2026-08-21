@@ -6,7 +6,7 @@ const PoliticaPrivacidad = () => {
             </h1>
 
             <p className="text-sm text-gray-500 mb-8">
-                Última actualización: [FECHA]
+                Última actualización: 21/08/2026
             </p>
 
             <section className="space-y-8">
@@ -16,22 +16,24 @@ const PoliticaPrivacidad = () => {
                     </h2>
 
                     <p>
-                        <strong>Nombre o razón social:</strong> [NOMBRE COMPLETO / RAZÓN SOCIAL]
+                        <strong>Nombre o razón social:</strong> LAMAAR PERFUM
+
                     </p>
                     <p>
-                        <strong>Nombre comercial:</strong> [NOMBRE DE LA TIENDA]
+                        <strong>Nombre comercial:</strong> LAMAAR PERFUM
+
                     </p>
                     <p>
-                        <strong>NIT:</strong> [NIT, SI APLICA]
+
                     </p>
                     <p>
                         <strong>País:</strong> Colombia
                     </p>
                     <p>
-                        <strong>Correo electrónico:</strong> [CORREO]
+                        <strong>Correo electrónico:</strong> amazingstoresoporte@gmail.com
                     </p>
                     <p>
-                        <strong>WhatsApp:</strong> [NÚMERO]
+                        <strong>WhatsApp:</strong>  304 6420608
                     </p>
                 </div>
 
@@ -150,7 +152,8 @@ const PoliticaPrivacidad = () => {
 
                     <p className="mt-3">
                         La información que el usuario decida proporcionar mediante
-                        WhatsApp podrá ser tratada por <strong>[NOMBRE DE LA TIENDA]</strong>
+                        WhatsApp podrá ser tratada por <strong>LAMAAR PERFUM
+                        </strong>
                         para las finalidades descritas en esta política.
                     </p>
 
@@ -285,11 +288,11 @@ const PoliticaPrivacidad = () => {
                     </p>
 
                     <p className="mt-3">
-                        <strong>Correo electrónico:</strong> [CORREO]
+                        <strong>Correo electrónico:</strong> amazingstoresoporte@gmail.com
                     </p>
 
                     <p>
-                        <strong>WhatsApp:</strong> [NÚMERO]
+                        <strong>WhatsApp:</strong>  304 6420608
                     </p>
 
                     <p className="mt-3">
@@ -369,16 +372,17 @@ const PoliticaPrivacidad = () => {
                     </p>
 
                     <div className="mt-3">
-                        <p><strong>[NOMBRE DE LA TIENDA]</strong></p>
-                        <p>Correo: [CORREO]</p>
-                        <p>WhatsApp: [NÚMERO]</p>
+                        <p><strong>LAMAAR PERFUM
+                        </strong></p>
+                        <p>Correo: amazingstoresoporte@gmail.com</p>
+                        <p>WhatsApp:  304 6420608</p>
                         <p>Colombia</p>
                     </div>
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
                     <p className="text-sm text-gray-500">
-                        Última actualización: [FECHA]
+                        Última actualización: 21/08/2026
                     </p>
                 </div>
             </section>

@@ -4,7 +4,7 @@ const TerminosCondiciones = () => {
 
         ```
         <p className="text-sm text-gray-500 mb-8">
-            Última actualización: [FECHA]
+            Última actualización: 21/08/2026
         </p>
 
         <section className="space-y-8">
@@ -15,7 +15,8 @@ const TerminosCondiciones = () => {
 
                 <p>
                     Estos Términos y Condiciones regulan el acceso y uso del sitio web
-                    de <strong>[NOMBRE DE LA TIENDA]</strong>, así como las condiciones
+                    de <strong>LAMAAR PERFUM
+                    </strong>, así como las condiciones
                     aplicables a la selección y solicitud de productos realizada a
                     través del sitio.
                 </p>
@@ -28,7 +29,8 @@ const TerminosCondiciones = () => {
 
                 <div className="mt-4">
                     <p>
-                        <strong>Nombre comercial:</strong> [NOMBRE DE LA TIENDA]
+                        <strong>Nombre comercial:</strong> LAMAAR PERFUM
+
                     </p>
                     <p>
                         <strong>Responsable:</strong> [NOMBRE COMPLETO / RAZÓN SOCIAL]
@@ -40,7 +42,7 @@ const TerminosCondiciones = () => {
                         <strong>País:</strong> Colombia
                     </p>
                     <p>
-                        <strong>Correo:</strong> [CORREO]
+                        <strong>Correo:</strong> amazingstoresoporte@gmail.com
                     </p>
                     <p>
                         <strong>WhatsApp:</strong> [NÚMERO]
@@ -99,7 +101,8 @@ const TerminosCondiciones = () => {
 
                 <p className="mt-3">
                     El pedido se considerará confirmado únicamente cuando
-                    <strong> [NOMBRE DE LA TIENDA]</strong> lo confirme a través de sus
+                    <strong> LAMAAR PERFUM
+                    </strong> lo confirme a través de sus
                     canales oficiales de comunicación.
                 </p>
             </div>
@@ -147,7 +150,8 @@ const TerminosCondiciones = () => {
 
                 <p className="mt-3">
                     En caso de presentarse un error evidente en el precio de un
-                    producto, <strong>[NOMBRE DE LA TIENDA]</strong> podrá comunicarse
+                    producto, <strong>LAMAAR PERFUM
+                    </strong> podrá comunicarse
                     con el cliente para aclarar la situación antes de confirmar el
                     pedido.
                 </p>
@@ -291,7 +295,8 @@ const TerminosCondiciones = () => {
                 <p>
                     Los textos, imágenes, logotipos, diseños, elementos gráficos,
                     código y demás contenidos del sitio son propiedad de
-                    <strong> [NOMBRE DE LA TIENDA]</strong> o son utilizados con las
+                    <strong> LAMAAR PERFUM
+                    </strong> o son utilizados con las
                     autorizaciones correspondientes, cuando aplique.
                 </p>
 
@@ -344,7 +349,8 @@ const TerminosCondiciones = () => {
                 </h2>
 
                 <p>
-                    <strong>[NOMBRE DE LA TIENDA]</strong> podrá modificar estos
+                    <strong>LAMAAR PERFUM
+                    </strong> podrá modificar estos
                     Términos y Condiciones cuando resulte necesario debido a cambios
                     legales, comerciales, tecnológicos u operativos.
                 </p>
@@ -379,8 +385,9 @@ const TerminosCondiciones = () => {
                 </p>
 
                 <div className="mt-3">
-                    <p><strong>[NOMBRE DE LA TIENDA]</strong></p>
-                    <p>Correo: [CORREO]</p>
+                    <p><strong>LAMAAR PERFUM
+                    </strong></p>
+                    <p>Correo: amazingstoresoporte@gmail.com</p>
                     <p>WhatsApp: [NÚMERO]</p>
                     <p>Colombia</p>
                 </div>
@@ -388,7 +395,7 @@ const TerminosCondiciones = () => {
 
             <div className="pt-4 border-t border-gray-200">
                 <p className="text-sm text-gray-500">
-                    Última actualización: [FECHA]
+                    Última actualización: 21/08.2026
                 </p>
             </div>
         </section>

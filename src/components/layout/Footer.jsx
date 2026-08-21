@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
           <div><h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#C8A450]">Tienda</h3><ul className="space-y-3"><li><Link to="/catalogo" className={footerLink}>Todos los perfumes</Link></li><li><Link to="/catalogo" className={footerLink}>Novedades</Link></li><li><Link to="/catalogo" className={footerLink}>Marcas populares</Link></li></ul></div>
           <div><h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#C8A450]">Compra segura</h3><ul className="space-y-3 text-sm"><li>Productos 100% originales</li><li>Envíos a toda Colombia</li><li>Asesoría por WhatsApp</li></ul></div>
-          <div><h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#C8A450]">Contacto</h3><ul className="space-y-3 text-sm"><li>info@lammar.com</li><li>+57 304 6420608</li><li>Lun. a sáb., 9:00 a.m. – 6:00 p.m.</li></ul></div>
+          <div><h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#C8A450]">Contacto</h3><ul className="space-y-3 text-sm"><li>amazingstoresoporte@gmail.com</li><li>+57 304 6420608</li><li>Lun. a sáb., 9:00 a.m. – 6:00 p.m.</li></ul></div>
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#C8A450]/25 pt-7 text-center text-xs text-slate-500 md:flex-row md:text-left"><p>© {new Date().getFullYear()} LAMMAR. Todos los derechos reservados.</p><div className="space-x-4"><Link to="/privacidad" className="hover:text-[#C8A450]">Privacidad</Link><Link to="/terminos" className="hover:text-[#C8A450]">Términos</Link></div></div>
       </Container>
