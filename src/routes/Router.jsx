@@ -9,6 +9,8 @@ import Home from '../pages/Home';
 import Catalog from '../pages/Catalog';
 import Product from '../pages/Product';
 import NotFound from '../pages/NotFound';
+import Privacy from '../pages/Privacy';
+import Terms from '../pages/TerminosCondiciones.jsx';
 import { getAllProducts, getBrands, getCategories } from '../services/productService';
 
 async function catalogLoader() {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
       {
         path: 'producto/:id',
         element: <Product />,
+      },
+      {
+        path: 'privacidad',
+        element: <Privacy />,
+      },
+      {
+        path: 'terminos',
+        element: <Terms />,
       },
     ],
   },

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Search, X } from 'lucide-react';
 import Container from './Container';
-import logo from '../../assets/images/logolamarbueno.svg';
+import logo from '../../assets/images/1.png';
+
 import useCartStore from '../../store/useCartStore';
 import CartDrawer from '../cart/CartDrawer';
 
@@ -52,23 +53,23 @@ export default function Navbar() {
             {/* ========== MODO NORMAL ========== */}
             <div
               className={`flex w-full items-center justify-between transition-all duration-300 ${isSearchOpen
-                  ? 'pointer-events-none opacity-0 scale-95'
-                  : 'opacity-100 scale-100'
+                ? 'pointer-events-none opacity-0 scale-95'
+                : 'opacity-100 scale-100'
                 }`}
             >
-              {/* Logo + Inicio (Tipografía Principal - Playfair Display) */}
+              {/* Logo + Inicio */}
               <Link to="/" className="flex-shrink-0 flex items-center gap-3">
                 <img
                   src={logo}
                   alt="Logo Lamar"
-                  className="h-14 md:h-20 w-auto scale-[1.4] origin-left"
+                  className="h-12 md:h-16 w-auto object-contain"
                 />
-                <span className="font-serif text-lg md:text-xl font-semibold uppercase tracking-[0.2em] text-[#111111]">
+                <span className="font-serif text-lg md:text-xl font-semibold uppercase tracking-[0.2em] text-slate-500 transition-colors hover:text-[#4B1E28]">
                   Inicio
                 </span>
               </Link>
 
-              {/* Desktop Navigation (Tipografía Secundaria - Montserrat / Sans) */}
+              {/* Desktop Navigation */}
               <div className="hidden md:flex space-x-8 items-center">
                 <Link
                   to="/"
@@ -120,8 +121,8 @@ export default function Navbar() {
             {/* ========== MODO BÚSQUEDA ========== */}
             <div
               className={`absolute inset-0 flex items-center transition-all duration-300 ${isSearchOpen
-                  ? 'opacity-100 scale-100'
-                  : 'pointer-events-none opacity-0 scale-95'
+                ? 'opacity-100 scale-100'
+                : 'pointer-events-none opacity-0 scale-95'
                 }`}
             >
               <form
