@@ -271,7 +271,6 @@ export default function Catalog() {
               <div className="py-20 text-center text-slate-400">Cargando catálogo...</div>
             ) : (
               <>
-                // En Catalog.jsx, busca la línea del ProductGrid y modifícala:
                 <ProductGrid
                   products={products}
                   onProductNavigate={handleProductNavigation}
