@@ -90,6 +90,75 @@ import img_armaf_hawas_diva from '../assets/images/HAWAS DIVA.webp';
 import img_armaf_hawas_eclat from '../assets/images/HawasEclat.webp';
 import img_armaf_hawas_kobra from '../assets/images/HawasKobra.jpg';
 import img_armaf_hawas_black from '../assets/images/HawasBlack.jpg';
+
+// Nuevos Imports de Imágenes
+import img_eros_flame_x200 from '../assets/images/ErosFlameX200.jpg';
+import img_versace_eros_energy from '../assets/images/ErosEnergy.webp';
+import img_versace_eros_energy_tester from '../assets/images/ErosEnergyTester.jpg';
+import img_versace_eros_edp_tester from '../assets/images/ErosEdpTester.webp';
+import img_versace_eros_flame_tester from '../assets/images/ErosFlameTester.webp';
+import img_versace_bright_crystal_tester from '../assets/images/BrightCrystalParfumTester.webp';
+import img_versace_dylan_blue from '../assets/images/DylanBlue.webp';
+import img_versace_red_jeans from '../assets/images/RedJeans.webp';
+import img_versace_blue_jeans from '../assets/images/BlueJeans.jpg';
+import img_jpg_le_beau_parfum from '../assets/images/LeBeauLeParfumX125ml.webp';
+import img_jpg_le_male_parfum from '../assets/images/LeMaleLeParfumX125ml.webp';
+import img_jpg_le_male_elixir from '../assets/images/LeMaleElixirX125ml.webp';
+import img_jpg_la_belle_paradise from '../assets/images/LaBelleParadiseGarden.jpg';
+import img_jpg_le_male_edt from '../assets/images/LeMaleEdtX125ml.webp';
+import img_pr_invictus_victory from '../assets/images/InvictusVictoryElixirX100ml.webp';
+// set import removed because the file does not exist in the folder
+import img_pr_phantom_set from '../assets/images/PhantomX50mlSetMetalico.webp';
+import img_afnan_rare_reef from '../assets/images/RareReef.webp';
+import img_afnan_turathi_blue from '../assets/images/TurathiBlue.webp';
+import img_afnan_turathi_electric from '../assets/images/TurathiElectric.webp';
+import img_afnan_nine_am_dive from '../assets/images/NineAmDive.jpg';
+import img_afnan_nine_pm from '../assets/images/NinePm.webp';
+import img_afnan_nine_pm_elixir from '../assets/images/NinePmElixir.webp';
+import img_afnan_nine_pm_rebel from '../assets/images/NinePmRebel.webp';
+import img_afnan_nine_pm_night from '../assets/images/NinePmNightOut.webp';
+import img_nautica_voyage from '../assets/images/VoyageX100ml.webp';
+import img_nautica_voyage_sport from '../assets/images/VoyageSport.webp';
+import img_lp_sense from '../assets/images/SenseX100ml.webp';
+import img_lp_sense_bolso from '../assets/images/SenseX100mlBolso.webp';
+import img_lp_summer_hammer from '../assets/images/SummerHammer.webp';
+import img_lp_dream_sea from '../assets/images/DreamSea.jpg';
+import img_lp_sun_gria from '../assets/images/SunGria.jpg';
+import img_lp_hong_kong from '../assets/images/HongKong.webp';
+import img_lp_mor from '../assets/images/Mor.jpg';
+import img_xerjoff_naxos from '../assets/images/NaxosLujoX100ml.webp';
+import img_xerjoff_erba_pura from '../assets/images/ErbaPuraLujoX100ml.webp';
+// ErbaPuraTesterX100ml.webp does not exist, fallback to Erba Pura normal
+import img_xerjoff_erba_pura_tester from '../assets/images/ErbaPuraLujoX100ml.webp';
+import img_valentino_uomo_roma from '../assets/images/UomoBornInRomaIntense.webp';
+import img_armani_stronger_intensely from '../assets/images/StrongerWithYouIntensely.jpg';
+import img_ck_escape_dama from '../assets/images/EscapeDama.webp';
+import img_ck_one_shock_dama from '../assets/images/CkOneShockDamaX200ml.webp';
+import img_montblanc_starwalker from '../assets/images/Starwalker.webp';
+import img_tommy_girl from '../assets/images/TommyGirl.webp';
+import img_gdt_karpos from '../assets/images/Karpos.webp';
+import img_sc_sweet_tooth from '../assets/images/SweetTooth.webp';
+import img_sc_sweet_tooth_caramel from '../assets/images/SweetToothCaramelDream.webp';
+import img_sc_sweet_tooth_cherry from '../assets/images/SweetToothCherryBaby.webp';
+import img_ag_cloud from '../assets/images/CloudEdpX100ml.webp';
+import img_ag_thank_u_next from '../assets/images/ThankUNextX100ml.webp';
+// Testers that don't exist: fallback to normal versions, or fix existing formats
+import img_ag_thank_u_next_tester from '../assets/images/ThankUNextX100ml.webp';
+import img_ag_cloud_tester from '../assets/images/CloudEdpX100ml.webp';
+import img_ag_moonlight_tester from '../assets/images/MoonlightTester.webp';
+import img_ag_ari_tester from '../assets/images/AriTester.webp';
+import img_ag_sweet_candy_tester from '../assets/images/SweetLikeCandyTester.jpg';
+import img_ag_mood_vanilla_tester from '../assets/images/MoodVanillaTester.webp';
+import img_ag_mood_blush_tester from '../assets/images/MoodBlushTester.webp';
+import img_ag_god_woman_tester from '../assets/images/GodIsAWomanTester.jpg';
+import img_ph_can_can from '../assets/images/CanCan.webp';
+import img_ab_the_icon_set from '../assets/images/TheIconEdpX100mlSet2Pcs.webp';
+import img_ab_the_icon_elixir_set from '../assets/images/TheIconElixirX100mlSet2Pcs.webp';
+import img_ab_bleu_seduction_set from '../assets/images/BleuSeductionDamaX80mlSet2Pcs.webp';
+import img_diesel_plus_plus from '../assets/images/CajaDeLechePlusPlusMasculine.webp';
+import img_rt_insurrection from '../assets/images/Insurrection.webp';
+import img_dg_light_blue_homme_set from '../assets/images/LightBluePourHommeNueva2025Set3Pcs.webp';
+import img_dg_light_blue_dama from '../assets/images/LightBlueX100mlNueva2025.jpg';
 import img_armaf_hawas_tropical from '../assets/images/HawasTropical.webp';
 import img_armaf_hawas_fire from '../assets/images/HawasFire.jpg';
 import img_armaf_hawas_ice from '../assets/images/HawasIce.webp';
@@ -647,7 +716,7 @@ export const perfumes = [
     },
     imagen: img_lattafa_22,
     imagenes: [img_lattafa_22],
-    destacado: false,
+    destacado: true,
   },
   {
     id: 26,
@@ -1236,7 +1305,7 @@ export const perfumes = [
     },
     imagen: img_lattafa_51,
     imagenes: [img_lattafa_51],
-    destacado: false,
+    destacado: true,
   },
   {
     id: 57,
@@ -1977,7 +2046,7 @@ export const perfumes = [
     },
     imagen: img_armaf_hawas_tropical,
     imagenes: [img_armaf_hawas_tropical],
-    destacado: false,
+    destacado: true,
   },
   {
     id: 96,
@@ -3231,7 +3300,7 @@ export const perfumes = [
     },
     imagen: img_veneno_scarlet,
     imagenes: [img_veneno_scarlet],
-    destacado: false,
+    destacado: true,
   },
   {
     id: 172,
@@ -3307,7 +3376,7 @@ export const perfumes = [
     },
     imagen: img_toy2_pearl,
     imagenes: [img_toy2_pearl],
-    destacado: false,
+    destacado: true,
   },
   {
     id: 176,
@@ -3535,6 +3604,1241 @@ export const perfumes = [
     },
     imagen: img_eros_flame,
     imagenes: [img_eros_flame],
+    destacado: false,
+  },
+  {
+    id: 188,
+    nombre: "EROS FLAME X200",
+    marca: "Versace",
+    precio: 420000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 200,
+    stock: 10,
+    descripcion: "Presentación de 200ml de EROS FLAME de Versace, con su intenso contraste cálido y especiado de cítricos italianos y maderas.",
+    notas: {
+      salida: ["Mandarina", "pimienta negra", "chinotto", "limón", "romero"],
+      corazon: ["Pimentón dulce", "geranio", "rosa"],
+      fondo: ["Vainilla", "haba tonka", "cedro de Texas", "sándalo", "pachulí"]
+    },
+    imagen: img_eros_flame_x200,
+    imagenes: [img_eros_flame_x200],
+    destacado: false,
+  },
+  {
+    id: 189,
+    nombre: "EROS ENERGY",
+    marca: "Versace",
+    precio: 320000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "EROS ENERGY de Versace es una ráfaga vibrante e hiperfresca dominada por cítricos mediterráneos sobre una base ambarada y amaderada.",
+    notas: {
+      salida: ["Bergamota", "naranja sanguina", "limón", "lima", "pomelo", "mandarina"],
+      corazon: ["Pimienta rosa", "grosella negra", "pimienta blanca"],
+      fondo: ["Pachulí", "almizcle", "ámbar seco"]
+    },
+    imagen: img_versace_eros_energy,
+    imagenes: [img_versace_eros_energy],
+    destacado: false,
+  },
+  {
+    id: 190,
+    nombre: "EROS ENERGY TESTER",
+    marca: "Versace",
+    precio: 290000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de EROS ENERGY de Versace: máxima frescura cítrica con explosión de bergamota, pimienta rosa y maderas.",
+    notas: {
+      salida: ["Bergamota", "naranja sanguina", "limón", "lima", "pomelo", "mandarina"],
+      corazon: ["Pimienta rosa", "grosella negra", "pimienta blanca"],
+      fondo: ["Pachulí", "almizcle", "ámbar seco"]
+    },
+    imagen: img_versace_eros_energy_tester,
+    imagenes: [img_versace_eros_energy_tester],
+    destacado: false,
+  },
+  {
+    id: 191,
+    nombre: "EROS EDP TESTER",
+    marca: "Versace",
+    precio: 260000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de EROS EDP de Versace: la icónica combinación oriental-amaderada de menta, manzana y vainilla en formato de prueba.",
+    notas: {
+      salida: ["Menta", "manzana verde", "limón", "mandarina"],
+      corazon: ["Ambrosan", "geranio", "esclarea"],
+      fondo: ["Vainilla", "cedro", "sándalo", "pachulí", "cuero"]
+    },
+    imagen: img_versace_eros_edp_tester,
+    imagenes: [img_versace_eros_edp_tester],
+    destacado: false,
+  },
+  {
+    id: 192,
+    nombre: "EROS FLAME TESTER",
+    marca: "Versace",
+    precio: 260000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de EROS FLAME de Versace: mezcla audaz de chinotto, pimienta negra, vainilla y maderas preciosas.",
+    notas: {
+      salida: ["Mandarina", "pimienta negra", "chinotto", "limón", "romero"],
+      corazon: ["Pimentón dulce", "geranio", "rosa"],
+      fondo: ["Vainilla", "haba tonka", "cedro de Texas", "sándalo", "pachulí"]
+    },
+    imagen: img_versace_eros_flame_tester,
+    imagenes: [img_versace_eros_flame_tester],
+    destacado: false,
+  },
+  {
+    id: 193,
+    nombre: "BRIGHT CRYSTAL PARFUM TESTER",
+    marca: "Versace",
+    precio: 260000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 90,
+    stock: 10,
+    descripcion: "Presentación Tester de BRIGHT CRYSTAL PARFUM de Versace: versión enriquecida del clásico floral con toques jugosos de granada y flor de loto.",
+    notas: {
+      salida: ["Yuzu", "granada", "acordes helados", "caramelo de frutos rojos"],
+      corazon: ["Peonía", "flor de loto", "magnolia", "helvetolida"],
+      fondo: ["Almizcle", "caoba", "ambrox"]
+    },
+    imagen: img_versace_bright_crystal_tester,
+    imagenes: [img_versace_bright_crystal_tester],
+    destacado: false,
+  },
+  {
+    id: 194,
+    nombre: "DYLAN BLUE",
+    marca: "Versace",
+    precio: 285000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "DYLAN BLUE de Versace captura la frescura del Mediterráneo con notas acuáticas, cítricas y un marcado fondo de incienso y ambroxan.",
+    notas: {
+      salida: ["Bergamota de Calabria", "toronja", "notas acuáticas", "hojas de higuera"],
+      corazon: ["Pimienta negra", "hoja de violeta", "pachulí", "papiro", "madera de gaiac"],
+      fondo: ["Incienso", "almizcle", "haba tonka", "azafrán"]
+    },
+    imagen: img_versace_dylan_blue,
+    imagenes: [img_versace_dylan_blue],
+    destacado: false,
+  },
+  {
+    id: 195,
+    nombre: "RED JEANS",
+    marca: "Versace",
+    precio: 180000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 75,
+    stock: 10,
+    descripcion: "RED JEANS de Versace es un clásico dulce, juvenil y casual con notas destacadas de durazno, fresia y flor de azahar.",
+    notas: {
+      salida: ["Durazno", "albaricoque", "fresa", "grosella negra"],
+      corazon: ["Rosa", "violeta", "lirio de los valles", "ylang-ylang"],
+      fondo: ["Vainilla", "almizcle", "sándalo"]
+    },
+    imagen: img_versace_red_jeans,
+    imagenes: [img_versace_red_jeans],
+    destacado: false,
+  },
+  {
+    id: 196,
+    nombre: "BLUE JEANS",
+    marca: "Versace",
+    precio: 180000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 75,
+    stock: 10,
+    descripcion: "BLUE JEANS de Versace es una fragancia legendaria aromática y amaderada, con toques cítricos, de lavanda y especias cálidas.",
+    notas: {
+      salida: ["Cítricos", "bergamota", "engranaje", "palisandro", "galbano"],
+      corazon: ["Lavanda", "jazmín", "violeta", "nuez moscada"],
+      fondo: ["Vainilla", "haba tonka", "sándalo", "cedro", "pachulí"]
+    },
+    imagen: img_versace_blue_jeans,
+    imagenes: [img_versace_blue_jeans],
+    destacado: false,
+  },
+  {
+    id: 197,
+    nombre: "LE BEAU LE PARFUM X125ML",
+    marca: "Jean Paul Gaultier",
+    precio: 520000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 125,
+    stock: 10,
+    descripcion: "LE BEAU LE PARFUM de Jean Paul Gaultier es una tentación ultraintensa y adictiva basada en madera de coco, piña y haba tonka dulce.",
+    notas: {
+      salida: ["Piña", "iris", "ciprés", "jengibre"],
+      corazon: ["Madera de coco", "notas amaderadas"],
+      fondo: ["Haba tonka", "sándalo", "ámbar gris", "ámbar"]
+    },
+    imagen: img_jpg_le_beau_parfum,
+    imagenes: [img_jpg_le_beau_parfum],
+    destacado: true,
+  },
+  {
+    id: 198,
+    nombre: "LE MALE LE PARFUM X125ML",
+    marca: "Jean Paul Gaultier",
+    precio: 510000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 125,
+    stock: 10,
+    descripcion: "LE MALE LE PARFUM de Jean Paul Gaultier es una estela oriental amaderada intensa donde imperan el cardamomo, la lavanda y la vainilla refinada.",
+    notas: {
+      salida: ["Cardamomo"],
+      corazon: ["Lavanda", "iris"],
+      fondo: ["Vainilla", "notas amaderadas", "orientales"]
+    },
+    imagen: img_jpg_le_male_parfum,
+    imagenes: [img_jpg_le_male_parfum],
+    destacado: false,
+  },
+  {
+    id: 199,
+    nombre: "LE MALE ELIXIR X125ML",
+    marca: "Jean Paul Gaultier",
+    precio: 520000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 125,
+    stock: 10,
+    descripcion: "LE MALE ELIXIR de Jean Paul Gaultier destaca por su ardiente sensualidad rica en miel dorada, haba tonka tostada y lavanda dulce.",
+    notas: {
+      salida: ["Menta", "lavanda"],
+      corazon: ["Benzoin", "miel"],
+      fondo: ["Haba tonka", "tobaco", "vainilla"]
+    },
+    imagen: img_jpg_le_male_elixir,
+    imagenes: [img_jpg_le_male_elixir],
+    destacado: true,
+  },
+  {
+    id: 200,
+    nombre: "LA BELLE PARADISE GARDEN",
+    marca: "Jean Paul Gaultier",
+    precio: 510000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "LA BELLE PARADISE GARDEN de Jean Paul Gaultier es una tentación floral-acuática y exotismo puro enriquecido con flor de loto y vainilla dulce.",
+    notas: {
+      salida: ["Flor de loto azul"],
+      corazon: ["Iris"],
+      fondo: ["Vainilla"]
+    },
+    imagen: img_jpg_la_belle_paradise,
+    imagenes: [img_jpg_la_belle_paradise],
+    destacado: false,
+  },
+  {
+    id: 201,
+    nombre: "LE MALE EDT X125ML",
+    marca: "Jean Paul Gaultier",
+    precio: 440000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 125,
+    stock: 10,
+    descripcion: "LE MALE EDT de Jean Paul Gaultier es el ícono absoluto de la perfumería masculina que rinde tributo al clásico acorde de menta, lavanda y vainilla.",
+    notas: {
+      salida: ["Menta", "lavanda", "bergamota", "cardamomo", "artemisia"],
+      corazon: ["Canela", "flor de azahar del naranjo", "alcaravea"],
+      fondo: ["Vainilla", "haba tonka", "ámbar", "sándalo", "cedro"]
+    },
+    imagen: img_jpg_le_male_edt,
+    imagenes: [img_jpg_le_male_edt],
+    destacado: false,
+  },
+  {
+    id: 202,
+    nombre: "INVICTUS VICTORY ELIXIR X100ML",
+    marca: "Paco Rabanne",
+    precio: 480000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "INVICTUS VICTORY ELIXIR de Paco Rabanne es el clímax de la intensidad con notas ambaradas, incienso ahumado, pimienta negra y licor de vainilla.",
+    notas: {
+      salida: ["Lavandín", "cardamomo verde", "pimienta negra"],
+      corazon: ["Incienso", "pachulí misterioso"],
+      fondo: ["Vainilla licorosa", "haba tonka magnética"]
+    },
+    imagen: img_pr_invictus_victory,
+    imagenes: [img_pr_invictus_victory],
+    destacado: true,
+  },
+  {
+    id: 203,
+    nombre: "INVICTUS VICTORY ELIXIR X100ML SET 3 PCS",
+    marca: "Paco Rabanne",
+    precio: 520000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Set de regalo de 3 piezas de INVICTUS VICTORY ELIXIR de Paco Rabanne, la máxima expresión ambarada y amaderada para el hombre victorioso.",
+    notas: {
+      salida: ["Lavandín", "cardamomo verde", "pimienta negra"],
+      corazon: ["Incienso", "pachulí misterioso"],
+      fondo: ["Vainilla licorosa", "haba tonka magnética"]
+    },
+    imagen: img_pr_invictus_victory,
+    imagenes: [img_pr_invictus_victory],
+    destacado: false,
+  },
+  {
+    id: 204,
+    nombre: "PHANTOM X50ML SET METALICO",
+    marca: "Paco Rabanne",
+    precio: 330000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 50,
+    stock: 10,
+    descripcion: "Set metálico exclusivo PHANTOM de Paco Rabanne: una combinación futurista de lavanda cremosa, limón enérgico y vainilla amaderada.",
+    notas: {
+      salida: ["Cáscara de limón", "limón amalfi", "lavanda"],
+      corazon: ["Manzana", "humo", "notas terrosas", "pachulí"],
+      fondo: ["Vainilla", "lavanda", "vetiver"]
+    },
+    imagen: img_pr_phantom_set,
+    imagenes: [img_pr_phantom_set],
+    destacado: false,
+  },
+  {
+    id: 205,
+    nombre: "RARE REEF",
+    marca: "Afnan",
+    precio: 235000,
+    categoria: "Arabes",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "RARE REEF de Afnan es una propuesta acuática y frutal refrescante, cargada de acordes salinos, citrícos vibrantes y un fondo ambarado limpio.",
+    notas: {
+      salida: ["Sal marina", "cítricos", "bergamota"],
+      corazon: ["Flor de naranjo", "acordes marinos", "especias suaves"],
+      fondo: ["Ámbar", "almizcle blanco", "cedro"]
+    },
+    imagen: img_afnan_rare_reef,
+    imagenes: [img_afnan_rare_reef],
+    destacado: false,
+  },
+  {
+    id: 206,
+    nombre: "TURATHI BLUE",
+    marca: "Afnan",
+    precio: 215000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 90,
+    stock: 10,
+    descripcion: "TURATHI BLUE de Afnan es un éxito cítrico y ambarado con un dominante y elegante acorde de toronja, especias ligeras y almizcle.",
+    notas: {
+      salida: ["Toronja (pomelo)", "bergamota"],
+      corazon: ["Notas amaderadas", "ámbar"],
+      fondo: ["Almizcle", "pachulí", "especias"]
+    },
+    imagen: img_afnan_turathi_blue,
+    imagenes: [img_afnan_turathi_blue],
+    destacado: false,
+  },
+  {
+    id: 207,
+    nombre: "TURATHI ELECTRIC",
+    marca: "Afnan",
+    precio: 220000,
+    categoria: "Arabes",
+    genero: "Unisex",
+    ml: 90,
+    stock: 10,
+    descripcion: "TURATHI ELECTRIC de Afnan es una interpretación electrizante y moderna cargada de frutas vibrantes, notas metálicas frías y un fondo limpio.",
+    notas: {
+      salida: ["Cítricos chispeantes", "manzana verde", "pimienta"],
+      corazon: ["Lavanda", "geranio", "acorde ozónico"],
+      fondo: ["Ambrosan", "cedro", "almizcle"]
+    },
+    imagen: img_afnan_turathi_electric,
+    imagenes: [img_afnan_turathi_electric],
+    destacado: false,
+  },
+  {
+    id: 208,
+    nombre: "9AM DIVE",
+    marca: "Afnan",
+    precio: 210000,
+    categoria: "Arabes",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "9AM DIVE de Afnan es un perfume azul fresco y versátil, ideal para el uso diario con notas de menta, manzana verde y pimienta rosa.",
+    notas: {
+      salida: ["Menta", "limón", "grosellas negras", "pimienta rosa"],
+      corazon: ["Manzana verde", "incienso", "cedro"],
+      fondo: ["Jengibre", "sándalo", "pachulí", "jasmin"]
+    },
+    imagen: img_afnan_nine_am_dive,
+    imagenes: [img_afnan_nine_am_dive],
+    destacado: false,
+  },
+  {
+    id: 209,
+    nombre: "9PM",
+    marca: "Afnan",
+    precio: 210000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "9PM de Afnan es un éxito nocturno irresistible con notas de manzana silvestre, canela, lavanda y un cálido fondo de vainilla gourmand.",
+    notas: {
+      salida: ["Manzana", "canela", "lavanda salvaje", "bergamota"],
+      corazon: ["Flor de azahar del naranjo", "lirio de los valles"],
+      fondo: ["Vainilla", "haba tonka", "ámbar", "pachulí"]
+    },
+    imagen: img_afnan_nine_pm,
+    imagenes: [img_afnan_nine_pm],
+    destacado: false,
+  },
+  {
+    id: 210,
+    nombre: "9PM ELIXIR",
+    marca: "Afnan",
+    precio: 230000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "9PM ELIXIR de Afnan lleva la fórmula original a un nivel superior de concentración, mayor densidad ambarada y toques ahumados enriquecidos.",
+    notas: {
+      salida: ["Manzana acaramelada", "cardamomo", "nuez moscada"],
+      corazon: ["Lavanda", "canela", "incienso"],
+      fondo: ["Vainilla negra", "haba tonka", "amberwood", "cuero"]
+    },
+    imagen: img_afnan_nine_pm_elixir,
+    imagenes: [img_afnan_nine_pm_elixir],
+    destacado: false,
+  },
+  {
+    id: 211,
+    nombre: "9PM REBEL",
+    marca: "Afnan",
+    precio: 225000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "9PM REBEL de Afnan ofrece un perfil audaz y vibrante dominado por piña jugosa, maderas secas y un toque especiado moderno.",
+    notas: {
+      salida: ["Piña", "manzana verde", "mandarina"],
+      corazon: ["Madera de cedro", "roble", "vainilla"],
+      fondo: ["Ámbar gris", "almizcle", "caramelo"]
+    },
+    imagen: img_afnan_nine_pm_rebel,
+    imagenes: [img_afnan_nine_pm_rebel],
+    destacado: false,
+  },
+  {
+    id: 212,
+    nombre: "9PM NIGHT OUT",
+    marca: "Afnan",
+    precio: 225000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "9PM NIGHT OUT de Afnan está diseñado para destacar en la noche con acordes festivos de ron, especias picantes, cuero y maderas ambaradas.",
+    notas: {
+      salida: ["Bergamota", "pimienta negra", "acorde de ron"],
+      corazon: ["Canela", "esclarea", "cuero suave"],
+      fondo: ["Haba tonka", "vainilla", "ámbar", "pachulí"]
+    },
+    imagen: img_afnan_nine_pm_night,
+    imagenes: [img_afnan_nine_pm_night],
+    destacado: false,
+  },
+  {
+    id: 213,
+    nombre: "VOYAGE X100ML",
+    marca: "Nautica",
+    precio: 145000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "VOYAGE de Nautica es la fragancia fresca de uso diario por excelencia, limpia y crujiente con acordes de manzana verde y hojas de loto.",
+    notas: {
+      salida: ["Manzana verde", "hojas verdes"],
+      corazon: ["Flor de loto", "mimosa"],
+      fondo: ["Almizcle", "cedro", "musgo de roble", "ámbar"]
+    },
+    imagen: img_nautica_voyage,
+    imagenes: [img_nautica_voyage],
+    destacado: false,
+  },
+  {
+    id: 214,
+    nombre: "VOYAGE SPORT",
+    marca: "Nautica",
+    precio: 145000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "VOYAGE SPORT de Nautica recarga energéticamente la línea clásica con notas marinas frías, cítricos vibrantes y especias frescas.",
+    notas: {
+      salida: ["Sea salt", "cítricos", "cilantro", "hojas marinas"],
+      corazon: ["Manzana", "geranio", "hoja de palmera"],
+      fondo: ["Almizcle", "pachulí", "vetiver", "madera de brasil"]
+    },
+    imagen: img_nautica_voyage_sport,
+    imagenes: [img_nautica_voyage_sport],
+    destacado: false,
+  },
+  {
+    id: 215,
+    nombre: "SENSE X100ML",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "SENSE de Lorenzo Pazzaglia es una experiencia de alta perfumería nicho multifacética con cítricos brillantes, flores refinadas y maderas preciosas.",
+    notas: {
+      salida: ["Bergamota", "naranja amarga", "pomelo", "pimienta rosa"],
+      corazon: ["Jazmín", "flor de naranjo", "cardamomo"],
+      fondo: ["Ámbar gris", "sándalo", "pachulí", "almizcle"]
+    },
+    imagen: img_lp_sense,
+    imagenes: [img_lp_sense],
+    destacado: false,
+  },
+  {
+    id: 216,
+    nombre: "SENSE X100ML BOLSO",
+    marca: "Lorenzo Pazzaglia",
+    precio: 610000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "Edición especial de SENSE de Lorenzo Pazzaglia que incluye estuche de viaje / bolso de lujo con la misma firma olfativa nicho e intensa.",
+    notas: {
+      salida: ["Bergamota", "naranja amarga", "pomelo", "pimienta rosa"],
+      corazon: ["Jazmín", "flor de naranjo", "cardamomo"],
+      fondo: ["Ámbar gris", "sándalo", "pachulí", "almizcle"]
+    },
+    imagen: img_lp_sense_bolso,
+    imagenes: [img_lp_sense_bolso],
+    destacado: false,
+  },
+  {
+    id: 217,
+    nombre: "SUMMER HAMMER",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "SUMMER HAMMER de Lorenzo Pazzaglia es un impacto tropical absoluto con mango, piña, coco, ron y un toque marino adictivo.",
+    notas: {
+      salida: ["Mango", "piña", "coco", "ron", "bergamota"],
+      corazon: ["Leche de coco", "flores blancas", "maracuyá"],
+      fondo: ["Ámbar gris", "almizcle", "sándalo", "vetiver"]
+    },
+    imagen: img_lp_summer_hammer,
+    imagenes: [img_lp_summer_hammer],
+    destacado: false,
+  },
+  {
+    id: 218,
+    nombre: "DREAM SEA",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "DREAM SEA de Lorenzo Pazzaglia es un poema acuático dulce y salado que fusiona ozono marino, vainilla, especias y madera a la deriva.",
+    notas: {
+      salida: ["Notas marinas", "ozono", "pimienta negra", "rosa"],
+      corazon: ["Ylang-ylang", "especias", "flores blancas"],
+      fondo: ["Vainilla", "ámbar gris", "sándalo", "cedro"]
+    },
+    imagen: img_lp_dream_sea,
+    imagenes: [img_lp_dream_sea],
+    destacado: false,
+  },
+  {
+    id: 219,
+    nombre: "SUN GRIA",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "SUN GRIA de Lorenzo Pazzaglia celebra la sangría veraniega con una explosión de uva, cítricos, vino tinto, frutas rojas y canela.",
+    notas: {
+      salida: ["Uva negra", "naranja sanguina", "limón", "maracuyá"],
+      corazon: ["Vino tinto", "frambuesa", "durazno", "canela"],
+      fondo: ["Vainilla", "azúcar moreno", "pachulí", "ámbar"]
+    },
+    imagen: img_lp_sun_gria,
+    imagenes: [img_lp_sun_gria],
+    destacado: false,
+  },
+  {
+    id: 220,
+    nombre: "HONG KONG",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "HONG KONG de Lorenzo Pazzaglia es una creación exótica y vibrante inspirada en la metrópolis, mezclando acordes ozónicos, flores raras y maderas preciosas.",
+    notas: {
+      salida: ["Bergamota", "notas ozónicas", "pimienta rosa", "cítricos"],
+      corazon: ["Té verde", "jazmín", "orquídea", "magnolia"],
+      fondo: ["Ámbar gris", "sándalo", "almizcle", "cedro"]
+    },
+    imagen: img_lp_hong_kong,
+    imagenes: [img_lp_hong_kong],
+    destacado: false,
+  },
+  {
+    id: 221,
+    nombre: "MOR",
+    marca: "Lorenzo Pazzaglia",
+    precio: 590000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "MOR de Lorenzo Pazzaglia es una fragancia rica y opulenta centrada en moras silvestres, cacao denso, especias cálidas y un fondo resinoso profundo.",
+    notas: {
+      salida: ["Mora", "frambuesa", "naranja amarga"],
+      corazon: ["Cacao", "canela", "rosa", "pachulí"],
+      fondo: ["Vainilla", "haba tonka", "ámbar", "cuero"]
+    },
+    imagen: img_lp_mor,
+    imagenes: [img_lp_mor],
+    destacado: false,
+  },
+  {
+    id: 222,
+    nombre: "NAXOS LUJO X100ML",
+    marca: "Xerjoff",
+    precio: 820000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "NAXOS de Xerjoff rinde homenaje a la riqueza de Sicilia con un majestuoso corazón de tabaco, miel dorada, lavanda y especias cálidas.",
+    notas: {
+      salida: ["Lavanda", "bergamota", "limón (lima ácida)"],
+      corazon: ["Miel", "canela", "cashmeran", "jazmín sambac"],
+      fondo: ["Hojas de tabaco", "haba tonka", "vainilla"]
+    },
+    imagen: img_xerjoff_naxos,
+    imagenes: [img_xerjoff_naxos],
+    destacado: true,
+  },
+  {
+    id: 223,
+    nombre: "ERBA PURA LUJO X100ML",
+    marca: "Xerjoff",
+    precio: 820000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "ERBA PURA de Xerjoff es una bomba frutal e irresistible cargada de cítricos mediterráneos, frutas dulces y una estela de almizcle blanco y ámbar.",
+    notas: {
+      salida: ["Naranja de Sicilia", "bergamota de Calabria", "limón de Sicilia"],
+      corazon: ["Notas frutales"],
+      fondo: ["Almizcle blanco", "ámbar", "vainilla de Madagascar"]
+    },
+    imagen: img_xerjoff_erba_pura,
+    imagenes: [img_xerjoff_erba_pura],
+    destacado: false,
+  },
+  {
+    id: 224,
+    nombre: "ERBA PURA TESTER X100ML",
+    marca: "Xerjoff",
+    precio: 750000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de ERBA PURA de Xerjoff: la icónica experiencia frutal-almizclada con proyección e intensidad excepcionales.",
+    notas: {
+      salida: ["Naranja de Sicilia", "bergamota de Calabria", "limón de Sicilia"],
+      corazon: ["Notas frutales"],
+      fondo: ["Almizcle blanco", "ámbar", "vainilla de Madagascar"]
+    },
+    imagen: img_xerjoff_erba_pura_tester,
+    imagenes: [img_xerjoff_erba_pura_tester],
+    destacado: false,
+  },
+  {
+    id: 225,
+    nombre: "UOMO BORN IN ROMA INTENSE",
+    marca: "Valentino",
+    precio: 520000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "UOMO BORN IN ROMA INTENSE de Valentino eleva la seducción nocturna gracias a una mezcla magnética de vainilla bourbon, lavanda e iris.",
+    notas: {
+      salida: ["Vainilla bourbon"],
+      corazon: ["Lavanda"],
+      fondo: ["Vetiveryl"]
+    },
+    imagen: img_valentino_uomo_roma,
+    imagenes: [img_valentino_uomo_roma],
+    destacado: true,
+  },
+  {
+    id: 226,
+    nombre: "STRONGER WITH YOU INTENSELY",
+    marca: "Giorgio Armani",
+    precio: 510000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "STRONGER WITH YOU INTENSELY de Giorgio Armani es un perfume adictivo y cálido con acordes de toffee, canela, pimienta rosa y vainilla.",
+    notas: {
+      salida: ["Pimienta rosa", "enebro de la Virginia", "violeta"],
+      corazon: ["Toffee (caramelo blando)", "canela", "lavanda", "salvia"],
+      fondo: ["Vainilla", "haba tonka", "ámbar", "gamuza"]
+    },
+    imagen: img_armani_stronger_intensely,
+    imagenes: [img_armani_stronger_intensely],
+    destacado: true,
+  },
+  {
+    id: 227,
+    nombre: "ESCAPE DAMA",
+    marca: "Calvin Klein",
+    precio: 195000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "ESCAPE de Calvin Klein es un clásico acuático-floral atemporal que evoca la naturaleza con durazno, manzanilla, melón y maderas cálidas.",
+    notas: {
+      salida: ["Melón", "manzanilla", "durazno (melocotón)", "tagetes", "maracuyá"],
+      corazon: ["Rosa", "jazmín", "lirio de los valles", "clavel"],
+      fondo: ["Musgo de roble", "ámbar", "sándalo", "vetiver"]
+    },
+    imagen: img_ck_escape_dama,
+    imagenes: [img_ck_escape_dama],
+    destacado: false,
+  },
+  {
+    id: 228,
+    nombre: "CK ONE SHOCK DAMA X200ML",
+    marca: "Calvin Klein",
+    precio: 210000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 200,
+    stock: 10,
+    descripcion: "CK ONE SHOCK DAMA de Calvin Klein en formato 200ml es un aroma oriental-floral juguetón con flor de pasión, mora silvestre y chocolate amargo.",
+    notas: {
+      salida: ["Flor de la pasión", "amapola roja", "peonía"],
+      corazon: ["Mora", "maracuyá", "chocolate mexicano", "jazmín"],
+      fondo: ["Vainilla", "almizcle", "ámbar", "pachulí"]
+    },
+    imagen: img_ck_one_shock_dama,
+    imagenes: [img_ck_one_shock_dama],
+    destacado: false,
+  },
+  {
+    id: 229,
+    nombre: "STARWALKER",
+    marca: "Montblanc",
+    precio: 220000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 75,
+    stock: 10,
+    descripcion: "STARWALKER de Montblanc es una fragancia amaderada-especiada suave, limpia y sumamente elegante con notas de bambú, jengibre y bergamota.",
+    notas: {
+      salida: ["Bambú", "bergamota", "mandarina"],
+      corazon: ["Sándalo", "almizcle blanco", "cedro"],
+      fondo: ["Jengibre", "resina de abeto", "nuez moscada", "ámbar"]
+    },
+    imagen: img_montblanc_starwalker,
+    imagenes: [img_montblanc_starwalker],
+    destacado: false,
+  },
+  {
+    id: 230,
+    nombre: "TOMMY GIRL",
+    marca: "Tommy Hilfiger",
+    precio: 195000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "TOMMY GIRL de Tommy Hilfiger es un ícono fresco y juvenil repleto de flor de manzanal, grosella negra, camelia y té verde.",
+    notas: {
+      salida: ["Flor de manzanal", "grosella negra", "camelia", "mandarina"],
+      corazon: ["Limón (lima ácida)", "madreselva", "pomelo", "rosa", "azucena"],
+      fondo: ["Magnolia", "jazmín", "cedro", "sándalo"]
+    },
+    imagen: img_tommy_girl,
+    imagenes: [img_tommy_girl],
+    destacado: false,
+  },
+  {
+    id: 231,
+    nombre: "KARPOS",
+    marca: "Giardini Di Toscana",
+    precio: 520000,
+    categoria: "Nicho",
+    genero: "Unisex",
+    ml: 100,
+    stock: 10,
+    descripcion: "KARPOS de Giardini Di Toscana es una obra de arte frutal-amaderada repleta de higo fresco, jugoso durazno y un fondo reconfortante de sándalo y almizcle.",
+    notas: {
+      salida: ["Higo", "durazno (melocotón)", "cítricos"],
+      corazon: ["Hojas de higuera", "flores blancas", "especias"],
+      fondo: ["Sándalo", "almizcle", "cedro", "ámbar"]
+    },
+    imagen: img_gdt_karpos,
+    imagenes: [img_gdt_karpos],
+    destacado: false,
+  },
+  {
+    id: 232,
+    nombre: "SWEET TOOTH",
+    marca: "Sabrina Carpenter",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 75,
+    stock: 10,
+    descripcion: "SWEET TOOTH de Sabrina Carpenter es un sueño gourmand irresistible con chocolate blanco, malvavisco esponjoso y rica vainilla.",
+    notas: {
+      salida: ["Marshmallow (malvavisco)", "chocolate blanco", "bergamota", "jengibre candeado"],
+      corazon: ["Jazmín", "leche de coco", "pétalos de rosa"],
+      fondo: ["Vainilla de Madagascar", "chantilly", "madera de cachemira"]
+    },
+    imagen: img_sc_sweet_tooth,
+    imagenes: [img_sc_sweet_tooth],
+    destacado: false,
+  },
+  {
+    id: 233,
+    nombre: "SWEET TOOTH CARAMEL DREAM",
+    marca: "Sabrina Carpenter",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 75,
+    stock: 10,
+    descripcion: "SWEET TOOTH CARAMEL DREAM de Sabrina Carpenter profundiza el dulzor con carmelo caliente, haba tonka tostada y leche de almendras.",
+    notas: {
+      salida: ["Caramelo dulce", "leche de almendras", "fresa silvestre", "limón"],
+      corazon: ["Orquídea de chocolate", "flor de naranjo"],
+      fondo: ["Haba tonka", "pachulí", "sándalo", "ámbar"]
+    },
+    imagen: img_sc_sweet_tooth_caramel,
+    imagenes: [img_sc_sweet_tooth_caramel],
+    destacado: false,
+  },
+  {
+    id: 234,
+    nombre: "SWEET TOOTH CHERRY BABY",
+    marca: "Sabrina Carpenter",
+    precio: 245000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 75,
+    stock: 10,
+    descripcion: "SWEET TOOTH CHERRY BABY de Sabrina Carpenter cautiva con cereza cosmo, amaretto sedoso y un fondo cremoso de orquídea roja y cacao.",
+    notas: {
+      salida: ["Cereza cosmo", "amaretto", "manzana roja", "azúcar moreno"],
+      corazon: ["Orquídea roja", "ciruela plum", "amapola"],
+      fondo: ["Cacao", "madera de cachemira", "ámbar resinoso"]
+    },
+    imagen: img_sc_sweet_tooth_cherry,
+    imagenes: [img_sc_sweet_tooth_cherry],
+    destacado: false,
+  },
+  {
+    id: 235,
+    nombre: "CLOUD EDP X100ML",
+    marca: "Ariana Grande",
+    precio: 285000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "CLOUD EDP de Ariana Grande es una fragancia gourmand soñadora e icónica con crema de coco, praliné adictivo, orquídea de vainilla y lavanda.",
+    notas: {
+      salida: ["Lavanda", "pera", "bergamota"],
+      corazon: ["Crema de coco", "praliné", "orquídea de vainilla"],
+      fondo: ["Almizcle", "notas amaderadas"]
+    },
+    imagen: img_ag_cloud,
+    imagenes: [img_ag_cloud],
+    destacado: false,
+  },
+  {
+    id: 236,
+    nombre: "THANK U NEXT X100ML",
+    marca: "Ariana Grande",
+    precio: 275000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "THANK U NEXT de Ariana Grande combina dulzor jugoso de frambuesa blanca, crema de coco y pétalos de rosa sobre una base de macarrón rosado.",
+    notas: {
+      salida: ["Frambuesa blanca", "pera jugosa"],
+      corazon: ["Crema de coco", "pétalos de rosa rosada"],
+      fondo: ["Macarrón dulce", "almizcle terciopelo"]
+    },
+    imagen: img_ag_thank_u_next,
+    imagenes: [img_ag_thank_u_next],
+    destacado: false,
+  },
+  {
+    id: 237,
+    nombre: "THANK U NEXT TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de THANK U NEXT de Ariana Grande: adictivas notas de frambuesa, coco cremoso y azucarado macarrón rosado.",
+    notas: {
+      salida: ["Frambuesa blanca", "pera jugosa"],
+      corazon: ["Crema de coco", "pétalos de rosa rosada"],
+      fondo: ["Macarrón dulce", "almizcle terciopelo"]
+    },
+    imagen: img_ag_thank_u_next_tester,
+    imagenes: [img_ag_thank_u_next_tester],
+    destacado: false,
+  },
+  {
+    id: 238,
+    nombre: "CLOUD EDP TESTER",
+    marca: "Ariana Grande",
+    precio: 245000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de CLOUD EDP de Ariana Grande: el ultra popular acorde de lavanda, crema de coco y praliné esponjoso.",
+    notas: {
+      salida: ["Lavanda", "pera", "bergamota"],
+      corazon: ["Crema de coco", "praliné", "orquídea de vainilla"],
+      fondo: ["Almizcle", "notas amaderadas"]
+    },
+    imagen: img_ag_cloud_tester,
+    imagenes: [img_ag_cloud_tester],
+    destacado: false,
+  },
+  {
+    id: 239,
+    nombre: "MOONLIGHT TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de MOONLIGHT de Ariana Grande: seducción dulce con grosella negra rica, malvavisco esponjoso y peonía nocturna.",
+    notas: {
+      salida: ["Ciruela", "grosella negra"],
+      corazon: ["Marshmallow (malvavisco)", "peonía"],
+      fondo: ["Vainilla", "sándalo", "ámbar negro"]
+    },
+    imagen: img_ag_moonlight_tester,
+    imagenes: [img_ag_moonlight_tester],
+    destacado: false,
+  },
+  {
+    id: 240,
+    nombre: "ARI TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de ARI de Ariana Grande: la fragancia debut ultra femenina con frambuesa chispeante, orquídea de vainilla y marshmallow.",
+    notas: {
+      salida: ["Frambuesa", "pera", "toronja (pomelo)"],
+      corazon: ["Orquídea de vainilla", "rosa de mayo", "lirio de los valles"],
+      fondo: ["Marshmallow (malvavisco)", "almizcle", "notas amaderadas"]
+    },
+    imagen: img_ag_ari_tester,
+    imagenes: [img_ag_ari_tester],
+    destacado: false,
+  },
+  {
+    id: 241,
+    nombre: "SWEET LIKE CANDY TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de SWEET LIKE CANDY de Ariana Grande: una tentación golosa repleta de zarzamora, crema batida y malvavisco.",
+    notas: {
+      salida: ["Zarzamora (mora negra)", "bergamota", "pera"],
+      corazon: ["Grosellas negras", "crema batida", "marshmallow (malvavisco)", "jazmín"],
+      fondo: ["Vainilla", "madera de cashmere"]
+    },
+    imagen: img_ag_sweet_candy_tester,
+    imagenes: [img_ag_sweet_candy_tester],
+    destacado: false,
+  },
+  {
+    id: 242,
+    nombre: "MOOD VANILLA TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de MOD VANILLA de Ariana Grande: un aroma gourmand sofisticado enriquecido con ciruela oscura, manteca de cacao y orquídea de vainilla.",
+    notas: {
+      salida: ["Ciruela oscura", "fresia rosa", "almizcle"],
+      corazon: ["Orquídea de vainilla", "manteca de cacao"],
+      fondo: ["Vainilla absoluta", "pachulí"]
+    },
+    imagen: img_ag_mood_vanilla_tester,
+    imagenes: [img_ag_mood_vanilla_tester],
+    destacado: false,
+  },
+  {
+    id: 243,
+    nombre: "MOOD BLUSH TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de MOD BLUSH de Ariana Grande: una propuesta floral-frutal chispeante con maracuyá, frambuesa y pétalos de rosa dulce.",
+    notas: {
+      salida: ["Maracuyá (fruta de la pasión)", "frambuesa", "pimienta rosa", "bergamota"],
+      corazon: ["Pera", "rosa", "magnolia"],
+      fondo: ["Ambrosan", "almizcle", "sándalo"]
+    },
+    imagen: img_ag_mood_blush_tester,
+    imagenes: [img_ag_mood_blush_tester],
+    destacado: false,
+  },
+  {
+    id: 244,
+    nombre: "GOD IS A WOMAN TESTER",
+    marca: "Ariana Grande",
+    precio: 235000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Presentación Tester de GOD IS A WOMAN de Ariana Grande: una fragancia fresca, frutal y limpia dominada por pera jugosa, ambreta y raíz de lirio.",
+    notas: {
+      salida: ["Pera", "ambreta (almizcle vegetal)"],
+      corazon: ["Orris (raíz de lirio)", "turca de rosa"],
+      fondo: ["Vainilla de Madagascar", "madera de cedro"]
+    },
+    imagen: img_ag_god_woman_tester,
+    imagenes: [img_ag_god_woman_tester],
+    destacado: false,
+  },
+  {
+    id: 245,
+    nombre: "CAN CAN",
+    marca: "Paris Hilton",
+    precio: 185000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "CAN CAN de Paris Hilton es un clásico oriental-frutal coqueto y festivo con clementina dulce, grosellas negras, orquídea salvaje y ámbar.",
+    notas: {
+      salida: ["Clementina", "grosellas negras", "flor de nectarina"],
+      corazon: ["Orquídea salvaje", "flor de azahar del naranjo"],
+      fondo: ["Ámbar", "almizcle", "notas amaderadas"]
+    },
+    imagen: img_ph_can_can,
+    imagenes: [img_ph_can_can],
+    destacado: false,
+  },
+  {
+    id: 246,
+    nombre: "THE ICON EDP X100ML SET 2 PCS",
+    marca: "Antonio Banderas",
+    precio: 185000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Set de 2 piezas de THE ICON EDP de Antonio Banderas: una fragancia intensa y carismática con notas de toronja, pimienta negra, gamuza y tonka.",
+    notas: {
+      salida: ["Toronja (pomelo)", "pimienta negra"],
+      corazon: ["Lavanda", "salvia"],
+      fondo: ["Gamuza", "haba tonka", "madera de roble"]
+    },
+    imagen: img_ab_the_icon_set,
+    imagenes: [img_ab_the_icon_set],
+    destacado: false,
+  },
+  {
+    id: 247,
+    nombre: "THE ICON ELIXIR X100ML SET 2 PCS",
+    marca: "Antonio Banderas",
+    precio: 190000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Set de 2 piezas de THE ICON ELIXIR de Antonio Banderas: la versión más potente de la saga con cardamomo, lavanda aromática y base amaderada especiada.",
+    notas: {
+      salida: ["Cardamomo", "cítricos", "jengibre"],
+      corazon: ["Lavanda", "salvia marina"],
+      fondo: ["Madera de cedro", "ámbar gris", "pachulí"]
+    },
+    imagen: img_ab_the_icon_elixir_set,
+    imagenes: [img_ab_the_icon_elixir_set],
+    destacado: false,
+  },
+  {
+    id: 248,
+    nombre: "BLEU SEDUCTION DAMA X80ML SET 2 PCS",
+    marca: "Antonio Banderas",
+    precio: 175000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 80,
+    stock: 10,
+    descripcion: "Set de 2 piezas BLUE SEDUCTION DAMA de Antonio Banderas: frescura acuática y frutal con melón jugoso, hojas de violeta, peonía y frambuesa.",
+    notas: {
+      salida: ["Melón", "hojas de violeta", "pera", "bergamota"],
+      corazon: ["Peonía", "gardenia", "jazmín", "lirio de los valles"],
+      fondo: ["Frambuesa", "benzoin", "pachulí", "almizcle"]
+    },
+    imagen: img_ab_bleu_seduction_set,
+    imagenes: [img_ab_bleu_seduction_set],
+    destacado: false,
+  },
+  {
+    id: 249,
+    nombre: "CAJA DE LECHE PLUS PLUS MASCULINE",
+    marca: "Diesel",
+    precio: 175000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 75,
+    stock: 10,
+    descripcion: "PLUS PLUS MASCULINE de Diesel (icónico empaque en forma de caja de leche) es un aroma oriental-amaderado cálido con leche, bergamota y canela.",
+    notas: {
+      salida: ["Bergamota", "naranja", "hojas de palmera", "heliotropo"],
+      corazon: ["Jazmín", "cilantro", "cardamomo", "notas lácteas"],
+      fondo: ["Vainilla", "sándalo", "haba tonka", "vetiver", "canela"]
+    },
+    imagen: img_diesel_plus_plus,
+    imagenes: [img_diesel_plus_plus],
+    destacado: false,
+  },
+  {
+    id: 250,
+    nombre: "INSURRECTION",
+    marca: "Reyane Tradition",
+    precio: 175000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "INSURRECTION de Reyane Tradition es un perfume cálido y envolvente dominado por un rico acorde de vainilla amaderada, especias dulces y ámbar.",
+    notas: {
+      salida: ["Vainilla", "especias dulces"],
+      corazon: ["Notas amaderadas", "ámbar"],
+      fondo: ["Almizcle", "pachulí"]
+    },
+    imagen: img_rt_insurrection,
+    imagenes: [img_rt_insurrection],
+    destacado: false,
+  },
+  {
+    id: 251,
+    nombre: "LIGHT BLUE POUR HOMME NUEVA 2025 SET 3 PCS",
+    marca: "Dolce & Gabbana",
+    precio: 410000,
+    categoria: "Diseñador",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "Set de regalo de 3 piezas de LIGHT BLUE POUR HOMME de Dolce & Gabbana: frescura mediterránea pura con pomelo amargo, enebro y madera de almizcle.",
+    notas: {
+      salida: ["Pomelo (toronja)", "enebro de la Virginia", "bergamota", "mandarina de Sicilia"],
+      corazon: ["Pimienta de Sichuan", "romero", "palo de rosa de Brasil"],
+      fondo: ["Almizcle incensado", "musgo de roble", "madera de ámbar"]
+    },
+    imagen: img_dg_light_blue_homme_set,
+    imagenes: [img_dg_light_blue_homme_set],
+    destacado: false,
+  },
+  {
+    id: 252,
+    nombre: "LIGHT BLUE X100ML NUEVA 2025",
+    marca: "Dolce & Gabbana",
+    precio: 360000,
+    categoria: "Diseñador",
+    genero: "Femenino",
+    ml: 100,
+    stock: 10,
+    descripcion: "LIGHT BLUE de Dolce & Gabbana en su presentación de 100ml: un clásico estival radiante con limón de Sicilia, manzana Granny Smith y bambú fresco.",
+    notas: {
+      salida: ["Limón de Sicilia", "manzana verde (Granny Smith)", "campánula", "cedro"],
+      corazon: ["Bambú", "jazmín", "rosa blanca"],
+      fondo: ["Cedro", "almizcle", "ámbar"]
+    },
+    imagen: img_dg_light_blue_dama,
+    imagenes: [img_dg_light_blue_dama],
     destacado: false,
   }
 ];
