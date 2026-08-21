@@ -6,11 +6,11 @@ const PAGE_SIZE = 30;
 /**
  * Custom Hook useProducts — Separa la lógica de filtrado, búsqueda y ordenamiento de la UI.
  */
-export function useProducts(initialState = {}) {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [loading, setLoading] = useState(true);
+export function useProducts(initialState = {}, initialData = null) {
+  const [products, setProducts] = useState(initialData?.products || []);
+  const [categories, setCategories] = useState(initialData?.categories || []);
+  const [brands, setBrands] = useState(initialData?.brands || []);
+  const [loading, setLoading] = useState(!initialData);
 
   // Estados de Filtros
   const [searchTerm, setSearchTerm] = useState(initialState.searchTerm || '');
@@ -22,6 +22,16 @@ export function useProducts(initialState = {}) {
   const hasHydratedInitialFilters = useRef(false);
 
   useEffect(() => {
+    // El loader de React Router entrega los datos antes de montar el catálogo.
+    // Esto permite restaurar el scroll cuando el documento ya tiene su altura final.
+    if (initialData) {
+      setProducts(initialData.products);
+      setCategories(initialData.categories);
+      setBrands(initialData.brands);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     Promise.all([getAllProducts(), getCategories(), getBrands()]).then(
       ([allProducts, cats, bnds]) => {
@@ -31,7 +41,7 @@ export function useProducts(initialState = {}) {
         setLoading(false);
       }
     );
-  }, []);
+  }, [initialData]);
 
   // Lógica memorizada para filtrar y ordenar productos
   const filteredProducts = useMemo(() => {

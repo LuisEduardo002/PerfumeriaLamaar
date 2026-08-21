@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigationType, useSearchParams } from 'react-router-dom';
+import { useLoaderData, useNavigationType, useSearchParams } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Container from '../components/layout/Container';
 import SectionTitle from '../components/common/SectionTitle';
@@ -9,7 +9,6 @@ import SortSelect from '../components/common/SortSelect';
 import ActiveFilters from '../components/common/ActiveFilters';
 import ProductGrid from '../components/product/ProductGrid';
 import { useProducts } from '../hooks/useProducts';
-import useScrollRestoration from '../hooks/useScrollRestoration';
 import { SlidersHorizontal, X } from 'lucide-react';
 import Button from '../components/common/Button';
 
@@ -19,6 +18,7 @@ import Button from '../components/common/Button';
 export default function Catalog() {
   const [searchParams] = useSearchParams();
   const navigationType = useNavigationType();
+  const catalogData = useLoaderData();
   const [restoredCatalogState] = useState(() => {
     if (navigationType !== 'POP') return {};
 
@@ -48,7 +48,7 @@ export default function Catalog() {
     setSelectedGender,
     setSortBy,
     resetFilters,
-  } = useProducts(restoredCatalogState);
+  } = useProducts(restoredCatalogState, catalogData);
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -78,8 +78,6 @@ export default function Catalog() {
       // El catálogo sigue funcionando si sessionStorage no está disponible.
     }
   }, [searchTerm, selectedCategory, selectedBrand, selectedGender, sortBy, visibleCount]);
-
-  useScrollRestoration({ isReady: !loading, pageId: 'catalogo' });
 
   // Cada entrada describe cómo mostrar y cómo quitar un filtro individual.
   // Aquí se pueden añadir filtros futuros, por ejemplo: precio o notas olfativas.
