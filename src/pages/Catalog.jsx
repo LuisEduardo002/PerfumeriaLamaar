@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLoaderData, useNavigationType, useSearchParams } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { SlidersHorizontal, X } from 'lucide-react';
+
 import Container from '../components/layout/Container';
 import SectionTitle from '../components/common/SectionTitle';
 import SearchBar from '../components/common/SearchBar';
@@ -8,14 +10,14 @@ import FilterSidebar from '../components/common/FilterSidebar';
 import SortSelect from '../components/common/SortSelect';
 import ActiveFilters from '../components/common/ActiveFilters';
 import ProductGrid from '../components/product/ProductGrid';
-import { useProducts } from '../hooks/useProducts';
-import { SlidersHorizontal, X } from 'lucide-react';
 import Button from '../components/common/Button';
+
+import { useProducts } from '../hooks/useProducts';
 
 const CATALOG_STATE_KEY = 'lammar-catalog-state';
 
 export default function Catalog() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigationType = useNavigationType();
   const catalogData = useLoaderData();
 
@@ -51,6 +53,14 @@ export default function Catalog() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const restoredScrollRef = useRef(false);
 
+  // Sincronizar el buscador con la URL cuando el usuario escribe desde el Navbar
+  useEffect(() => {
+    const querySearch = searchParams.get('q') || '';
+    if (querySearch !== searchTerm) {
+      setSearchTerm(querySearch);
+    }
+  }, [searchParams]);
+
   // Sincronizar género desde la URL solo si viene explícito en query params
   useEffect(() => {
     const gender = searchParams.get('genero');
@@ -58,6 +68,15 @@ export default function Catalog() {
       setSelectedGender(gender);
     }
   }, [searchParams]);
+
+  // Limpiar búsqueda local y remover el parámetro 'q' de la URL
+  const handleClearSearch = () => {
+    setSearchTerm('');
+    if (searchParams.has('q')) {
+      searchParams.delete('q');
+      setSearchParams(searchParams);
+    }
+  };
 
   // Persistir el estado del catálogo en sessionStorage de forma continua
   useEffect(() => {
@@ -113,7 +132,7 @@ export default function Catalog() {
     const savedY = savedState.lastScrollY;
 
     let attempts = 0;
-    const maxAttempts = 30; // Monitorea durante 1.5s hasta que se renderice todo
+    const maxAttempts = 30;
 
     const interval = setInterval(() => {
       attempts++;
@@ -122,20 +141,15 @@ export default function Catalog() {
         ? document.querySelector(`[data-product-id="${targetId}"]`)
         : null;
 
-      // 1. Si encuentra la tarjeta del producto, centra la pantalla en ella
       if (targetElement && targetElement.getBoundingClientRect().top !== 0) {
         targetElement.scrollIntoView({ block: 'center', behavior: 'instant' });
         restoredScrollRef.current = true;
         clearInterval(interval);
-      }
-      // 2. Si no encuentra la tarjeta pero la altura del DOM ya sobrepasa la posición guardada
-      else if (savedY && document.documentElement.scrollHeight > savedY) {
+      } else if (savedY && document.documentElement.scrollHeight > savedY) {
         window.scrollTo(0, savedY);
         restoredScrollRef.current = true;
         clearInterval(interval);
-      }
-      // 3. Límite de reintentos
-      else if (attempts >= maxAttempts) {
+      } else if (attempts >= maxAttempts) {
         clearInterval(interval);
       }
     }, 50);
@@ -147,7 +161,7 @@ export default function Catalog() {
     searchTerm && {
       id: 'search',
       label: `Búsqueda: ${searchTerm}`,
-      onRemove: () => setSearchTerm(''),
+      onRemove: handleClearSearch,
     },
     selectedCategory && {
       id: 'category',
@@ -166,20 +180,17 @@ export default function Catalog() {
     },
   ].filter(Boolean);
 
-
-  // 1. Crear la referencia
+  // Referencia y configuración del Scroll Infinito (Intersection Observer)
   const observerTarget = useRef(null);
 
-  // 2. Configurar el observador
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // Si el usuario llega al final (hace contacto con el sensor)
-        if (entries[0].isIntersecting) {
-          loadMore(); // Ejecutamos tu función exacta
+        if (entries[0].isIntersecting && hasMore) {
+          loadMore();
         }
       },
-      { rootMargin: '100px' } // El sensor se activa 100px antes de que el usuario llegue al final
+      { rootMargin: '100px' }
     );
 
     if (observerTarget.current) {
@@ -191,7 +202,8 @@ export default function Catalog() {
         observer.unobserve(observerTarget.current);
       }
     };
-  }, [loadMore]); // Escuchamos a loadMore
+  }, [loadMore, hasMore]);
+
   return (
     <main className="flex-grow bg-slate-50/50 py-10">
       <Container>
@@ -205,7 +217,7 @@ export default function Catalog() {
             <SearchBar
               value={searchTerm}
               onChange={setSearchTerm}
-              onClear={() => setSearchTerm('')}
+              onClear={handleClearSearch}
             />
           </div>
 
@@ -303,14 +315,13 @@ export default function Catalog() {
                   isRestoring={navigationType === 'POP'}
                 />
 
-                {/* Sensor de Scroll Infinito que reemplaza al botón */}
+                {/* Sensor de Scroll Infinito */}
                 {hasMore && (
                   <div
                     ref={observerTarget}
                     className="mt-10 flex h-16 w-full items-center justify-center"
                     aria-hidden="true"
                   >
-                    {/* Un texto sutil que aparece mientras carga */}
                     <span className="animate-pulse text-sm text-slate-400">
                       Cargando más fragancias...
                     </span>
