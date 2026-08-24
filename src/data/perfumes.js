@@ -2478,7 +2478,7 @@ export const perfumes = [
     precio: 260000,
     categoria: "Arabes",
     genero: "Unisex",
-    ml: 80,
+    ml: 100,
     stock: 10,
     descripcion: "Set de descubrimiento de la colección Nitro de Dumont Paris, ideal para viajes y probar la saga completa.",
     notas: {
@@ -2801,7 +2801,7 @@ export const perfumes = [
     precio: 245000,
     categoria: "Arabes",
     genero: "Unisex",
-    ml: 60,
+    ml: 100,
     stock: 10,
     descripcion: "AMBER OUD GOLD de Al Haramain es un ícono dulce y tropical con una estela frutal y deslumbrante.",
     notas: {
@@ -2820,7 +2820,7 @@ export const perfumes = [
     precio: 308000,
     categoria: "Arabes",
     genero: "Unisex",
-    ml: 120,
+    ml: 100,
     stock: 10,
     descripcion: "Edición de 120ml de AMBER OUD GOLD de Al Haramain, destacada por sus notas intensas de melón, piña y ámbar.",
     notas: {
@@ -2858,7 +2858,7 @@ export const perfumes = [
     precio: 370000,
     categoria: "Arabes",
     genero: "Unisex",
-    ml: 200,
+    ml: 100,
     stock: 10,
     descripcion: "Presentación tamaño extra de 200ml de AMBER OUD GOLD de Al Haramain para amantes de su aroma frutal ambarado.",
     notas: {
@@ -2934,7 +2934,7 @@ export const perfumes = [
     precio: 370000,
     categoria: "Arabes",
     genero: "Femenino",
-    ml: 200,
+    ml: 100,
     stock: 10,
     descripcion: "L'AVENTURE ROSE de Al Haramain en gran formato de 200ml destaca por un perfil floral elegante de rosa, frutas y fondo ambarado.",
     notas: {
@@ -3618,7 +3618,7 @@ export const perfumes = [
     precio: 420000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 200,
+    ml: 100,
     stock: 10,
     descripcion: "Presentación de 200ml de EROS FLAME de Versace, con su intenso contraste cálido y especiado de cítricos italianos y maderas.",
     notas: {
@@ -3713,7 +3713,7 @@ export const perfumes = [
     precio: 260000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 90,
+    ml: 100,
     stock: 10,
     descripcion: "Presentación Tester de BRIGHT CRYSTAL PARFUM de Versace: versión enriquecida del clásico floral con toques jugosos de granada y flor de loto.",
     notas: {
@@ -3751,7 +3751,7 @@ export const perfumes = [
     precio: 180000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "RED JEANS de Versace es un clásico dulce, juvenil y casual con notas destacadas de durazno, fresia y flor de azahar.",
     notas: {
@@ -3770,7 +3770,7 @@ export const perfumes = [
     precio: 180000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "BLUE JEANS de Versace es una fragancia legendaria aromática y amaderada, con toques cítricos, de lavanda y especias cálidas.",
     notas: {
@@ -3789,7 +3789,7 @@ export const perfumes = [
     precio: 520000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 125,
+    ml: 100,
     stock: 10,
     descripcion: "LE BEAU LE PARFUM de Jean Paul Gaultier es una tentación ultraintensa y adictiva basada en madera de coco, piña y haba tonka dulce.",
     notas: {
@@ -3808,7 +3808,7 @@ export const perfumes = [
     precio: 510000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 125,
+    ml: 100,
     stock: 10,
     descripcion: "LE MALE LE PARFUM de Jean Paul Gaultier es una estela oriental amaderada intensa donde imperan el cardamomo, la lavanda y la vainilla refinada.",
     notas: {
@@ -3827,7 +3827,7 @@ export const perfumes = [
     precio: 520000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 125,
+    ml: 100,
     stock: 10,
     descripcion: "LE MALE ELIXIR de Jean Paul Gaultier destaca por su ardiente sensualidad rica en miel dorada, haba tonka tostada y lavanda dulce.",
     notas: {
@@ -3865,7 +3865,7 @@ export const perfumes = [
     precio: 440000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 125,
+    ml: 100,
     stock: 10,
     descripcion: "LE MALE EDT de Jean Paul Gaultier es el ícono absoluto de la perfumería masculina que rinde tributo al clásico acorde de menta, lavanda y vainilla.",
     notas: {
@@ -3922,7 +3922,7 @@ export const perfumes = [
     precio: 330000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 50,
+    ml: 100,
     stock: 10,
     descripcion: "Set metálico exclusivo PHANTOM de Paco Rabanne: una combinación futurista de lavanda cremosa, limón enérgico y vainilla amaderada.",
     notas: {
@@ -3960,7 +3960,7 @@ export const perfumes = [
     precio: 215000,
     categoria: "Arabes",
     genero: "Masculino",
-    ml: 90,
+    ml: 100,
     stock: 10,
     descripcion: "TURATHI BLUE de Afnan es un éxito cítrico y ambarado con un dominante y elegante acorde de toronja, especias ligeras y almizcle.",
     notas: {
@@ -3979,7 +3979,7 @@ export const perfumes = [
     precio: 220000,
     categoria: "Arabes",
     genero: "Unisex",
-    ml: 90,
+    ml: 100,
     stock: 10,
     descripcion: "TURATHI ELECTRIC de Afnan es una interpretación electrizante y moderna cargada de frutas vibrantes, notas metálicas frías y un fondo limpio.",
     notas: {
@@ -4378,7 +4378,7 @@ export const perfumes = [
     precio: 210000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 200,
+    ml: 100,
     stock: 10,
     descripcion: "CK ONE SHOCK DAMA de Calvin Klein en formato 200ml es un aroma oriental-floral juguetón con flor de pasión, mora silvestre y chocolate amargo.",
     notas: {
@@ -4397,7 +4397,7 @@ export const perfumes = [
     precio: 220000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "STARWALKER de Montblanc es una fragancia amaderada-especiada suave, limpia y sumamente elegante con notas de bambú, jengibre y bergamota.",
     notas: {
@@ -4454,7 +4454,7 @@ export const perfumes = [
     precio: 235000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "SWEET TOOTH de Sabrina Carpenter es un sueño gourmand irresistible con chocolate blanco, malvavisco esponjoso y rica vainilla.",
     notas: {
@@ -4473,7 +4473,7 @@ export const perfumes = [
     precio: 235000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "SWEET TOOTH CARAMEL DREAM de Sabrina Carpenter profundiza el dulzor con carmelo caliente, haba tonka tostada y leche de almendras.",
     notas: {
@@ -4492,7 +4492,7 @@ export const perfumes = [
     precio: 245000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "SWEET TOOTH CHERRY BABY de Sabrina Carpenter cautiva con cereza cosmo, amaretto sedoso y un fondo cremoso de orquídea roja y cacao.",
     notas: {
@@ -4758,7 +4758,7 @@ export const perfumes = [
     precio: 175000,
     categoria: "Diseñador",
     genero: "Femenino",
-    ml: 80,
+    ml: 100,
     stock: 10,
     descripcion: "Set de 2 piezas BLUE SEDUCTION DAMA de Antonio Banderas: frescura acuática y frutal con melón jugoso, hojas de violeta, peonía y frambuesa.",
     notas: {
@@ -4777,7 +4777,7 @@ export const perfumes = [
     precio: 175000,
     categoria: "Diseñador",
     genero: "Masculino",
-    ml: 75,
+    ml: 100,
     stock: 10,
     descripcion: "PLUS PLUS MASCULINE de Diesel (icónico empaque en forma de caja de leche) es un aroma oriental-amaderado cálido con leche, bergamota y canela.",
     notas: {
