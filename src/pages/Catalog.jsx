@@ -132,7 +132,10 @@ export default function Catalog() {
     } catch { }
 
     if (!savedState || navigationType !== 'POP') {
+      // Navegación nueva: subir una sola vez. El ref evita que se repita
+      // cada vez que el scroll infinito agrega más productos.
       if (navigationType !== 'POP') window.scrollTo(0, 0);
+      restoredScrollRef.current = true;
       return;
     }
 
