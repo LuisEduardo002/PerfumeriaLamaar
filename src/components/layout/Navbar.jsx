@@ -83,12 +83,6 @@ export default function Navbar() {
                 >
                   Catálogo
                 </Link>
-                <Link
-                  to="/marcas"
-                  className="font-sans text-sm font-light tracking-wide text-slate-600 transition-colors hover:text-[#4B1E28]"
-                >
-                  Marcas
-                </Link>
               </div>
 
               {/* Actions */}

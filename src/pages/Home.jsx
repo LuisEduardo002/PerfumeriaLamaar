@@ -14,9 +14,9 @@ import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   useSEO({
-    title: 'LAMMAR | Perfumería Exclusiva y Fragancias de Diseñador',
+    title: 'LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador',
     description:
-      'Descubre la colección de perfumes exclusivos y fragancias de diseñador y nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp.',
+      'Perfumería exclusiva en Manizales, Colombia. Descubre perfumes originales de diseñador, árabes y fragancias nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp.',
   });
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);

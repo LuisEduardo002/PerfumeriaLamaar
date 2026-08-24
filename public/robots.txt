@@ -4,6 +4,22 @@ Disallow: /page
 Disallow: /page/
 Disallow: /*?
 
+# Bots de IA: permitir explícitamente (ChatGPT, Perplexity, Claude)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 # Bloquea URLs con parámetros (?q=, ?genero=, etc.) para evitar contenido duplicado del catálogo.
 # La paginación tipo /page/2 no existe en este sitio (scroll infinito); se bloquea por prevención.
 
