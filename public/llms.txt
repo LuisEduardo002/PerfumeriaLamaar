@@ -1,0 +1,28 @@
+# LAMMAR
+
+> Tienda colombiana de perfumes 100% originales: fragancias de diseñador, árabes y nicho. Los pedidos se realizan mediante WhatsApp y se envían a toda Colombia.
+
+LAMMAR (LAMAAR PERFUM) es una perfumería exclusiva con un catálogo de más de 240 perfumes originales e importados de marcas como Lattafa, Rasasi, Armaf, Lorenzo Pazzaglia y más. El sitio funciona como vitrina: el usuario selecciona productos en el catálogo y confirma su pedido por WhatsApp. No requiere registro y no procesa pagos dentro del sitio.
+
+## Páginas principales
+
+- [Inicio](/): colecciones para caballero y dama, fragancias destacadas y ventajas de la tienda.
+- [Catálogo](/catalogo): listado completo de perfumes con búsqueda y filtros por marca, categoría y género.
+- [Página de producto](/producto/al-noble-ameer): precio, tamaño (ml), notas olfativas de salida/corazón/fondo, disponibilidad y preguntas frecuentes. Cada perfume tiene su propia URL amigable.
+- [Política de Privacidad](/privacidad): qué datos se tratan, con qué finalidad y derechos de los titulares.
+- [Términos y Condiciones](/terminos): condiciones de compra, envíos, cambios y devoluciones.
+
+## Datos clave
+
+- País de operación: Colombia, con envíos nacionales mediante transportadora.
+- Canal de pedidos: WhatsApp +57 304 6420608.
+- Correo de contacto: amazingstoresoporte@gmail.com.
+- Horario de atención: lunes a sábado, 9:00 a.m. – 6:00 p.m.
+- Moneda: pesos colombianos (COP).
+- Garantía: todos los perfumes son originales e importados.
+
+## Políticas comerciales
+
+- El carrito se guarda localmente en el navegador; no hay cuentas de usuario ni pagos en línea en el sitio.
+- El pedido queda confirmado únicamente cuando LAMMAR lo valida por sus canales oficiales.
+- Cambios, devoluciones y garantías se rigen por la legislación colombiana.

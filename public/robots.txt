@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /page
+Disallow: /page/
+Disallow: /*?
+
+# Bloquea URLs con parámetros (?q=, ?genero=, etc.) para evitar contenido duplicado del catálogo.
+# La paginación tipo /page/2 no existe en este sitio (scroll infinito); se bloquea por prevención.
+
+# Sitemap generado automáticamente en cada build (dist/sitemap.xml)
+Sitemap: https://lammar.com/sitemap.xml
+

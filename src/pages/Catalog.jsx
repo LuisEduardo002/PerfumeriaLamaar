@@ -13,10 +13,18 @@ import ProductGrid from '../components/product/ProductGrid';
 import Button from '../components/common/Button';
 
 import { useProducts } from '../hooks/useProducts';
+import useSEO from '../hooks/useSEO';
+import Faq from '../components/common/Faq';
+import { faqItems } from '../data/faq';
 
 const CATALOG_STATE_KEY = 'lammar-catalog-state';
 
 export default function Catalog() {
+  useSEO({
+    title: 'Catálogo de Perfumes Originales para Hombre y Mujer',
+    description:
+      'Explora el catálogo completo de perfumes originales en LAMMAR: fragancias árabes, de diseñador y nicho para hombre y mujer. Compra fácil por WhatsApp.',
+  });
   const [searchParams, setSearchParams] = useSearchParams();
   const navigationType = useNavigationType();
   const catalogData = useLoaderData();
@@ -208,6 +216,7 @@ export default function Catalog() {
     <main className="flex-grow bg-slate-50/50 py-10">
       <Container>
         <SectionTitle
+          as="h1"
           title="Catálogo de Fragancias"
           subtitle="Explora nuestra exclusiva selección de perfumes de diseñador, árabes y fragancias nicho."
         />
@@ -267,7 +276,7 @@ export default function Catalog() {
               <div className="w-4/5 max-w-xs bg-white h-full p-6 overflow-y-auto shadow-2xl flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
-                    <h3 className="font-serif text-xl font-bold text-slate-900">Filtros</h3>
+                    <h2 className="font-serif text-xl font-bold text-slate-900">Filtros</h2>
                     <button
                       onClick={() => setMobileFiltersOpen(false)}
                       className="p-2 text-slate-400 hover:text-slate-700"
@@ -331,6 +340,8 @@ export default function Catalog() {
             )}
           </div>
         </div>
+
+        <Faq title="Preguntas frecuentes sobre la compra" items={faqItems} />
       </Container>
     </main>
   );

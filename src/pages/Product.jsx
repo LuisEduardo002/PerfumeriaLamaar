@@ -9,6 +9,10 @@ import Price from '../components/common/Price';
 import ProductGrid from '../components/product/ProductGrid';
 import { getAllProducts, getProductById } from '../services/productService';
 import useCartStore from '../store/useCartStore';
+import useSEO from '../hooks/useSEO';
+import Faq from '../components/common/Faq';
+import ShareButton from '../components/common/ShareButton';
+import { faqItems } from '../data/faq';
 
 const noteGroups = [
   { key: 'salida', label: 'Salida' },
@@ -68,6 +72,13 @@ export default function Product() {
     return product.imagenes?.length ? product.imagenes : [product.imagen];
   }, [product]);
 
+  useSEO({
+    title: product ? `${product.nombre} de ${product.marca} – Perfume Original` : 'Perfumes Originales',
+    description: product
+      ? `Compra ${product.nombre} de ${product.marca}, perfume original de ${product.ml} ml. ${product.descripcion}`.slice(0, 160)
+      : 'Descubre perfumes originales de diseñador y nicho en LAMMAR.',
+  });
+
   if (loading) {
     return <main className="flex-grow py-20 text-center text-slate-500">Cargando fragancia...</main>;
   }
@@ -112,7 +123,7 @@ export default function Product() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="aspect-square overflow-hidden rounded-3xl border border-stone-200 bg-white">
               <img
                 src={images[selectedImage]}
-                alt={product.nombre}
+                alt={`Perfume ${product.nombre} de ${product.marca}`}
                 className="h-full w-full object-contain p-8"
                 onError={(event) => { event.currentTarget.style.display = 'none'; }}
               />
@@ -124,7 +135,7 @@ export default function Product() {
               <div className="mt-4 flex gap-3">
                 {images.map((image, index) => (
                   <button key={image} type="button" onClick={() => setSelectedImage(index)} aria-label={`Ver imagen ${index + 1} de ${product.nombre}`} className={`h-20 w-20 overflow-hidden rounded-xl border-2 ${selectedImage === index ? 'border-[#C8A450]' : 'border-transparent'}`}>
-                    <img src={image} alt="" className="h-full w-full object-cover" />
+                    <img src={image} alt={`${product.nombre} - vista ${index + 1}`} className="h-full w-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -163,6 +174,11 @@ export default function Product() {
                 <ShoppingBag className="h-4 w-4" /> {isAvailable ? 'Agregar al carrito' : 'Producto agotado'}
               </Button>
             </div>
+            <ShareButton
+              title={`${product.nombre} de ${product.marca}`}
+              text={`Mira este perfume original: ${product.nombre} de ${product.marca} en LAMMAR`}
+              className="mt-3 w-full sm:w-auto"
+            />
           </div>
         </section>
 
@@ -173,6 +189,8 @@ export default function Product() {
             <div className="mt-8"><ProductGrid products={relatedProducts} /></div>
           </section>
         )}
+
+        <Faq title="Preguntas frecuentes sobre la compra" items={faqItems} />
       </Container>
     </main>
   );

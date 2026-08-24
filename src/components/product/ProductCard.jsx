@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ShoppingBag } from 'lucide-react';
 import { toast } from 'sonner';
 import useCartStore from '../../store/useCartStore';
+import { getProductUrl } from '../../services/productService';
 import Button from '../common/Button';
 import Badge from '../common/Badge';
 import Price from '../common/Price';
@@ -43,7 +44,7 @@ const ProductCard = memo(function ProductCard({ perfume, onProductNavigate, isRe
       </div>
 
       <Link
-        to={`/producto/${perfume.id}`}
+        to={getProductUrl(perfume)}
         state={{ fromCatalog: location.pathname === '/catalogo' }}
         onClick={() => onProductNavigate?.(perfume.id)}
         className="block flex-1"
@@ -56,7 +57,7 @@ const ProductCard = memo(function ProductCard({ perfume, onProductNavigate, isRe
           {imageStatus !== 'error' ? (
             <img
               src={perfume.imagen}
-              alt={perfume.nombre}
+              alt={`Perfume ${perfume.nombre} de ${perfume.marca}`}
               // 3. Lazy loading nativo para no colapsar la red con 340 descargas
               loading="lazy"
               decoding="async"

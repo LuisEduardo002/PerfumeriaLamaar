@@ -1,6 +1,6 @@
 import img_lattafa_honor from '../assets/images/BadeeAlOudHonorAndGlory.webp';
 import img_lattafa_glory from '../assets/images/OudForGlory.webp';
-import img_lattafa_angham from '../assets/images/angham lattafa.jpg';
+import img_lattafa_angham from '../assets/images/lattafa-angham-perfume.jpg';
 import img_lattafa_quiamgodset from '../assets/images/PrideAlQiamGoldSETX3PCS.webp';
 
 import img_lattafa_0 from '../assets/images/AlNobleAmeer.webp';
@@ -91,7 +91,7 @@ import img_armaf_delights_yum from '../assets/images/DelightsYumYum.webp';
 import img_armaf_delights_bliss from '../assets/images/DelightsIslandBliss.webp';
 import img_armaf_delights_breeze from '../assets/images/DelightsIslandBreeze.webp';
 import img_armaf_delights_bonbon from '../assets/images/DelightsBonBon.webp';
-import img_armaf_hawas_diva from '../assets/images/HAWAS DIVA.webp';
+import img_armaf_hawas_diva from '../assets/images/rasasi-hawas-diva.webp';
 import img_armaf_hawas_eclat from '../assets/images/HawasEclat.webp';
 import img_armaf_hawas_kobra from '../assets/images/HawasKobra.jpg';
 import img_armaf_hawas_black from '../assets/images/HawasBlack.jpg';
@@ -130,7 +130,7 @@ import img_lp_summer_hammer from '../assets/images/SummerHammer.webp';
 import img_lp_dream_sea from '../assets/images/DreamSea.jpg';
 import img_lp_sun_gria from '../assets/images/SunGria.jpg';
 import img_lp_hong_kong from '../assets/images/HongKong.webp';
-import img_lp_mor from '../assets/images/Mor.jpg';
+import img_lp_mor from '../assets/images/lorenzo-pazzaglia-mor.jpg';
 import img_xerjoff_naxos from '../assets/images/NaxosLujoX100ml.webp';
 import img_xerjoff_erba_pura from '../assets/images/ErbaPuraLujoX100ml.webp';
 // ErbaPuraTesterX100ml.webp does not exist, fallback to Erba Pura normal
@@ -221,7 +221,7 @@ import img_sceptre_malachite from '../assets/images/SceptreMalachite.webp';
 import img_opulence_leather from '../assets/images/OpulenceLeather.webp';
 import img_reyna from '../assets/images/Reyna.webp';
 import img_santorini from '../assets/images/Santorini.webp';
-import img_uhud from '../assets/images/Uhud.png';
+import img_uhud from '../assets/images/arabiyat-uhud.png';
 import img_liquid_brun from '../assets/images/LiquidBrun.webp';
 import img_aether_extrait from '../assets/images/AetherExtrait.webp';
 import img_azzure_aoud from '../assets/images/AzzureAoud.webp';
@@ -4261,7 +4261,7 @@ export const perfumes = [
     id: 222,
     nombre: "NAXOS LUJO X100ML",
     marca: "Xerjoff",
-    precio: 999.900,
+    precio: 999900,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,

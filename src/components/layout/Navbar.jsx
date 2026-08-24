@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Search, X } from 'lucide-react';
 import Container from './Container';
-import logo from '../../assets/images/1.png';
+import logo from '../../assets/images/lammar-logo.png';
 
 import useCartStore from '../../store/useCartStore';
 import CartDrawer from '../cart/CartDrawer';
@@ -61,7 +61,7 @@ export default function Navbar() {
               <Link to="/" className="flex-shrink-0 flex items-center gap-3">
                 <img
                   src={logo}
-                  alt="Logo Lamar"
+                  alt="LAMMAR - Perfumería exclusiva"
                   className="h-12 md:h-16 w-auto object-contain"
                 />
                 <span className="font-serif text-lg md:text-xl font-semibold uppercase tracking-[0.2em] text-slate-500 transition-colors hover:text-[#4B1E28]">

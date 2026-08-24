@@ -6,12 +6,18 @@ import SectionTitle from '../components/common/SectionTitle';
 import FeaturedProductsCarousel from '../components/product/FeaturedProductsCarousel';
 import Button from '../components/common/Button';
 import { getFeaturedProducts } from '../services/productService';
+import useSEO from '../hooks/useSEO';
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
-import bannerImg from "../assets/images/banner.jpeg";
+import bannerImg from "../assets/images/lammar-banner-perfumes.jpeg";
 import caballeroImage from '../assets/images/Asad.webp';
 import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
+  useSEO({
+    title: 'LAMMAR | Perfumería Exclusiva y Fragancias de Diseñador',
+    description:
+      'Descubre la colección de perfumes exclusivos y fragancias de diseñador y nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp.',
+  });
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
 
@@ -70,7 +76,7 @@ export default function Home() {
               <div className="relative flex h-96 w-80 flex-col justify-between rounded-3xl border border-[#C8A450]/40 bg-gradient-to-br from-[#F6F0E3]/90 to-white/90 p-8 shadow-2xl backdrop-blur-sm"> {/* Un poco transparente para ver el fondo */}
                 <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">LAMMAR Essential</span>
                 <div>
-                  <h3 className="font-serif text-3xl font-bold text-[#111111]">Fragancias Nicho</h3>
+                  <h2 className="font-serif text-3xl font-bold text-[#111111]">Fragancias Nicho</h2>
                   <p className="text-sm text-slate-500 mt-2">Aromas únicos importados directamente para ti.</p>
                 </div>
                 <div className="pt-4 border-t border-slate-200/50 flex justify-between items-center text-xs text-slate-600">
@@ -144,7 +150,7 @@ export default function Home() {
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-[#111111]">100% Originales</h4>
+                <h3 className="font-semibold text-[#111111]">100% Originales</h3>
                 <p className="text-xs text-slate-500 mt-1">Garantía directa de autenticidad en cada fragancia.</p>
               </div>
             </div>
@@ -154,7 +160,7 @@ export default function Home() {
                 <Truck className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-[#111111]">Envíos Nacionales</h4>
+                <h3 className="font-semibold text-[#111111]">Envíos Nacionales</h3>
                 <p className="text-xs text-slate-500 mt-1">Despachos rápidos a toda Colombia con seguimiento.</p>
               </div>
             </div>
@@ -164,7 +170,7 @@ export default function Home() {
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-[#111111]">Asesoría Personalizada</h4>
+                <h3 className="font-semibold text-[#111111]">Asesoría Personalizada</h3>
                 <p className="text-xs text-slate-500 mt-1">Te ayudamos a encontrar tu perfume ideal por WhatsApp.</p>
               </div>
             </div>

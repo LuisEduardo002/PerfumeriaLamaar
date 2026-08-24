@@ -1,8 +1,79 @@
+import { Link } from 'react-router-dom';
+import useSEO from '../hooks/useSEO';
+import KeyTakeaways from '../components/common/KeyTakeaways';
+import RelatedLinks from '../components/common/RelatedLinks';
+
 const TerminosCondiciones = () => {
+    useSEO({
+        title: 'Términos y Condiciones',
+        description:
+            'Consulta los términos y condiciones de compra en LAMMAR: precios, envíos a toda Colombia, cambios, devoluciones y garantías de nuestros perfumes originales.',
+    });
     return (<main className="max-w-4xl mx-auto px-6 py-12 text-gray-800"> <h1 className="text-3xl font-bold mb-4">
         Términos y Condiciones </h1>
 
-        ```
+        <p className="mb-6">
+            Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp,
+            qué pasa con los precios y promociones, en cuánto llega tu perfume y cómo solicitar
+            un cambio, devolución o garantía. Esas son las condiciones que encontrarás a
+            continuación. El tratamiento de tu información personal se detalla en nuestra{' '}
+            <Link to="/privacidad" className="font-medium text-[#4B1E28] hover:underline">
+                Política de Privacidad
+            </Link>.
+        </p>
+
+        <div className="mb-8">
+            <KeyTakeaways
+                title="TL;DR: lo esencial de estos términos"
+                items={[
+                    'El sitio funciona como vitrina: seleccionas tus perfumes aquí y el pedido se confirma por WhatsApp.',
+                    'No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido.',
+                    'Los tiempos de entrega son estimados y varían según ciudad y transportadora.',
+                    'Cambios, devoluciones y garantías se rigen por la legislación colombiana: escríbenos a amazingstoresoporte@gmail.com para gestionarlos.',
+                ]}
+                cta={{ to: '/catalogo', label: 'Ver perfumes disponibles' }}
+            />
+        </div>
+
+        <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">Condiciones clave de compra</h2>
+            <div className="overflow-x-auto rounded-xl border border-gray-200">
+                <table className="w-full text-left text-sm">
+                    <thead className="bg-gray-100 text-gray-700">
+                        <tr>
+                            <th scope="col" className="px-4 py-3 font-semibold">Aspecto</th>
+                            <th scope="col" className="px-4 py-3 font-semibold">Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 bg-white">
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Realización del pedido</td>
+                            <td className="px-4 py-3">Selección de productos en el sitio y confirmación por WhatsApp.</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Confirmación</td>
+                            <td className="px-4 py-3">El pedido queda firme únicamente cuando LAMMAR lo confirma por sus canales oficiales.</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Pago</td>
+                            <td className="px-4 py-3">Los métodos se informan durante la gestión del pedido; no hay pagos dentro del sitio.</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Envío</td>
+                            <td className="px-4 py-3">A la dirección confirmada por el cliente; tiempos estimados según ciudad y transportadora.</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Cambios y devoluciones</td>
+                            <td className="px-4 py-3">Gestionados según la legislación colombiana a través de nuestros canales de contacto.</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-3 font-medium">Precios y promociones</td>
+                            <td className="px-4 py-3">Pueden modificarse sin previo aviso; los cambios no afectan pedidos ya confirmados.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <p className="text-sm text-gray-500 mb-8">
             Última actualización: 21/08/2026
         </p>
@@ -392,6 +463,14 @@ const TerminosCondiciones = () => {
                     <p>Colombia</p>
                 </div>
             </div>
+
+            <RelatedLinks
+                links={[
+                    { to: '/privacidad', label: 'Política de Privacidad y datos personales' },
+                    { to: '/catalogo', label: 'Catálogo de perfumes originales' },
+                    { to: '/', label: 'Inicio: perfumería exclusiva LAMMAR' },
+                ]}
+            />
 
             <div className="pt-4 border-t border-gray-200">
                 <p className="text-sm text-gray-500">

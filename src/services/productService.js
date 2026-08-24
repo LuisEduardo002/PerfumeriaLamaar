@@ -25,6 +25,7 @@
  */
 
 import { perfumes } from "../data/perfumes";
+import slugify from "../utils/slug";
 
 /**
  * Obtiene todos los productos.
@@ -35,13 +36,25 @@ export function getAllProducts() {
 }
 
 /**
- * Busca un producto por su ID.
- * @param {number|string} id - ID del producto
+ * Busca un producto por su slug de URL o por su ID numérico (compatibilidad).
+ * @param {string|number} idOrSlug - Slug del producto ("al-noble-ameer") o ID legacy
  * @returns {Promise<Object|undefined>} El producto encontrado o undefined
  */
-export function getProductById(id) {
-  const product = perfumes.find((p) => p.id === Number(id));
+export function getProductById(idOrSlug) {
+  const raw = String(idOrSlug);
+  const byLegacyId = perfumes.find((p) => String(p.id) === raw);
+  if (byLegacyId) return Promise.resolve(byLegacyId);
+  const product = perfumes.find((p) => slugify(p.nombre) === raw);
   return Promise.resolve(product);
+}
+
+/**
+ * Genera la URL amigable de un producto a partir de su nombre.
+ * @param {Object} product - Producto
+ * @returns {string} Slug limpio, sin números de ID ni conectores extraños
+ */
+export function getProductUrl(product) {
+  return `/producto/${slugify(product.nombre)}`;
 }
 
 /**

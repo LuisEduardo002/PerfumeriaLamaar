@@ -1,9 +1,72 @@
+import { Link } from 'react-router-dom';
+import useSEO from '../hooks/useSEO';
+import KeyTakeaways from '../components/common/KeyTakeaways';
+import RelatedLinks from '../components/common/RelatedLinks';
+
 const PoliticaPrivacidad = () => {
+    useSEO({
+        title: 'Política de Privacidad',
+        description:
+            'Conoce cómo LAMMAR trata la información personal de sus usuarios: datos recopilados, finalidades del tratamiento, seguridad y derechos de los titulares.',
+    });
     return (
         <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
             <h1 className="text-3xl font-bold mb-4">
                 Política de Privacidad y Tratamiento de Datos Personales
             </h1>
+
+            <p className="mb-6">
+                Si llegaste aquí buscando qué datos recopilamos al comprar perfumes en LAMMAR,
+                cómo los usamos y qué puedes hacer sobre tu información personal, en esta página
+                encontrarás la respuesta completa según la legislación colombiana.
+            </p>
+
+            <div className="mb-8">
+                <KeyTakeaways
+                    title="TL;DR: lo esencial de esta política"
+                    items={[
+                        'No pedimos registro ni almacenamos datos personales en el sitio: el carrito se guarda solo en tu navegador.',
+                        'Los pedidos se gestionan por WhatsApp; los datos que envíes allí se usan únicamente para procesar tu compra y entrega.',
+                        'No vendemos ni cedemos tu información; solo la compartimos con la transportadora cuando es necesario para entregar tu pedido.',
+                        'Puedes conocer, rectificar o solicitar la eliminación de tus datos escribiendo a amazingstoresoporte@gmail.com o al WhatsApp 304 6420608.',
+                    ]}
+                    cta={{ to: '/catalogo', label: 'Explorar perfumes originales' }}
+                />
+            </div>
+
+            <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-3">
+                    Resumen: datos tratados y su finalidad
+                </h2>
+                <div className="overflow-x-auto rounded-xl border border-gray-200">
+                    <table className="w-full text-left text-sm">
+                        <thead className="bg-gray-100 text-gray-700">
+                            <tr>
+                                <th scope="col" className="px-4 py-3 font-semibold">Información</th>
+                                <th scope="col" className="px-4 py-3 font-semibold">Origen</th>
+                                <th scope="col" className="px-4 py-3 font-semibold">Finalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200 bg-white">
+                            <tr>
+                                <td className="px-4 py-3">Productos y cantidades del carrito</td>
+                                <td className="px-4 py-3">Almacenamiento local del navegador (<code>localStorage</code>)</td>
+                                <td className="px-4 py-3">Conservar temporalmente tu selección mientras compras</td>
+                            </tr>
+                            <tr>
+                                <td className="px-4 py-3">Nombre, teléfono, dirección y ciudad</td>
+                                <td className="px-4 py-3">Mensaje voluntario enviado por WhatsApp</td>
+                                <td className="px-4 py-3">Gestionar, confirmar y coordinar la compra y entrega del pedido</td>
+                            </tr>
+                            <tr>
+                                <td className="px-4 py-3">Datos necesarios para la entrega</td>
+                                <td className="px-4 py-3">Compartidos con la empresa transportadora</td>
+                                <td className="px-4 py-3">Efectuar la entrega en la dirección indicada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <p className="text-sm text-gray-500 mb-8">
                 Última actualización: 21/08/2026
@@ -111,6 +174,13 @@ const PoliticaPrivacidad = () => {
                         tratarla exclusivamente para gestionar, confirmar y coordinar la
                         compra y entrega de los productos, así como para atender
                         solicitudes relacionadas con el pedido.
+                    </p>
+
+                    <p className="mt-3">
+                        Las condiciones aplicables a la compra se detallan en nuestros{' '}
+                        <Link to="/terminos" className="font-medium text-[#4B1E28] hover:underline">
+                            Términos y Condiciones
+                        </Link>.
                     </p>
                 </div>
 
@@ -379,6 +449,14 @@ const PoliticaPrivacidad = () => {
                         <p>Colombia</p>
                     </div>
                 </div>
+
+                <RelatedLinks
+                    links={[
+                        { to: '/terminos', label: 'Términos y Condiciones de compra' },
+                        { to: '/catalogo', label: 'Catálogo de perfumes originales' },
+                        { to: '/', label: 'Inicio: perfumería exclusiva LAMMAR' },
+                    ]}
+                />
 
                 <div className="pt-4 border-t border-gray-200">
                     <p className="text-sm text-gray-500">

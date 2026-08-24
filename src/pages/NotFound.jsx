@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../components/layout/Container';
+import useSEO from '../hooks/useSEO';
 
 export default function NotFound() {
+  useSEO({
+    title: 'Página no encontrada',
+    description:
+      'La página que buscas no existe o ha sido movida. Explora el catálogo de perfumes exclusivos y fragancias de diseñador en LAMMAR.',
+  });
   return (
     <main className="flex-grow flex items-center justify-center py-20">
       <Container className="text-center">

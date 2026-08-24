@@ -70,8 +70,17 @@ Total: ${formatPrice(total)}
  */
 export function openWhatsApp(cartItems, total) {
   const message = buildWhatsAppMessage(cartItems, total);
-  const encodedMessage = encodeURIComponent(message);
-  const url = `https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`;
+  const url = buildWhatsAppLink(message);
 
   window.open(url, "_blank");
+}
+
+/**
+ * Construye un enlace wa.me con cualquier mensaje.
+ *
+ * @param {string} message - Mensaje inicial de la conversación
+ * @returns {string} URL profunda de WhatsApp
+ */
+export function buildWhatsAppLink(message = "Hola, quiero información sobre sus perfumes") {
+  return `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
 }

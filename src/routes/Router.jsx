@@ -1,8 +1,10 @@
-import { createBrowserRouter, RouterProvider, Outlet, useNavigation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { createBrowserRouter, RouterProvider, Outlet, useLocation, useNavigation } from 'react-router-dom';
 
 // Layout Components
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import MobileCta from '../components/layout/MobileCta';
 
 // Pages
 import Home from '../pages/Home';
@@ -12,6 +14,7 @@ import NotFound from '../pages/NotFound';
 import Privacy from '../pages/Privacy';
 import Terms from '../pages/TerminosCondiciones.jsx';
 import { getAllProducts, getBrands, getCategories } from '../services/productService';
+import { trackPageView } from '../utils/ga4';
 
 async function catalogLoader() {
   const [products, categories, brands] = await Promise.all([
@@ -38,8 +41,13 @@ function RouteLoadingState() {
 // Main Layout that wraps all pages with Navbar and Footer
 const MainLayout = () => {
   const navigation = useNavigation();
+  const location = useLocation();
   const isLoadingCatalog =
     navigation.state === 'loading' && navigation.location?.pathname === '/catalogo';
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -48,6 +56,9 @@ const MainLayout = () => {
         {isLoadingCatalog ? <RouteLoadingState /> : <Outlet />}
       </div>
       <Footer />
+      {/* Espaciador para que el CTA fijo no tape el footer en móvil */}
+      <div className="h-[76px] md:hidden" aria-hidden="true" />
+      <MobileCta />
     </div>
   );
 };
