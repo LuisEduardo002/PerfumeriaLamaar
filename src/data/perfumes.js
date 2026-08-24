@@ -165,6 +165,7 @@ import img_rt_insurrection from '../assets/images/Insurrection.webp';
 import img_dg_light_blue_homme_set from '../assets/images/LightBluePourHommeNueva2025Set3Pcs.webp';
 import img_dg_light_blue_dama from '../assets/images/LightBlueX100mlNueva2025.jpg';
 import img_armaf_hawas_tropical from '../assets/images/HawasTropical.webp';
+import img_rasasi_hawas_verde from '../assets/images/HawasVerde.webp';
 import img_armaf_hawas_fire from '../assets/images/HawasFire.jpg';
 import img_armaf_hawas_ice from '../assets/images/HawasIce.webp';
 import img_armaf_hawas_london from '../assets/images/HawasLondon.webp';
@@ -2038,7 +2039,7 @@ export const perfumes = [
     id: 95,
     nombre: "HAWAS TROPICAL",
     marca: "Rasasi",
-    precio: 235000,
+    precio: 240000,
     categoria: "Arabes",
     genero: "Masculino",
     ml: 100,
@@ -2052,6 +2053,25 @@ export const perfumes = [
     imagen: img_armaf_hawas_tropical,
     imagenes: [img_armaf_hawas_tropical],
     destacado: true,
+  },
+  {
+    id: 253,
+    nombre: "HAWAS VERDE",
+    marca: "Rasasi",
+    precio: 340000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "HAWAS VERDE de Rasasi es una fragancia cítrica aromática que abre con un estallido fresco de lima y manzana verde, desarrolla un corazón herbal de romero y pachulí, y cierra con un fondo ambarado cálido. Vibrante y versátil, ideal para el día a día y climas cálidos.",
+    notas: {
+      salida: ["Lima", "manzana verde"],
+      corazon: ["Romero", "pachulí"],
+      fondo: ["Ámbar"]
+    },
+    imagen: img_rasasi_hawas_verde,
+    imagenes: [img_rasasi_hawas_verde],
+    destacado: false,
   },
   {
     id: 96,
@@ -4774,7 +4794,7 @@ export const perfumes = [
     id: 249,
     nombre: "CAJA DE LECHE PLUS PLUS MASCULINE",
     marca: "Diesel",
-    precio: 175000,
+    precio: 80000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 75,
