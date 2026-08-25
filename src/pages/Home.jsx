@@ -34,7 +34,7 @@ export default function Home() {
         style={{ backgroundImage: `url(${bannerImg})` }} // <-- Reemplaza con tu ruta
       >
         {/* Superposición opcional para mejorar contraste si la imagen es muy clara */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F6F0E3]/80 to-[#FAF9F6]/90 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F6F0E3]/60 to-[#FAF9F6]/70 z-0" />
 
         <Container className="relative z-10"> {/* z-10 para estar sobre el fondo */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">

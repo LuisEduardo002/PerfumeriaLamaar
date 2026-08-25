@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Container from './Container';
-import logo from '../../assets/images/lammar-logo-white-256.png';
+import logo from '../../assets/images/picsvg_download_white.svg';
 
 const footerLink = 'text-sm text-[#CFCFCF] transition-colors hover:text-[#C8A450]';
 

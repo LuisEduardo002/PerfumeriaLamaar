@@ -37,7 +37,7 @@ import img_lattafa_29 from '../assets/images/MussamanWhiteIntense.webp';
 import img_lattafa_30 from '../assets/images/MussamanBlackIntense.webp';
 import img_lattafa_31 from '../assets/images/Haya.webp';
 import img_lattafa_32 from '../assets/images/AnghamSecondSong.webp';
-import img_lattafa_33 from '../assets/images/PrideArtOfUniverse.jpg';
+import img_lattafa_set_regalo from '../assets/images/LattafaArtOfUniversesetderegalo.webp';
 import img_lattafa_34 from '../assets/images/Eclaire.webp';
 import img_lattafa_35 from '../assets/images/EclairePistache.jpg';
 import img_lattafa_36 from '../assets/images/EclaireBanoffi.webp';
@@ -87,6 +87,7 @@ import img_armaf_ody_limoni from '../assets/images/OdysseyLimoni.webp';
 import img_armaf_ody_artisto from '../assets/images/OdysseyArtisto.webp';
 import img_armaf_ody_bahamas from '../assets/images/OdysseyBaHaMas.webp';
 import img_armaf_ody_mega from '../assets/images/OdysseyMega.webp';
+import img_armaf_odyssey_aqua_set4 from '../assets/images/OdiseyAquaset4pcs.png';
 import img_armaf_delights_yum from '../assets/images/DelightsYumYum.webp';
 import img_armaf_delights_bliss from '../assets/images/DelightsIslandBliss.webp';
 import img_armaf_delights_breeze from '../assets/images/DelightsIslandBreeze.webp';
@@ -112,6 +113,7 @@ import img_jpg_le_male_elixir from '../assets/images/LeMaleElixirX125ml.webp';
 import img_jpg_la_belle_paradise from '../assets/images/LaBelleParadiseGarden.jpg';
 import img_jpg_le_male_edt from '../assets/images/LeMaleEdtX125ml.webp';
 import img_pr_invictus_victory from '../assets/images/InvictusVictoryElixirX100ml.webp';
+import img_pr_invictus_set3 from '../assets/images/InvictisVictoryElixir3PCS.jpg';
 // set import removed because the file does not exist in the folder
 import img_pr_phantom_set from '../assets/images/PhantomX50mlSetMetalico.webp';
 import img_afnan_rare_reef from '../assets/images/RareReef.webp';
@@ -188,6 +190,7 @@ import img_dumont_nitro_intense from '../assets/images/NitroIntense.webp';
 import img_dumont_nitro_black from '../assets/images/NitroBlack.webp';
 import img_dumont_nitro_green from '../assets/images/NitroGreen.webp';
 import img_dumont_nitro_platinum from '../assets/images/NitroPlatinum.webp';
+import img_set_nitro_x8 from '../assets/images/setnitrox8.jpg';
 import img_bharara_mast_ph from '../assets/images/MastPerfumeRomePh.webp';
 import img_bharara_mast_pf from '../assets/images/MastPerfumeRomePh.webp';
 import img_bharara_mast_ivory from '../assets/images/MastPerfumeRomeIvoryPf.jpg';
@@ -208,7 +211,7 @@ import img_oud_gold_60 from '../assets/images/AmberOudGoldX60ml.webp';
 import img_oud_gold_120 from '../assets/images/AmberOudGoldX120ml.webp';
 import img_oud_gold_100 from '../assets/images/AmberOudGoldX100ml.webp';
 import img_oud_gold_200 from '../assets/images/AmberOudGoldX200ml.webp';
-import img_oud_gold_dubai_extrait from '../assets/images/AmberOudGoldDubai9999X100mlExtrait.jpg';
+import img_oud_gold_dubai_extrait from '../assets/images/AMBEROUDGOLD9999.webp';
 import img_oud_aqua_dubai from '../assets/images/AmberOudAquaDubaiX100ml.webp';
 import img_oud_black from '../assets/images/AmberOudBlackX100ml.webp';
 import img_laventure_rose from '../assets/images/LAventureRoseX200ml.webp';
@@ -935,21 +938,21 @@ export const perfumes = [
   },
   {
     id: 37,
-    nombre: "PRIDE ART OF UNIVERSE SET X3 PCZ",
+    nombre: "PRIDE ART OF UNIVERSE SET X2 PCS",
     marca: "Lattafa",
-    precio: 310000,
+    precio: 320000,
     categoria: "Arabes",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "PRIDE ART OF UNIVERSE SET X3 PCZ de Lattafa es una fragancia cautivadora y de alta calidad.",
+    descripcion: "PRIDE ART OF UNIVERSE SET X2 PCS de Lattafa es una fragancia cautivadora y de alta calidad.",
     notas: {
       salida: ["Cítricos frescos", "notas especiadas"],
       corazon: ["Notas florales", "acordes aromáticos"],
       fondo: ["Ámbar", "maderas nobles", "almizcle"]
     },
-    imagen: img_lattafa_33,
-    imagenes: [img_lattafa_33],
+    imagen: img_lattafa_set_regalo,
+    imagenes: [img_lattafa_set_regalo],
     destacado: false,
   },
   {
@@ -2074,6 +2077,25 @@ export const perfumes = [
     destacado: false,
   },
   {
+    id: 254,
+    nombre: "ODYSSEY AQUA SET X4 PCS",
+    marca: "Armaf",
+    precio: 300000,
+    categoria: "Arabes",
+    genero: "Masculino",
+    ml: 100,
+    stock: 10,
+    descripcion: "ODYSSEY AQUA SET X4 PCS de Armaf es el set de regalo de la fragancia maderada aromática Odyssey Aqua Edition. Incluye perfume EDP, travel size, gel de ducha y body spray con una estela fresca de cítricos, menta, lavanda y ambroxan, ideal para el día a día y climas cálidos.",
+    notas: {
+      salida: ["Naranja", "toronja", "abrótano"],
+      corazon: ["Menta", "lavanda"],
+      fondo: ["Ambroxan", "ciprés", "pachulí"]
+    },
+    imagen: img_armaf_odyssey_aqua_set4,
+    imagenes: [img_armaf_odyssey_aqua_set4],
+    destacado: false,
+  },
+  {
     id: 96,
     nombre: "HAWAS FIRE",
     marca: "Rasasi",
@@ -2506,8 +2528,8 @@ export const perfumes = [
       corazon: ["Notas marinas", "maderas suaves", "lavanda", "flores blancas"],
       fondo: ["Ámbar", "vainilla", "almizcle", "pachulí"]
     },
-    imagen: img_dumont_nitro_platinum,
-    imagenes: [img_dumont_nitro_platinum],
+    imagen: img_set_nitro_x8,
+    imagenes: [img_set_nitro_x8],
     destacado: false,
   },
   {
@@ -2607,14 +2629,14 @@ export const perfumes = [
   },
   {
     id: 134,
-    nombre: "KING EDP X100ML",
-    marca: "Rayhaan",
-    precio: 208000,
+    nombre: "BHARARA KING",
+    marca: "BHARARA",
+    precio: 310000,
     categoria: "Arabes",
     genero: "Masculino",
     ml: 100,
     stock: 10,
-    descripcion: "KING EDP de Rayhaan es una fragancia fresca y especiada con acordes cítricos vibrantes y un fondo amaderado muy masculino.",
+    descripcion: "BHARARA KING de Bharara es una fragancia fresca y especiada con acordes cítricos vibrantes y un fondo amaderado muy masculino.",
     notas: {
       salida: ["Cítricos", "bergamota", "naranja sanguínea"],
       corazon: ["Baya de enebro", "pimiento morrón", "salvia"],
@@ -2799,7 +2821,7 @@ export const perfumes = [
     id: 144,
     nombre: "GAME OF SPADES NO LIMIT",
     marca: "Jo Milano",
-    precio: 308000,
+    precio: 370000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
@@ -2894,12 +2916,12 @@ export const perfumes = [
     id: 149,
     nombre: "AMBER OUD GOLD DUBAI 999.9 X100ML EXTRAIT",
     marca: "Al Haramain",
-    precio: 280000,
+    precio: 380000,
     categoria: "Arabes",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "AMBER OUD GOLD DUBAI 999.9 Extrait de Al Haramain intensifica la experiencia gourmand con una concentración superior y proyección potente.",
+    descripcion: "AMBER OUD GOLD DUBAI 999.9 Extrait de Al Haramain intensifica la experiencia gourmand con una concentración superior, partículas de oro suspendidas y proyección potente para un acabado lujoso.",
     notas: {
       salida: ["Bergamota", "notas verdes", "naranja"],
       corazon: ["Melón", "piña", "ámbar", "notas dulces"],
@@ -3122,7 +3144,7 @@ export const perfumes = [
     id: 161,
     nombre: "REYNA",
     marca: "Maison Alhambra",
-    precio: 290000,
+    precio: 190000,
     categoria: "Arabes",
     genero: "Femenino",
     ml: 100,
@@ -3141,7 +3163,7 @@ export const perfumes = [
     id: 162,
     nombre: "SANTORINI",
     marca: "Maison Alhambra",
-    precio: 175000,
+    precio: 290000,
     categoria: "Arabes",
     genero: "Unisex",
     ml: 100,
@@ -3331,7 +3353,7 @@ export const perfumes = [
     id: 172,
     nombre: "TOY BOY",
     marca: "Moschino",
-    precio: 240000,
+    precio: 270000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3464,7 +3486,7 @@ export const perfumes = [
     id: 179,
     nombre: "TOY BOY TESTER",
     marca: "Moschino",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3483,7 +3505,7 @@ export const perfumes = [
     id: 180,
     nombre: "TOY 2 BUBBLEGUM TESTER",
     marca: "Moschino",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -3502,7 +3524,7 @@ export const perfumes = [
     id: 181,
     nombre: "TOY 2 EDP TESTER",
     marca: "Moschino",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -3521,7 +3543,7 @@ export const perfumes = [
     id: 182,
     nombre: "TOY BOY 2 TESTER",
     marca: "Moschino",
-    precio: 255000,
+    precio: 225000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3538,9 +3560,9 @@ export const perfumes = [
   },
   {
     id: 183,
-    nombre: "FRESH COUTURE",
+    nombre: "FRESH COUTURE TESTER",
     marca: "Moschino",
-    precio: 175000,
+    precio: 145000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -3673,7 +3695,7 @@ export const perfumes = [
     id: 190,
     nombre: "EROS ENERGY TESTER",
     marca: "Versace",
-    precio: 290000,
+    precio: 250000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3692,7 +3714,7 @@ export const perfumes = [
     id: 191,
     nombre: "EROS EDP TESTER",
     marca: "Versace",
-    precio: 260000,
+    precio: 230000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3711,7 +3733,7 @@ export const perfumes = [
     id: 192,
     nombre: "EROS FLAME TESTER",
     marca: "Versace",
-    precio: 260000,
+    precio: 230000,
     categoria: "Diseñador",
     genero: "Masculino",
     ml: 100,
@@ -3730,7 +3752,7 @@ export const perfumes = [
     id: 193,
     nombre: "BRIGHT CRYSTAL PARFUM TESTER",
     marca: "Versace",
-    precio: 260000,
+    precio: 230000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 90,
@@ -3931,8 +3953,8 @@ export const perfumes = [
       corazon: ["Incienso", "pachulí misterioso"],
       fondo: ["Vainilla licorosa", "haba tonka magnética"]
     },
-    imagen: img_pr_invictus_victory,
-    imagenes: [img_pr_invictus_victory],
+    imagen: img_pr_invictus_set3,
+    imagenes: [img_pr_invictus_set3],
     destacado: false,
   },
   {
@@ -4147,13 +4169,13 @@ export const perfumes = [
   {
     id: 215,
     nombre: "SENSE X100ML",
-    marca: "Lorenzo Pazzaglia",
-    precio: 790000,
+    marca: "LAVERNE",
+    precio: 250000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "SENSE de Lorenzo Pazzaglia es una experiencia de alta perfumería nicho multifacética con cítricos brillantes, flores refinadas y maderas preciosas.",
+    descripcion: "SENSE de Laverne es una experiencia de alta perfumería nicho multifacética con cítricos brillantes, flores refinadas y maderas preciosas.",
     notas: {
       salida: ["Bergamota", "naranja amarga", "pomelo", "pimienta rosa"],
       corazon: ["Jazmín", "flor de naranjo", "cardamomo"],
@@ -4166,13 +4188,13 @@ export const perfumes = [
   {
     id: 216,
     nombre: "SENSE X100ML BOLSO",
-    marca: "Lorenzo Pazzaglia",
-    precio: 790000,
+    marca: "LAVERNE",
+    precio: 395000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "Edición especial de SENSE de Lorenzo Pazzaglia que incluye estuche de viaje / bolso de lujo con la misma firma olfativa nicho e intensa.",
+    descripcion: "Edición especial de SENSE de Laverne que incluye estuche de viaje / bolso de lujo con la misma firma olfativa nicho e intensa.",
     notas: {
       salida: ["Bergamota", "naranja amarga", "pomelo", "pimienta rosa"],
       corazon: ["Jazmín", "flor de naranjo", "cardamomo"],
@@ -4242,13 +4264,13 @@ export const perfumes = [
   {
     id: 220,
     nombre: "HONG KONG",
-    marca: "Lorenzo Pazzaglia",
+    marca: "ELIVI",
     precio: 790000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "HONG KONG de Lorenzo Pazzaglia es una creación exótica y vibrante inspirada en la metrópolis, mezclando acordes ozónicos, flores raras y maderas preciosas.",
+    descripcion: "HONG KONG de Elivi es una creación exótica y vibrante inspirada en la metrópolis, mezclando acordes ozónicos, flores raras y maderas preciosas.",
     notas: {
       salida: ["Bergamota", "notas ozónicas", "pimienta rosa", "cítricos"],
       corazon: ["Té verde", "jazmín", "orquídea", "magnolia"],
@@ -4261,13 +4283,13 @@ export const perfumes = [
   {
     id: 221,
     nombre: "MOR",
-    marca: "Lorenzo Pazzaglia",
+    marca: "ELIVI",
     precio: 790000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
     stock: 10,
-    descripcion: "MOR de Lorenzo Pazzaglia es una fragancia rica y opulenta centrada en moras silvestres, cacao denso, especias cálidas y un fondo resinoso profundo.",
+    descripcion: "MOR de Elivi es una fragancia rica y opulenta centrada en moras silvestres, cacao denso, especias cálidas y un fondo resinoso profundo.",
     notas: {
       salida: ["Mora", "frambuesa", "naranja amarga"],
       corazon: ["Cacao", "canela", "rosa", "pachulí"],
@@ -4319,7 +4341,7 @@ export const perfumes = [
     id: 224,
     nombre: "ERBA PURA TESTER X100ML",
     marca: "Xerjoff",
-    precio: 750000,
+    precio: 720000,
     categoria: "Nicho",
     genero: "Unisex",
     ml: 100,
@@ -4566,7 +4588,7 @@ export const perfumes = [
     id: 237,
     nombre: "THANK U NEXT TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4585,7 +4607,7 @@ export const perfumes = [
     id: 238,
     nombre: "CLOUD EDP TESTER",
     marca: "Ariana Grande",
-    precio: 245000,
+    precio: 215000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4604,7 +4626,7 @@ export const perfumes = [
     id: 239,
     nombre: "MOONLIGHT TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4623,7 +4645,7 @@ export const perfumes = [
     id: 240,
     nombre: "ARI TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4642,7 +4664,7 @@ export const perfumes = [
     id: 241,
     nombre: "SWEET LIKE CANDY TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4661,7 +4683,7 @@ export const perfumes = [
     id: 242,
     nombre: "MOOD VANILLA TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4680,7 +4702,7 @@ export const perfumes = [
     id: 243,
     nombre: "MOOD BLUSH TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
@@ -4699,7 +4721,7 @@ export const perfumes = [
     id: 244,
     nombre: "GOD IS A WOMAN TESTER",
     marca: "Ariana Grande",
-    precio: 235000,
+    precio: 205000,
     categoria: "Diseñador",
     genero: "Femenino",
     ml: 100,
