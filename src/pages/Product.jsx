@@ -10,6 +10,7 @@ import ProductGrid from '../components/product/ProductGrid';
 import { getAllProducts, getProductById } from '../services/productService';
 import useCartStore from '../store/useCartStore';
 import useSEO from '../hooks/useSEO';
+import slugify from '../utils/slug';
 import Faq from '../components/common/Faq';
 import ShareButton from '../components/common/ShareButton';
 import { faqItems } from '../data/faq';
@@ -77,6 +78,7 @@ export default function Product() {
     description: product
       ? `Compra ${product.nombre} de ${product.marca}, perfume original de ${product.ml} ml. ${product.descripcion}`.slice(0, 160)
       : 'Descubre perfumes originales de diseñador y nicho en LAMMAR.',
+    canonical: product ? `/producto/${slugify(product.nombre)}` : undefined,
   });
 
   if (loading) {

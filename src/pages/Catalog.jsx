@@ -24,6 +24,7 @@ export default function Catalog() {
     title: 'Catálogo de Perfumes Originales para Hombre y Mujer',
     description:
       'Explora el catálogo completo de perfumes originales en LAMMAR: fragancias árabes, de diseñador y nicho para hombre y mujer. Compra fácil por WhatsApp.',
+    canonical: '/catalogo',
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const navigationType = useNavigationType();

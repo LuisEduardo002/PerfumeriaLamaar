@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 const SITE_NAME = 'LAMMAR';
+const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lamaarperfum.store').replace(/\/+$/, '');
 
 function setMetaTag(attribute, key, content) {
   let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
@@ -12,7 +13,17 @@ function setMetaTag(attribute, key, content) {
   element.setAttribute('content', content);
 }
 
-export default function useSEO({ title, description }) {
+function setLinkTag(rel, href) {
+  let element = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!element) {
+    element = document.createElement('link');
+    element.setAttribute('rel', rel);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('href', href);
+}
+
+export default function useSEO({ title, description, canonical }) {
   useEffect(() => {
     if (title) {
       const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -26,5 +37,11 @@ export default function useSEO({ title, description }) {
       setMetaTag('property', 'og:description', description);
       setMetaTag('name', 'twitter:description', description);
     }
-  }, [title, description]);
+
+    if (canonical) {
+      const href = `${SITE_URL}${canonical}`;
+      setLinkTag('canonical', href);
+      setMetaTag('property', 'og:url', href);
+    }
+  }, [title, description, canonical]);
 }

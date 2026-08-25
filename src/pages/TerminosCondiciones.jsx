@@ -8,6 +8,7 @@ const TerminosCondiciones = () => {
         title: 'Términos y Condiciones',
         description:
             'Consulta los términos y condiciones de compra en LAMMAR: precios, envíos a toda Colombia, cambios, devoluciones y garantías de nuestros perfumes originales.',
+        canonical: '/terminos',
     });
     return (<main className="max-w-4xl mx-auto px-6 py-12 text-gray-800"> <h1 className="text-3xl font-bold mb-4">
         Términos y Condiciones </h1>

@@ -17,6 +17,7 @@ export default function Home() {
     title: 'LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador',
     description:
       'Perfumería exclusiva en Manizales, Colombia. Descubre perfumes originales de diseñador, árabes y fragancias nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp.',
+    canonical: '/',
   });
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);

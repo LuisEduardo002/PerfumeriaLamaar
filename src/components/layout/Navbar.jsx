@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Search, X } from 'lucide-react';
 import Container from './Container';
-import logo from '../../assets/images/lammar-logo.png';
+import logo from '../../assets/images/lammar-logo-256.png';
 
 import useCartStore from '../../store/useCartStore';
 import CartDrawer from '../cart/CartDrawer';
