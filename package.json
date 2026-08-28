@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-sitemap.cjs",
+    "build": "vite build && node scripts/generate-sitemap.cjs && node scripts/generate-markdown.cjs",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/*.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

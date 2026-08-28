@@ -78,7 +78,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback sin JavaScript: visible para crawlers de IA/Google que no ejecutan JS.
+           React reemplaza este contenido al hidratar. Asegura H1 + 500+ caracteres en HTML crudo. -->
+      <header style="padding:24px;text-align:center;font-family:Montserrat,sans-serif">
+        <p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">LAMMAR — Manizales, Colombia</p>
+        <h1 style="font-family:'Playfair Display',serif;font-size:32px;color:#111;margin:12px 0">LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador</h1>
+      </header>
+      <main style="max-width:800px;margin:0 auto;padding:0 24px 32px;font-family:Montserrat,sans-serif;color:#334155;line-height:1.7">
+        <p>Perfumería exclusiva en Manizales, Colombia. En LAMMAR encuentras perfumes 100% originales de diseñador, árabes y fragancias nicho de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino. Cada fragancia cuenta con garantía de autenticidad, asesoría personalizada por WhatsApp y envíos a toda Colombia con seguimiento.</p>
+        <p>Explora colecciones para caballero y dama, descubre notas de salida, corazón y fondo de cada perfume, compara precios y arma tu pedido en el carrito. Al confirmar, se genera un mensaje automático para coordinar el pago y la entrega directamente por WhatsApp al +57 304 6420608. Sin registros ni pagos dentro del sitio: eliges aquí y confirmas por tu canal favorito.</p>
+        <p><a href="/catalogo" style="color:#4B1E28;font-weight:600">Explorar catálogo completo</a> · <a href="/privacidad" style="color:#4B1E28">Política de privacidad</a> · <a href="/terminos" style="color:#4B1E28">Términos y condiciones</a></p>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

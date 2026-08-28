@@ -1,19 +1,59 @@
 {
+    "headers": [
+        {
+            "source": "/__markdown/(.*)",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "text/markdown; charset=utf-8"
+                },
+                {
+                    "key": "Vary",
+                    "value": "Accept, Accept-Encoding"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=300"
+                }
+            ]
+        },
+        {
+            "source": "/(.*).html",
+            "headers": [
+                {
+                    "key": "Vary",
+                    "value": "Accept, Accept-Encoding"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
+            "source": "/__markdown/:path*",
+            "destination": "/__markdown/:path*"
+        },
+        {
             "source": "/catalogo",
-            "destination": "/index.html"
+            "destination": "/api/negotiate"
         },
         {
             "source": "/producto/:id",
-            "destination": "/index.html"
+            "destination": "/api/negotiate"
         },
         {
             "source": "/privacidad",
-            "destination": "/index.html"
+            "destination": "/api/negotiate"
         },
         {
             "source": "/terminos",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/(.*)",
             "destination": "/index.html"
         }
     ]
