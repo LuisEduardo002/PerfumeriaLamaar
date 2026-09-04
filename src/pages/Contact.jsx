@@ -25,7 +25,7 @@ const Contact = () => {
           items={[
             'WhatsApp preferente: +57 304 6420608 (respuesta más rápida, Lun. a sáb. 9:00–18:00 COT).',
             'Correo: amazingstoresoporte@gmail.com — responde en máximo 24 horas hábiles.',
-            'Dirección operativa: Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia.',
+            'Dirección operativa: KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia.',
             'Para pedidos: indica nombre, productos y ciudad para cotizar envío y confirmar disponibilidad.',
           ]}
           cta={{ to: '/catalogo', label: 'Ver catálogo y elegir fragancia' }}
@@ -59,8 +59,8 @@ const Contact = () => {
           <h2 className="text-xl font-semibold mb-3">1. Datos oficiales de contacto</h2>
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm leading-relaxed">
             <p><strong>Nombre comercial:</strong> LAMAAR PERFUM (marca pública: LAMMAR)</p>
-            <p><strong>Dirección:</strong> Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia</p>
-            <p><strong>Coordenadas:</strong> 5.0703, -75.5138 (Manizales centro)</p>
+            <p><strong>Dirección:</strong> KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia</p>
+            <p><strong>Coordenadas:</strong> 5.0549, -75.4850 (Manizales centro)</p>
             <p><strong>Teléfono / WhatsApp:</strong> +57 304 6420608</p>
             <p><strong>Correo:</strong> amazingstoresoporte@gmail.com</p>
             <p><strong>Horario:</strong> Lunes a sábado 9:00–18:00 (COT)</p>

@@ -27,7 +27,7 @@ const TerminosCondiciones = () => {
             <KeyTakeaways
                 title="TL;DR: lo esencial de estos términos"
                 items={[
-                    'Somos perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con catálogo web informativo: seleccionas y confirmas en tienda física o por WhatsApp.',
+                    'Somos perfumería física en Manizales (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con catálogo web informativo: seleccionas y confirmas en tienda física o por WhatsApp.',
                     'No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido en tienda o por WhatsApp. No somos tienda digital pura.',
                     'Los tiempos de entrega son estimados y varían según ciudad y transportadora.',
                     'Cambios, devoluciones y garantías se rigen por la legislación colombiana: escríbenos a amazingstoresoporte@gmail.com para gestionarlos.',
@@ -129,7 +129,7 @@ const TerminosCondiciones = () => {
 
                 <p>
                     Somos principalmente una perfumería física ubicada en Manizales
-                    (Centro Comercial Los Fundadores, Local 101) con atención presencial.
+                    (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con atención presencial.
                     Nuestro sitio web es únicamente un catálogo informativo para consultar
                     productos y precios; no es una tienda digital con pago online.
                 </p>

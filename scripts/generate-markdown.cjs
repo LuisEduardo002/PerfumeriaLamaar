@@ -212,7 +212,7 @@ LAMMAR (nombre comercial LAMAAR PERFUM) es una perfumería exclusiva nacida en M
 
 LAMMAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando best-sellers como Yara, Asad y Hawas y, gracias a la confianza de nuestros primeros clientes, crecimos hasta superar las ${perfumes.length} referencias disponibles hoy.
 
-Operamos principalmente como perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con atención presencial; el sitio web es solo catálogo informativo: eliges en el catálogo, agregas al carrito y confirmas el pedido en tienda o por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos tienda digital pura.
+Operamos principalmente como perfumería física en Manizales (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con atención presencial; el sitio web es solo catálogo informativo: eliges en el catálogo, agregas al carrito y confirmas el pedido en tienda o por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos tienda digital pura.
 
 ## 2. Qué hacemos — y qué no
 
@@ -232,7 +232,7 @@ Un perfume es identidad: elegirlo merece tiempo, información clara y acompañam
 
 ## 4. Dónde estamos y cómo operamos
 
-Base logística en Manizales, Caldas — Centro Comercial Los Fundadores, Local 101, CP 170001. Despachamos a toda Colombia. Horario: lunes a sábado 9:00–18:00 (COT).
+Base logística en Manizales, Caldas — KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, CP 170001. Despachamos a toda Colombia. Horario: lunes a sábado 9:00–18:00 (COT).
 
 **LAMAAR PERFUM — LAMMAR** — Manizales, Caldas, Colombia — amazingstoresoporte@gmail.com — +57 304 6420608
 
@@ -257,7 +257,7 @@ const contactMd = `# Contacto — LAMMAR
 
 - **WhatsApp preferente:** +57 304 6420608 (respuesta más rápida, Lun. a sáb. 9:00–18:00 COT).
 - **Correo:** amazingstoresoporte@gmail.com — responde en máximo 24 horas hábiles.
-- **Dirección operativa:** Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia.
+- **Dirección operativa:** KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia.
 - **Para pedidos:** indica nombre, productos y ciudad para cotizar envío y confirmar disponibilidad.
 
 [WhatsApp directo](https://wa.me/573046420608) · [Correo](mailto:amazingstoresoporte@gmail.com)
@@ -265,8 +265,8 @@ const contactMd = `# Contacto — LAMMAR
 ## 1. Datos oficiales de contacto
 
 **Nombre comercial:** LAMAAR PERFUM (marca pública: LAMMAR)
-**Dirección:** Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia
-**Coordenadas:** 5.0703, -75.5138
+**Dirección:** KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia
+**Coordenadas:** 5.0549, -75.4850
 **Teléfono / WhatsApp:** +57 304 6420608
 **Correo:** amazingstoresoporte@gmail.com
 **Horario:** Lunes a sábado 9:00–18:00 (COT)
@@ -308,7 +308,7 @@ Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp,
 
 ## TL;DR: lo esencial
 
-- Somos perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con catálogo web informativo: seleccionas tus perfumes aquí y el pedido se confirma en tienda física o por WhatsApp.
+- Somos perfumería física en Manizales (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con catálogo web informativo: seleccionas tus perfumes aquí y el pedido se confirma en tienda física o por WhatsApp.
 - No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido en tienda o por WhatsApp. No somos tienda digital pura.
 - Los tiempos de entrega son estimados y varían según ciudad y transportadora.
 - Cambios, devoluciones y garantías se rigen por la legislación colombiana: escríbenos a amazingstoresoporte@gmail.com.
@@ -334,7 +334,7 @@ Estos Términos y Condiciones regulan el acceso y uso del sitio web de LAMAAR PE
 
 ## 2. Funcionamiento del sitio web
 
-Somos principalmente una perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con atención presencial. Nuestro sitio web es únicamente un catálogo informativo para consultar productos y precios; no es una tienda digital con pago online. El usuario puede seleccionar productos, agregarlos al carrito, modificar las cantidades y revisar el contenido de su pedido. El carrito puede utilizar localStorage para conservar temporalmente los productos seleccionados. El sitio no requiere la creación de una cuenta de usuario.
+Somos principalmente una perfumería física en Manizales (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con atención presencial. Nuestro sitio web es únicamente un catálogo informativo para consultar productos y precios; no es una tienda digital con pago online. El usuario puede seleccionar productos, agregarlos al carrito, modificar las cantidades y revisar el contenido de su pedido. El carrito puede utilizar localStorage para conservar temporalmente los productos seleccionados. El sitio no requiere la creación de una cuenta de usuario.
 
 ## 3. Realización de pedidos mediante WhatsApp
 

@@ -220,8 +220,8 @@ describe('Brand name discoverability (NAP + apex redirect)', () => {
   it('JSON-LD and Footer NAP are consistent', () => {
     const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
     const footer = fs.readFileSync(path.join(__dirname, '..', 'src/components/layout/Footer.jsx'), 'utf8');
-    // Check JSON-LD NAP
-    assert.ok(indexHtml.includes('"streetAddress": "Centro Comercial Los Fundadores, Local 101"'));
+    // Check JSON-LD NAP — nueva sede Palogrande
+    assert.ok(indexHtml.includes('"streetAddress": "KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1"'));
     assert.ok(indexHtml.includes('"postalCode": "170001"'));
     assert.ok(indexHtml.includes('"telephone": "+57 304 6420608"'));
     assert.ok(indexHtml.includes('"email": "amazingstoresoporte@gmail.com"'));
@@ -234,8 +234,8 @@ describe('Brand name discoverability (NAP + apex redirect)', () => {
     assert.ok(footer.includes('https://www.instagram.com/lamaar_perfumm/'));
     assert.ok(footer.includes('https://www.facebook.com/profile.php?id=61557995259913'));
     assert.ok(footer.includes('https://www.tiktok.com/@lamaar.perfume'));
-    // Footer NAP full address
-    assert.ok(footer.includes('Centro Comercial Los Fundadores, Local 101'), 'Footer should have full street');
+    // Footer NAP full address — Palogrande
+    assert.ok(footer.includes('KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1'), 'Footer should have full street Palogrande');
     assert.ok(footer.includes('Manizales, Caldas 170001, Colombia'));
     assert.ok(footer.includes('amazingstoresoporte@gmail.com'));
     assert.ok(footer.includes('+57 304 6420608'));

@@ -14,11 +14,12 @@ const About = () => {
     <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold mb-4">Sobre LAMMAR — LAMAAR PERFUM</h1>
       <p className="mb-6 text-lg leading-relaxed text-slate-700">
-        LAMMAR es una perfumería física y exclusiva ubicada en Centro Comercial Los Fundadores,
-        Local 101, Manizales, Caldas, con la misión de acercar fragancias 100% originales de
-        diseñador, árabes y nicho con atención presencial y a toda Colombia con envíos confiables.
-        Operamos bajo el nombre comercial LAMAAR PERFUM, atendemos presencialmente y también por
-        WhatsApp/correo de lunes a sábado de 9:00 a.m. a 6:00 p.m. No operamos principalmente como tienda digital.
+        LAMMAR es una perfumería física y exclusiva ubicada en KPalogrande, Av. Lindsay, Frente
+        coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas, con la misión de acercar
+        fragancias 100% originales de diseñador, árabes y nicho con atención presencial y a toda
+        Colombia con envíos confiables. Operamos bajo el nombre comercial LAMAAR PERFUM, atendemos
+        presencialmente y también por WhatsApp/correo de lunes a sábado de 9:00 a.m. a 6:00 p.m. No
+        operamos principalmente como tienda digital.
       </p>
 
       <div className="mb-8">
@@ -46,7 +47,7 @@ const About = () => {
           </p>
           <p className="mt-3">
             Desde el primer día operamos principalmente como perfumería física en Manizales con
-            atención presencial en Centro Comercial Los Fundadores, Local 101; el sitio web es solo
+            atención presencial en KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1; el sitio web es solo
             un catálogo informativo para consultar precio, stock y características. Eliges tus perfumes
             en el catálogo, los agregas al carrito y confirmas el pedido en tienda física o por
             WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos una
@@ -86,13 +87,14 @@ const About = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">4. Dónde estamos y cómo operamos</h2>
           <p>
-            Nuestra base logística está en Manizales, Caldas (Centro Comercial Los Fundadores, Local
-            101, CP 170001). Desde allí despachamos a toda Colombia con transportadora aliada. El
-            horario de atención es lunes a sábado de 9:00 a.m. a 6:00 p.m. (hora de Colombia).
+            Nuestra base logística está en Manizales, Caldas (KPalogrande, Av. Lindsay, Cl. 65
+            #24-89 Local Piso -1, Frente coliseo menor). Desde allí despachamos a toda Colombia con
+            transportadora aliada. El horario de atención es lunes a sábado de 9:00 a.m. a 6:00 p.m.
+            (hora de Colombia).
           </p>
           <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm">
             <p><strong>LAMAAR PERFUM — LAMMAR</strong></p>
-            <p>Manizales, Caldas, Colombia — Centro Comercial Los Fundadores, Local 101, 170001</p>
+            <p>Manizales, Caldas, Colombia — KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, 170001</p>
             <p>Correo: amazingstoresoporte@gmail.com — WhatsApp: +57 304 6420608</p>
             <p>Horario: Lun. a sáb. 9:00–18:00 (COT)</p>
           </div>

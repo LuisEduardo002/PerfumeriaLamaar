@@ -16,16 +16,16 @@ export const NAP = {
   telephoneDigits: '573046420608',
   whatsapp: '573046420608',
   address: {
-    streetAddress: 'Centro Comercial Los Fundadores, Local 101',
+    streetAddress: 'KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1',
     addressLocality: 'Manizales',
     addressRegion: 'Caldas',
     postalCode: '170001',
     addressCountry: 'CO',
-    full: 'Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia',
+    full: 'KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia',
   },
-  geo: { latitude: 5.0703, longitude: -75.5138 },
+  geo: { latitude: 5.0549, longitude: -75.4850 },
   hours: { days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '18:00' },
-  description: 'Perfumería física y exclusiva en Manizales, Caldas (Centro Comercial Los Fundadores, Local 101) con atención presencial y más de 240 perfumes 100% originales de diseñador, árabes y nicho. Ventas en tienda física, asesoría y pedidos por WhatsApp con envíos a toda Colombia. No es tienda digital con pago online.',
+  description: 'Perfumería física y exclusiva en Manizales, Caldas (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con atención presencial y más de 240 perfumes 100% originales de diseñador, árabes y nicho. Ventas en tienda física, asesoría y pedidos por WhatsApp con envíos a toda Colombia. No es tienda digital con pago online.',
 };
 
 export const SOCIAL = {
