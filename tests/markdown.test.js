@@ -190,3 +190,56 @@ describe('Trust anchor pages (About, Contact, Privacy)', () => {
     assert.ok(indexHtml.includes('href="/privacy"'), 'index fallback should link to /privacy');
   });
 });
+
+describe('Brand name discoverability (NAP + apex redirect)', () => {
+  it('vercel.json has www -> apex redirect to avoid masking apex', () => {
+    const vercel = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'vercel.json'), 'utf8'));
+    assert.ok(Array.isArray(vercel.redirects), 'vercel.json should have redirects');
+    const wwwRedirect = vercel.redirects.find(r => r.has && r.has.some(h => h.value === 'www.lamaarperfum.store'));
+    assert.ok(wwwRedirect, 'should have www.lamaarperfum.store host redirect');
+    assert.equal(wwwRedirect.destination, 'https://lamaarperfum.store/$1');
+    assert.equal(wwwRedirect.permanent, true);
+  });
+
+  it('sitemap and canonical use apex domain (not www)', () => {
+    const sitemap = fs.readFileSync(path.join(distDir, 'sitemap.xml'), 'utf8');
+    assert.ok(sitemap.includes('https://lamaarperfum.store/'), 'sitemap should use apex');
+    assert.ok(!sitemap.includes('https://www.lamaarperfum.store'), 'sitemap should not use www');
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    assert.ok(indexHtml.includes('<link rel="canonical" href="https://lamaarperfum.store/"'), 'canonical should be apex');
+    assert.ok(indexHtml.includes('<meta property="og:url" content="https://lamaarperfum.store/"'), 'og:url should be apex');
+  });
+
+  it('JSON-LD and Footer NAP are consistent', () => {
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    const footer = fs.readFileSync(path.join(__dirname, '..', 'src/components/layout/Footer.jsx'), 'utf8');
+    // Check JSON-LD NAP
+    assert.ok(indexHtml.includes('"streetAddress": "Centro Comercial Los Fundadores, Local 101"'));
+    assert.ok(indexHtml.includes('"postalCode": "170001"'));
+    assert.ok(indexHtml.includes('"telephone": "+57 304 6420608"'));
+    assert.ok(indexHtml.includes('"email": "amazingstoresoporte@gmail.com"'));
+    // Check sameAs includes all 4 and matches footer
+    assert.ok(indexHtml.includes('https://www.instagram.com/lamaar_perfumm/'), 'JSON-LD should have lamaar_perfumm Instagram');
+    assert.ok(indexHtml.includes('https://www.facebook.com/profile.php?id=61557995259913'), 'JSON-LD should have Facebook profile id');
+    assert.ok(indexHtml.includes('https://www.tiktok.com/@lamaar.perfume'), 'JSON-LD should have TikTok');
+    assert.ok(indexHtml.includes('https://wa.me/573046420608'));
+    // Footer should have same
+    assert.ok(footer.includes('https://www.instagram.com/lamaar_perfumm/'));
+    assert.ok(footer.includes('https://www.facebook.com/profile.php?id=61557995259913'));
+    assert.ok(footer.includes('https://www.tiktok.com/@lamaar.perfume'));
+    // Footer NAP full address
+    assert.ok(footer.includes('Centro Comercial Los Fundadores, Local 101'), 'Footer should have full street');
+    assert.ok(footer.includes('Manizales, Caldas 170001, Colombia'));
+    assert.ok(footer.includes('amazingstoresoporte@gmail.com'));
+    assert.ok(footer.includes('+57 304 6420608'));
+  });
+
+  it('brand LAMMAR appears in key SEO signals', () => {
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    assert.ok(indexHtml.includes('<title>LAMMAR'), 'title should start with LAMMAR');
+    assert.ok(indexHtml.includes('LAMMAR | Perfumería en Manizales'), 'H1/fallback should contain brand');
+    assert.ok(indexHtml.includes('"name": "LAMMAR"'), 'JSON-LD name should be LAMMAR');
+    assert.ok(indexHtml.includes('"alternateName": "LAMAAR PERFUM"'));
+    assert.ok(indexHtml.includes('content="LAMMAR"') || indexHtml.includes('og:site_name" content="LAMMAR"'), 'og:site_name should be LAMMAR');
+  });
+});
