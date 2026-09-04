@@ -5,76 +5,12 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { SITE_URL } = require('./utils/site.cjs');
+const { slugify } = require('./utils/slug.cjs');
+const { loadPerfumes } = require('./utils/parsePerfumes.cjs');
+const { formatPriceCOP } = require('./utils/formatPrice.cjs');
 
-function readEnvValue(key) {
-  try {
-    const env = fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8');
-    const match = env.match(new RegExp(`^${key}=(.*)$`, 'm'));
-    return match ? match[1].trim() : null;
-  } catch {
-    return null;
-  }
-}
-
-const SITE_URL = (
-  process.env.VITE_SITE_URL ||
-  readEnvValue('VITE_SITE_URL') ||
-  'https://lamaarperfum.store'
-).replace(/\/+$/, '');
-
-const slugify = (text) =>
-  text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/[\s_]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-
-// Parse perfumes data (regex, avoids importing ESM with image deps)
-const perfumesSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'perfumes.js'), 'utf8');
-
-function parsePerfumes(source) {
-  // Extract each product object block
-  const perfumes = [];
-  const productRegex = /\{\s*id:\s*(\d+),\s*nombre:\s*"([^"]+)",\s*marca:\s*"([^"]+)",\s*precio:\s*(\d+),\s*categoria:\s*"([^"]+)",\s*genero:\s*"([^"]+)",\s*ml:\s*(\d+),\s*stock:\s*(\d+),\s*descripcion:\s*"([^"]+)"/g;
-  let m;
-  while ((m = productRegex.exec(source)) !== null) {
-    const [, id, nombre, marca, precio, categoria, genero, ml, stock, descripcion] = m;
-    // Extract notas for this product (look ahead for notas block)
-    const blockStart = m.index;
-    const blockEnd = source.indexOf('},', blockStart) + 2;
-    const block = source.slice(blockStart, blockEnd + 500);
-    const notasMatch = block.match(/notas:\s*\{\s*salida:\s*\[([^\]]*)\],\s*corazon:\s*\[([^\]]*)\],\s*fondo:\s*\[([^\]]*)\]/);
-    let notas = { salida: [], corazon: [], fondo: [] };
-    if (notasMatch) {
-      const parseList = (s) => [...s.matchAll(/"([^"]+)"/g)].map((x) => x[1]);
-      notas = {
-        salida: parseList(notasMatch[1]),
-        corazon: parseList(notasMatch[2]),
-        fondo: parseList(notasMatch[3]),
-      };
-    }
-    perfumes.push({
-      id: Number(id),
-      nombre,
-      marca,
-      precio: Number(precio),
-      categoria,
-      genero,
-      ml: Number(ml),
-      stock: Number(stock),
-      descripcion,
-      notas,
-      slug: slugify(nombre),
-    });
-  }
-  return perfumes;
-}
-
-const perfumes = parsePerfumes(perfumesSource);
+const perfumes = loadPerfumes();
 console.log(`Parsed ${perfumes.length} products for markdown generation`);
 
 const outBase = path.join(__dirname, '..', 'dist', '__markdown');
@@ -154,7 +90,7 @@ ${[...new Set(perfumes.map((p) => p.categoria))].sort().map((c) => `- ${c}`).joi
 ${perfumes
   .filter((p) => p.nombre.includes('YARA') || p.nombre.includes('ASAD') || p.nombre.includes('HAWAS'))
   .slice(0, 10)
-  .map((p) => `- [${p.nombre} de ${p.marca}](${SITE_URL}/producto/${p.slug}) — ${formatPrice(p.precio)} — ${p.genero} · ${p.ml} ml`)
+  .map((p) => `- [${p.nombre} de ${p.marca}](${SITE_URL}/producto/${p.slug}) — ${formatPriceCOP(p.precio)} — ${p.genero} · ${p.ml} ml`)
   .join('\n')}
 
 [Ver catálogo completo](${SITE_URL}/catalogo) · [Inicio](${SITE_URL}/)
@@ -502,7 +438,7 @@ for (const p of perfumes) {
 
 > ${p.descripcion}
 
-**Marca:** ${p.marca} — **Categoría:** ${p.categoria} — **Género:** ${p.genero} — **Tamaño:** ${p.ml} ml — **Disponibilidad:** ${p.stock > 0 ? `${p.stock} unidades disponibles` : 'Agotado temporalmente'} — **Precio:** ${formatPrice(p.precio)}
+**Marca:** ${p.marca} — **Categoría:** ${p.categoria} — **Género:** ${p.genero} — **Tamaño:** ${p.ml} ml — **Disponibilidad:** ${p.stock > 0 ? `${p.stock} unidades disponibles` : 'Agotado temporalmente'} — **Precio:** ${formatPriceCOP(p.precio)}
 
 ## Notas olfativas
 

@@ -6,33 +6,9 @@
  */
 const fs = require('fs');
 const path = require('path');
-
-function readEnvValue(key) {
-  try {
-    const env = fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8');
-    const match = env.match(new RegExp(`^${key}=(.*)$`, 'm'));
-    return match ? match[1].trim() : null;
-  } catch {
-    return null;
-  }
-}
-
-const SITE_URL = (
-  process.env.VITE_SITE_URL ||
-  readEnvValue('VITE_SITE_URL') ||
-  'https://lamaarperfum.store'
-).replace(/\/+$/, '');
-
-const slugify = (text) =>
-  text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/[\s_]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+const { SITE_URL } = require('./utils/site.cjs');
+const { slugify } = require('./utils/slug.cjs');
+const { loadPerfumes } = require('./utils/parsePerfumes.cjs');
 
 const staticRoutes = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
@@ -46,8 +22,8 @@ const staticRoutes = [
   { loc: '/terminos', priority: '0.3', changefreq: 'yearly' },
 ];
 
-const source = fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'perfumes.js'), 'utf8');
-const productNames = [...source.matchAll(/nombre:\s*"([^"]+)"/g)].map((m) => m[1]);
+const perfumes = loadPerfumes();
+const productNames = perfumes.map(p => p.nombre);
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const urls = [

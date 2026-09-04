@@ -6,16 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
-function readEnvValue(key) {
-  try {
-    const env = fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8');
-    const match = env.match(new RegExp(`^${key}=(.*)$`, 'm'));
-    return match ? match[1].trim() : null;
-  } catch { return null; }
-}
-const SITE_URL = (process.env.VITE_SITE_URL || readEnvValue('VITE_SITE_URL') || 'https://lamaarperfum.store').replace(/\/+$/, '');
-
-const slugify = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const { SITE_URL } = require('./utils/site.cjs');
+const { slugify } = require('./utils/slug.cjs');
+const { formatPriceCOP } = require('./utils/formatPrice.cjs');
 
 const perfumesSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'perfumes.js'), 'utf8');
 
@@ -88,10 +81,6 @@ const cssMatch = template.match(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"[^
 const jsMatch = template.match(/<script[^>]*src="([^"]+)"[^>]*><\/script>/);
 const cssTag = cssMatch ? `<link rel="stylesheet" crossorigin href="${cssMatch[1]}">` : '';
 const jsTag = jsMatch ? `<script type="module" crossorigin src="${jsMatch[1]}"></script>` : '<script type="module" src="/src/main.jsx"></script>';
-
-function formatPriceCOP(value) {
-  return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value);
-}
 
 function escapeHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');

@@ -1,92 +1,14 @@
 /**
  * Vercel Middleware — Markdown content negotiation per https://acceptmarkdown.com
  * This ensures root "/" is handled via Edge (rewrites for "/" are bypassed by static file serving).
+ * Shared negotiate logic imported from single source of truth.
  */
+import { negotiate } from './src/utils/acceptParser.js';
+import { SITE_URL } from './src/config/site.js';
+
 export const config = {
   matcher: '/(.*)',
 };
-
-function parseAcceptHeader(header) {
-  if (!header || header.trim() === '') return [];
-  return header
-    .split(',')
-    .map((part) => {
-      const [rawType, ...paramParts] = part.split(';').map((s) => s.trim());
-      const type = rawType.toLowerCase().trim();
-      let q = 1;
-      for (const param of paramParts) {
-        const [key, value] = param.split('=').map((s) => s.trim());
-        if (key.toLowerCase() === 'q') {
-          const parsed = parseFloat(value);
-          if (!Number.isNaN(parsed)) q = parsed;
-        }
-      }
-      let specificity = 0;
-      if (type === '*/*') specificity = 0;
-      else if (type.endsWith('/*')) specificity = 1;
-      else specificity = 2;
-      return { type, q, specificity };
-    })
-    .sort((a, b) => {
-      if (b.q !== a.q) return b.q - a.q;
-      return b.specificity - a.specificity;
-    });
-}
-
-function matches(acceptType, serverType) {
-  const a = acceptType.toLowerCase();
-  const s = serverType.toLowerCase();
-  if (a === s) return true;
-  if (a === '*/*') return true;
-  if (a.endsWith('/*')) {
-    const prefix = a.slice(0, -2);
-    return s.startsWith(prefix + '/');
-  }
-  return false;
-}
-
-function negotiate(acceptHeader, serverTypes = ['text/markdown', 'text/html'], defaultType = 'text/html') {
-  if (!acceptHeader || acceptHeader.trim() === '') return defaultType;
-  const trimmed = acceptHeader.trim().toLowerCase();
-  if (trimmed === '*/*' || trimmed.startsWith('*/*;') || trimmed === '*/*;q=1' || trimmed === '*/*; q=1') {
-    const qMatch = trimmed.match(/q=([0-9.]+)/);
-    const q = qMatch ? parseFloat(qMatch[1]) : 1;
-    if (q === 0) return null;
-    return defaultType;
-  }
-  const parsed = parseAcceptHeader(acceptHeader);
-  if (parsed.length === 0) return defaultType;
-  if (parsed.length === 1 && parsed[0].type === '*/*') {
-    if (parsed[0].q === 0) return null;
-    return defaultType;
-  }
-  let bestType = null;
-  let bestScore = -1;
-  let bestSpec = -1;
-  for (const serverType of serverTypes) {
-    let score = 0;
-    let spec = -1;
-    for (const entry of parsed) {
-      if (matches(entry.type, serverType)) {
-        if (entry.q === 0) {
-          score = 0;
-          spec = entry.specificity;
-          break;
-        }
-        score = entry.q;
-        spec = entry.specificity;
-        break;
-      }
-    }
-    if (score > bestScore || (score === bestScore && spec > bestSpec)) {
-      bestScore = score;
-      bestSpec = spec;
-      bestType = serverType;
-    }
-  }
-  if (bestScore === 0) return null;
-  return bestType;
-}
 
 function getMarkdownPath(pathname) {
   if (pathname === '/' || pathname === '' || pathname === '/index.html') return '/__markdown/home.md';
@@ -96,7 +18,6 @@ function getMarkdownPath(pathname) {
 }
 
 function jsonErrorBody({ status, code, message, hint, path, accept, available }) {
-  const SITE_URL = 'https://lamaarperfum.store';
   return JSON.stringify({
     error: {
       code,
@@ -174,8 +95,7 @@ export default async function middleware(request) {
       try {
         const mdResp = await fetch(mdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
         if (mdResp.ok) markdownContent = await mdResp.text();
-      } catch {}
-      const SITE_URL = 'https://lamaarperfum.store';
+      } catch (e) { console.error('[middleware] fetch failed', e); }
       const body = JSON.stringify({
         data: {
           endpoint: '/api/catalog',
@@ -219,7 +139,6 @@ export default async function middleware(request) {
         const mdResp = await fetch(mdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
         if (mdResp.ok) {
           const md = await mdResp.text();
-          const SITE_URL = 'https://lamaarperfum.store';
           const body = JSON.stringify({
             data: { slug, product_url: `${SITE_URL}/producto/${slug}`, markdown: md.slice(0, 5000), markdown_url: `${SITE_URL}${mdPath}` },
             links: { self: `${SITE_URL}${pathname}`, html: `${SITE_URL}/producto/${slug}` },
@@ -233,7 +152,7 @@ export default async function middleware(request) {
             },
           });
         }
-      } catch {}
+      } catch (e) { console.error('[middleware] fetch failed', e); }
       const body = jsonErrorBody({
         status: 404,
         code: 'not_found',
@@ -347,8 +266,7 @@ export default async function middleware(request) {
     try {
       const mdResp = await fetch(mdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
       if (mdResp.ok) markdownContent = await mdResp.text();
-    } catch {}
-    const SITE_URL = 'https://lamaarperfum.store';
+    } catch (e) { console.error('[middleware] fetch failed', e); }
     const body = JSON.stringify({
       data: {
         path: pathname,
@@ -410,7 +328,7 @@ export default async function middleware(request) {
         headers.append('Link', `<${pathname}>; rel="alternate"; type="application/json"`);
         return new Response(body, { status: 404, headers });
       }
-    } catch {}
+    } catch (e) { console.error('[middleware] fetch failed', e); }
     // Fallback JSON 404 if markdown 404 not available and JSON was not already handled (HTML will be handled by api/negotiate)
     return;
   }
