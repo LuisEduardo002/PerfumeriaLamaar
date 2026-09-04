@@ -3,7 +3,7 @@
   "info": {
     "title": "LAMMAR Perfumería API",
     "version": "1.0.0",
-    "description": "API de LAMMAR — Perfumería exclusiva en Manizales, Colombia. Catálogo de perfumes 100% originales, fichas de producto con notas olfativas, y recursos para agentes (Markdown, sitemap, llms.txt). Todos los recursos HTML soportan negociación `Accept: text/markdown` con `Vary: Accept, Accept-Encoding`.",
+    "description": "API de LAMMAR — Perfumería exclusiva en Manizales, Colombia. Catálogo de perfumes 100% originales, fichas de producto con notas olfativas, y recursos para agentes (Markdown, sitemap, llms.txt). Todos los recursos HTML soportan negociación `Accept: text/markdown` con `Vary: Accept, Accept-Encoding` y `Accept: application/json` con errores JSON estructurados `{error:{code,message,status,hint,links}}`.",
     "contact": {
       "name": "LAMMAR Soporte",
       "email": "amazingstoresoporte@gmail.com",
@@ -29,18 +29,21 @@
     "/": {
       "get": {
         "summary": "Inicio — Perfumería en Manizales",
-        "description": "Página de inicio con colecciones, fragancias destacadas y ventajas. Soporta `Accept: text/markdown` para agentes.",
+        "description": "Página de inicio con colecciones, fragancias destacadas y ventajas. Soporta `Accept: text/markdown` y `Accept: application/json` (errores JSON estructurados) para agentes.",
         "operationId": "getHome",
         "tags": ["Páginas"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown según Accept",
+            "description": "HTML, Markdown o JSON según Accept",
             "content": {
               "text/html": {
                 "schema": { "type": "string" }
               },
               "text/markdown": {
                 "schema": { "type": "string" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/JsonPage" }
               }
             },
             "headers": {
@@ -48,10 +51,19 @@
               "Link": { "schema": { "type": "string", "example": "</>; rel=\"alternate\"; type=\"text/markdown\"" } }
             }
           },
+          "404": {
+            "description": "Not Found — JSON error with hint",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } },
+              "text/markdown": { "schema": { "type": "string" } },
+              "text/html": { "schema": { "type": "string" } }
+            }
+          },
           "406": {
             "description": "Not Acceptable — ningún tipo solicitado está disponible",
             "content": {
-              "text/plain": { "schema": { "type": "string" } }
+              "text/plain": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
             }
           }
         },
@@ -61,7 +73,7 @@
     "/catalogo": {
       "get": {
         "summary": "Catálogo de fragancias",
-        "description": "Listado completo con filtros por marca, categoría y género. Soporta Markdown vía Accept.",
+        "description": "Listado completo con filtros por marca, categoría y género. Soporta Markdown y JSON vía Accept.",
         "operationId": "getCatalog",
         "tags": ["Catálogo"],
         "parameters": [
@@ -70,13 +82,27 @@
         ],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             },
             "headers": {
               "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } }
+            }
+          },
+          "404": {
+            "description": "Not Found JSON",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } },
+              "text/plain": { "schema": { "type": "string" } }
             }
           }
         },
@@ -86,7 +112,7 @@
     "/producto/{slug}": {
       "get": {
         "summary": "Ficha de producto por slug",
-        "description": "Detalle de un perfume: marca, precio, ml, notas de salida/corazón/fondo, stock y compra por WhatsApp. Slug derivado del nombre (ej. al-noble-ameer).",
+        "description": "Detalle de un perfume: marca, precio, ml, notas de salida/corazón/fondo, stock y compra por WhatsApp. Slug derivado del nombre (ej. al-noble-ameer). Soporta JSON errores.",
         "operationId": "getProductBySlug",
         "tags": ["Producto"],
         "parameters": [
@@ -94,20 +120,28 @@
         ],
         "responses": {
           "200": {
-            "description": "Ficha del producto (HTML o Markdown)",
+            "description": "Ficha del producto (HTML, Markdown o JSON)",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             },
             "headers": {
               "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } }
             }
           },
           "404": {
-            "description": "Producto no encontrado — cuerpo Markdown con enlaces a sitemap/llms.txt",
+            "description": "Producto no encontrado — JSON error con hint y links a sitemap/llms.txt",
             "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } },
               "text/markdown": { "schema": { "type": "string" } },
               "text/html": { "schema": { "type": "string" } }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
             }
           }
         },
@@ -120,10 +154,17 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
+            }
+          },
+          "404": {
+            "description": "JSON error",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
             }
           }
         },
@@ -136,10 +177,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -152,10 +194,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -168,10 +211,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -184,10 +228,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -200,10 +245,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -216,10 +262,11 @@
         "tags": ["Legal"],
         "responses": {
           "200": {
-            "description": "HTML o Markdown",
+            "description": "HTML, Markdown o JSON",
             "content": {
               "text/html": { "schema": { "type": "string" } },
-              "text/markdown": { "schema": { "type": "string" } }
+              "text/markdown": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } }
             }
           }
         },
@@ -327,11 +374,67 @@
           "descripcion": { "type": "string" },
           "slug": { "type": "string", "example": "al-noble-ameer" }
         }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message", "status", "hint"],
+            "properties": {
+              "code": { "type": "string", "example": "not_found", "enum": ["not_found", "not_acceptable", "unauthorized"] },
+              "message": { "type": "string", "example": "Resource not found: /unknown-path" },
+              "status": { "type": "integer", "example": 404 },
+              "path": { "type": "string", "example": "/unknown-path" },
+              "accept": { "type": "string" },
+              "available": { "type": "array", "items": { "type": "string" } },
+              "hint": { "type": "string", "example": "Check the URL or browse the catalog at /catalogo" },
+              "links": {
+                "type": "object",
+                "properties": {
+                  "home": { "type": "string", "format": "uri" },
+                  "catalog": { "type": "string", "format": "uri" },
+                  "sitemap": { "type": "string", "format": "uri" },
+                  "llms": { "type": "string", "format": "uri" },
+                  "openapi": { "type": "string", "format": "uri" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "JsonPage": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
+              "title": { "type": "string" },
+              "markdown": { "type": "string" },
+              "markdown_url": { "type": "string", "format": "uri" },
+              "html_url": { "type": "string", "format": "uri" }
+            }
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": { "type": "string", "format": "uri" },
+              "html": { "type": "string", "format": "uri" },
+              "markdown": { "type": "string", "format": "uri" },
+              "sitemap": { "type": "string", "format": "uri" },
+              "llms": { "type": "string", "format": "uri" },
+              "openapi": { "type": "string", "format": "uri" }
+            }
+          }
+        }
       }
     }
   },
   "tags": [
-    { "name": "Páginas", "description": "Páginas HTML con negociación Markdown" },
+    { "name": "Páginas", "description": "Páginas HTML con negociación Markdown y JSON" },
     { "name": "Catálogo", "description": "Listado y filtrado" },
     { "name": "Producto", "description": "Fichas individuales" },
     { "name": "Legal", "description": "Privacidad y términos" },

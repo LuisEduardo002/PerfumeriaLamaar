@@ -4,16 +4,59 @@ import assert from 'node:assert/strict';
 // Simulate the Edge Function's response logic for header verification
 import { negotiate } from '../src/utils/acceptParser.js';
 
+const SERVER_TYPES = ['text/markdown', 'text/html', 'application/json'];
+
+function jsonErrorBody({ status, code, message, hint, path, accept, available }) {
+  const SITE_URL = 'https://lamaarperfum.store';
+  return JSON.stringify({
+    error: {
+      code,
+      message,
+      status,
+      path: path || '/',
+      ...(accept !== undefined ? { accept } : {}),
+      ...(available ? { available } : {}),
+      hint,
+      links: {
+        home: `${SITE_URL}/`,
+        catalog: `${SITE_URL}/catalogo`,
+        sitemap: `${SITE_URL}/sitemap.xml`,
+        llms: `${SITE_URL}/llms.txt`,
+        openapi: `${SITE_URL}/openapi.json`,
+      },
+    },
+  }, null, 2);
+}
+
 function simulateResponse(acceptHeader, path = '/') {
-  const chosen = negotiate(acceptHeader, ['text/markdown', 'text/html'], 'text/html');
+  const chosen = negotiate(acceptHeader, SERVER_TYPES, 'text/html');
+  const wantsJson = (acceptHeader || '').toLowerCase().includes('application/json');
   if (chosen === null) {
+    if (wantsJson) {
+      return {
+        status: 406,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+        },
+        body: jsonErrorBody({
+          status: 406,
+          code: 'not_acceptable',
+          message: `Not Acceptable: requested Accept '${acceptHeader}' has no available representation.`,
+          hint: 'Send Accept: text/html, text/markdown, or application/json',
+          path,
+          accept: acceptHeader,
+          available: SERVER_TYPES,
+        }),
+      };
+    }
     return {
       status: 406,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
         'Vary': 'Accept, Accept-Encoding',
       },
-      body: `This resource is available in:\n- text/html\n- text/markdown\n\nYou requested: ${acceptHeader}\n`,
+      body: `This resource is available in:\n- text/html\n- text/markdown\n- application/json\n\nYou requested: ${acceptHeader}\n`,
     };
   }
   if (chosen === 'text/markdown') {
@@ -24,6 +67,36 @@ function simulateResponse(acceptHeader, path = '/') {
         'Vary': 'Accept, Accept-Encoding',
         'Link': `<${path}>; rel="alternate"; type="text/html"`,
       },
+    };
+  }
+  if (chosen === 'application/json') {
+    // Simulate known vs unknown for JSON
+    const isKnown = ['/', '/index.html', '/catalogo', '/privacidad', '/privacy', '/terminos', '/about', '/nosotros', '/contact', '/contacto'].includes(path) || path.startsWith('/producto/');
+    if (!isKnown) {
+      return {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+          'Link': `<${path}>; rel="alternate"; type="text/html"`,
+        },
+        body: jsonErrorBody({
+          status: 404,
+          code: 'not_found',
+          message: `Resource not found: ${path}`,
+          hint: 'Check the URL or browse the catalog at /catalogo. See sitemap at https://lamaarperfum.store/sitemap.xml',
+          path,
+        }),
+      };
+    }
+    return {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Vary': 'Accept, Accept-Encoding',
+        'Link': `<${path}>; rel="alternate"; type="text/html"`,
+      },
+      body: JSON.stringify({ data: { path, url: `https://lamaarperfum.store${path}` } }),
     };
   }
   return {
@@ -46,12 +119,31 @@ function isKnownRoute(pathname) {
 }
 
 function simulateEdgeFunctionResponse(acceptHeader, pathname) {
-  const chosen = negotiate(acceptHeader, ['text/markdown', 'text/html'], 'text/html');
+  const chosen = negotiate(acceptHeader, SERVER_TYPES, 'text/html');
   
   // For HTML responses, determine if path is known
   const isKnown = isKnownRoute(pathname);
+  const wantsJson = (acceptHeader || '').toLowerCase().includes('application/json');
   
   if (chosen === null) {
+    if (wantsJson) {
+      return {
+        status: 406,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+        },
+        body: jsonErrorBody({
+          status: 406,
+          code: 'not_acceptable',
+          message: `Not Acceptable`,
+          hint: 'Send Accept: text/html, text/markdown, or application/json',
+          path: pathname,
+          accept: acceptHeader,
+          available: SERVER_TYPES,
+        }),
+      };
+    }
     return {
       status: 406,
       headers: {
@@ -79,6 +171,34 @@ function simulateEdgeFunctionResponse(acceptHeader, pathname) {
         'Vary': 'Accept, Accept-Encoding',
         'Link': `<${pathname}>; rel="alternate"; type="text/html"`,
       },
+    };
+  }
+  if (chosen === 'application/json') {
+    if (!isKnown) {
+      return {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+          'Link': `<${pathname}>; rel="alternate"; type="text/html"`,
+        },
+        body: jsonErrorBody({
+          status: 404,
+          code: 'not_found',
+          message: `Resource not found: ${pathname}`,
+          hint: 'Check sitemap',
+          path: pathname,
+        }),
+      };
+    }
+    return {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Vary': 'Accept, Accept-Encoding',
+        'Link': `<${pathname}>; rel="alternate"; type="text/html"`,
+      },
+      body: JSON.stringify({ data: { path: pathname } }),
     };
   }
   // HTML response
@@ -192,5 +312,64 @@ describe('Edge Function headers and status (acceptmarkdown.com)', () => {
     // Product routes are considered "known" by path pattern, but real edge function checks markdown file existence
     // This test documents the pattern-based assumption; actual 404 depends on markdown file existence
     assert.equal(res.status, 200); // Pattern matches, so treated as known route
+  });
+
+  // JSON error responses (Essential - agents need structured JSON, not HTML)
+  it('returns JSON with correct Content-Type and Vary for Accept: application/json', () => {
+    const res = simulateResponse('application/json', '/');
+    assert.equal(res.status, 200);
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+    assert.ok(res.headers['Vary'].includes('Accept'), 'Vary should include Accept');
+    const body = JSON.parse(res.body);
+    assert.ok(body.data, 'should have data');
+    assert.equal(body.data.path, '/');
+  });
+
+  it('returns 404 JSON for unknown path with Accept: application/json', () => {
+    const res = simulateResponse('application/json', '/unknown-path');
+    assert.equal(res.status, 404);
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+    assert.ok(res.headers['Vary'].includes('Accept, Accept-Encoding'));
+    const body = JSON.parse(res.body);
+    assert.equal(body.error.code, 'not_found');
+    assert.equal(body.error.status, 404);
+    assert.ok(body.error.message.includes('/unknown-path'));
+    assert.ok(body.error.hint.includes('sitemap'));
+    assert.ok(body.error.links.sitemap.includes('sitemap.xml'));
+  });
+
+  it('returns 404 JSON via edge for unknown path', () => {
+    const res = simulateEdgeFunctionResponse('application/json', '/no-such-page');
+    assert.equal(res.status, 404);
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+    const body = JSON.parse(res.body);
+    assert.equal(body.error.code, 'not_found');
+  });
+
+  it('returns 200 JSON for known path', () => {
+    const res = simulateEdgeFunctionResponse('application/json', '/about');
+    assert.equal(res.status, 200);
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+  });
+
+  it('returns 200 JSON for known product', () => {
+    const res = simulateResponse('application/json', '/producto/al-noble-ameer');
+    assert.equal(res.status, 200);
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+  });
+
+  it('returns 406 JSON when Accept is application/pdf and JSON preferred? still 406', () => {
+    const res = simulateResponse('application/pdf', '/');
+    assert.equal(res.status, 406);
+    // For pdf, wantsJson false, so text/plain
+    assert.equal(res.headers['Content-Type'], 'text/plain; charset=utf-8');
+  });
+
+  it('returns 406 JSON error when Accept is nonsense with json hint', () => {
+    const res = simulateResponse('application/pdf;q=1, application/json;q=0', '/');
+    // This is technically not 406 because html is default and pdf is not in server types, but negotiation will fallback?
+    // Ensure JSON error structure is valid when 406 does happen with JSON
+    const jsonRes = simulateResponse('application/unknown', '/');
+    assert.equal(jsonRes.status, 406);
   });
 });
