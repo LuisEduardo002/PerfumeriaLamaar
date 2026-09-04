@@ -93,7 +93,7 @@ function negotiate(acceptHeader, serverTypes = ['text/markdown', 'text/html'], d
 }
 
 function getMarkdownPath(pathname) {
-  if (pathname === '/' || pathname === '') return '/__markdown/home.md';
+  if (pathname === '/' || pathname === '' || pathname === '/index.html') return '/__markdown/home.md';
   const clean = pathname.replace(/\/+$/, '') || '/';
   const file = clean.replace(/^\//, '') + '.md';
   return `/__markdown/${file}`;
@@ -124,9 +124,10 @@ export default async function handler(request) {
   }
 
   if (chosen === 'text/html') {
-    // Determine if this is a known HTML route
-    const knownStatic = ['/', '/catalogo', '/privacidad', '/privacy', '/terminos', '/about', '/nosotros', '/contact', '/contacto'];
-    const isKnownStatic = knownStatic.includes(pathname);
+    // Determine if this is a known HTML route - normalize /index.html to /
+    const normalizedPath = pathname === '/index.html' ? '/' : pathname;
+    const knownStatic = ['/', '/catalogo', '/privacidad', '/privacy', '/terminos', '/about', '/nosotros', '/contact', '/contacto', '/index.html'];
+    const isKnownStatic = knownStatic.includes(pathname) || knownStatic.includes(normalizedPath);
     const isProductRoute = pathname.startsWith('/producto/');
     let isKnown = isKnownStatic;
 

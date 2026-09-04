@@ -95,6 +95,10 @@
             "destination": "/api/negotiate"
         },
         {
+            "source": "/index.html",
+            "destination": "/api/negotiate"
+        },
+        {
             "source": "/",
             "destination": "/api/negotiate"
         },

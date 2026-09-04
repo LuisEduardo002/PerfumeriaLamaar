@@ -11,7 +11,7 @@ function simulateResponse(acceptHeader, path = '/') {
       status: 406,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'Vary': 'Accept',
+        'Vary': 'Accept, Accept-Encoding',
       },
       body: `This resource is available in:\n- text/html\n- text/markdown\n\nYou requested: ${acceptHeader}\n`,
     };
@@ -30,14 +30,14 @@ function simulateResponse(acceptHeader, path = '/') {
     status: 200,
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
-      'Vary': 'Accept',
+      'Vary': 'Accept, Accept-Encoding',
       'Link': `<${path}>; rel="alternate"; type="text/markdown"`,
     },
   };
 }
 
 // Known routes that should return 200 (matching api/negotiate.js logic)
-const knownStatic = ['/', '/catalogo', '/privacidad', '/terminos'];
+const knownStatic = ['/', '/index.html', '/catalogo', '/privacidad', '/privacy', '/terminos', '/about', '/nosotros', '/contact', '/contacto'];
 
 function isKnownRoute(pathname) {
   if (knownStatic.includes(pathname)) return true;
@@ -56,7 +56,7 @@ function simulateEdgeFunctionResponse(acceptHeader, pathname) {
       status: 406,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'Vary': 'Accept',
+        'Vary': 'Accept, Accept-Encoding',
       },
     };
   }
@@ -126,7 +126,7 @@ describe('Edge Function headers and status (acceptmarkdown.com)', () => {
     const res = simulateResponse('application/pdf', '/');
     assert.equal(res.status, 406);
     assert.equal(res.headers['Content-Type'], 'text/plain; charset=utf-8');
-    assert.equal(res.headers['Vary'], 'Accept');
+    assert.equal(res.headers['Vary'], 'Accept, Accept-Encoding');
     assert.ok(res.body.includes('text/html'));
     assert.ok(res.body.includes('text/markdown'));
   });
