@@ -309,6 +309,62 @@
         }
       }
     },
+    "/api/catalog": {
+      "get": {
+        "summary": "API Catálogo JSON",
+        "description": "Catálogo en JSON puro para agentes. Siempre responde `application/json`. Errores estructurados con `error.code`.",
+        "operationId": "getApiCatalog",
+        "tags": ["Catálogo"],
+        "responses": {
+          "200": {
+            "description": "JSON con catálogo",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/JsonPage" } } },
+            "headers": {
+              "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } }
+            }
+          },
+          "404": {
+            "description": "Not Found JSON",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/api/product/{slug}": {
+      "get": {
+        "summary": "API Producto JSON",
+        "description": "Ficha de producto en JSON puro por slug.",
+        "operationId": "getApiProduct",
+        "tags": ["Producto"],
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string", "example": "al-noble-ameer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON producto",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          },
+          "404": {
+            "description": "JSON error not_found",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "security": [{ "OAuth2": ["product:read"] }]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "summary": "Health check JSON",
+        "tags": ["Descubrimiento"],
+        "responses": {
+          "200": {
+            "description": "JSON status ok",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
     "/.well-known/oauth-protected-resource": {
       "get": {
         "summary": "RFC 9728 Protected Resource Metadata",

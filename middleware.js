@@ -121,12 +121,11 @@ export default async function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // Skip static assets, markdown files, api, and well-known
+  // Skip static assets, markdown files, and well-known - but NOT /api/ (API must return JSON)
   if (
     pathname.startsWith('/__markdown/') ||
     pathname.startsWith('/assets/') ||
     pathname.startsWith('/images/') ||
-    pathname.startsWith('/api/') ||
     pathname.startsWith('/.well-known/') ||
     pathname === '/favicon-32.png' ||
     pathname === '/favicon-64.png' ||
@@ -138,6 +137,135 @@ export default async function middleware(request) {
     pathname.match(/\.(png|jpg|jpeg|webp|svg|css|js|json|xml|ico)$/)
   ) {
     return;
+  }
+
+  // API routes — always JSON, regardless of Accept
+  if (pathname.startsWith('/api/')) {
+    const knownApi = ['/api/catalog', '/api/products', '/api/health'];
+    const isProductApi = pathname.startsWith('/api/product/');
+    const isKnownApi = knownApi.includes(pathname) || isProductApi;
+    if (!isKnownApi) {
+      // Check if /api/catalog alias without trailing slash
+      if (pathname === '/api/catalog/' || pathname === '/api/products/') {
+        // normalize trailing slash
+      } else {
+        const body = jsonErrorBody({
+          status: 404,
+          code: 'not_found',
+          message: `API endpoint not found: ${pathname}`,
+          hint: 'Available API endpoints: GET /api/catalog, GET /api/product/{slug}, GET /api/health. See /openapi.json and /sitemap.xml',
+          path: pathname,
+        });
+        return new Response(body, {
+          status: 404,
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Vary': 'Accept, Accept-Encoding',
+            'Cache-Control': 'public, max-age=60',
+          },
+        });
+      }
+    }
+    // Known API — return JSON data
+    if (pathname === '/api/catalog' || pathname === '/api/products' || pathname === '/api/catalog/' || pathname === '/api/products/') {
+      const mdPath = '/__markdown/catalogo.md';
+      const mdUrl = new URL(mdPath, request.url);
+      let markdownContent = null;
+      try {
+        const mdResp = await fetch(mdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
+        if (mdResp.ok) markdownContent = await mdResp.text();
+      } catch {}
+      const SITE_URL = 'https://lamaarperfum.store';
+      const body = JSON.stringify({
+        data: {
+          endpoint: '/api/catalog',
+          products: markdownContent ? 'See markdown_url' : null,
+          count: 244,
+          catalog_url: `${SITE_URL}/catalogo`,
+          markdown_url: `${SITE_URL}/__markdown/catalogo.md`,
+        },
+        links: {
+          self: `${SITE_URL}${pathname}`,
+          catalog: `${SITE_URL}/catalogo`,
+          sitemap: `${SITE_URL}/sitemap.xml`,
+          openapi: `${SITE_URL}/openapi.json`,
+        },
+      }, null, 2);
+      return new Response(body, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+          'Cache-Control': 'public, max-age=300',
+        },
+      });
+    }
+    if (pathname === '/api/health') {
+      const body = JSON.stringify({ status: 'ok', service: 'LAMMAR API', version: '1.0.0', timestamp: new Date().toISOString() }, null, 2);
+      return new Response(body, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+          'Cache-Control': 'no-store',
+        },
+      });
+    }
+    if (isProductApi) {
+      const slug = pathname.replace('/api/product/', '').replace(/\/$/, '');
+      const mdPath = `/__markdown/producto/${slug}.md`;
+      const mdUrl = new URL(mdPath, request.url);
+      try {
+        const mdResp = await fetch(mdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
+        if (mdResp.ok) {
+          const md = await mdResp.text();
+          const SITE_URL = 'https://lamaarperfum.store';
+          const body = JSON.stringify({
+            data: { slug, product_url: `${SITE_URL}/producto/${slug}`, markdown: md.slice(0, 5000), markdown_url: `${SITE_URL}${mdPath}` },
+            links: { self: `${SITE_URL}${pathname}`, html: `${SITE_URL}/producto/${slug}` },
+          }, null, 2);
+          return new Response(body, {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+              'Vary': 'Accept, Accept-Encoding',
+              'Cache-Control': 'public, max-age=300',
+            },
+          });
+        }
+      } catch {}
+      const body = jsonErrorBody({
+        status: 404,
+        code: 'not_found',
+        message: `Product not found: ${slug}`,
+        hint: 'Check slug or browse /api/catalog. See /sitemap.xml for valid product slugs',
+        path: pathname,
+      });
+      return new Response(body, {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Vary': 'Accept, Accept-Encoding',
+          'Cache-Control': 'public, max-age=60',
+        },
+      });
+    }
+    // Fallback unknown API
+    const body = jsonErrorBody({
+      status: 404,
+      code: 'not_found',
+      message: `API endpoint not found: ${pathname}`,
+      hint: 'Available: /api/catalog, /api/product/{slug}, /api/health',
+      path: pathname,
+    });
+    return new Response(body, {
+      status: 404,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Vary': 'Accept, Accept-Encoding',
+        'Cache-Control': 'public, max-age=60',
+      },
+    });
   }
 
   const accept = request.headers.get('accept') || '';
