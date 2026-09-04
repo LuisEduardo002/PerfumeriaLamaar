@@ -53,19 +53,6 @@
             ]
         }
     ],
-    "redirects": [
-        {
-            "source": "/(.*)",
-            "has": [
-                {
-                    "type": "host",
-                    "value": "www.lamaarperfum.store"
-                }
-            ],
-            "destination": "https://lamaarperfum.store/$1",
-            "permanent": true
-        }
-    ],
     "rewrites": [
         {
             "source": "/__markdown/:path*",

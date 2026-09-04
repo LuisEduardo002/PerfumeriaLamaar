@@ -196,13 +196,16 @@ describe('Trust anchor pages (About, Contact, Privacy)', () => {
 });
 
 describe('Brand name discoverability (NAP + apex redirect)', () => {
-  it('vercel.json has www -> apex redirect to avoid masking apex', () => {
+  it('vercel.json does not create redirect loop (www->apex removed, Vercel dashboard handles apex->www)', () => {
     const vercel = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'vercel.json'), 'utf8'));
-    assert.ok(Array.isArray(vercel.redirects), 'vercel.json should have redirects');
-    const wwwRedirect = vercel.redirects.find(r => r.has && r.has.some(h => h.value === 'www.lamaarperfum.store'));
-    assert.ok(wwwRedirect, 'should have www.lamaarperfum.store host redirect');
-    assert.equal(wwwRedirect.destination, 'https://lamaarperfum.store/$1');
-    assert.equal(wwwRedirect.permanent, true);
+    // After ERR_TOO_MANY_REDIRECTS we removed the www->apex redirect that looped with dashboard apex->www
+    // Correct fix requires Dashboard: Domains -> set apex as Primary if you want apex canonical, otherwise keep www primary and change canonical to www.
+    if (vercel.redirects) {
+      const loop = vercel.redirects.find(r => r.has && r.has.some(h => h.value === 'www.lamaarperfum.store' && r.destination.includes('lamaarperfum.store')));
+      assert.ok(!loop, 'should not have www->apex redirect that loops with Vercel dashboard apex->www (caused ERR_TOO_MANY_REDIRECTS)');
+    } else {
+      assert.ok(true, 'no redirects is correct to avoid loop - Vercel dashboard already does apex->www');
+    }
   });
 
   it('sitemap and canonical use apex domain (not www)', () => {
