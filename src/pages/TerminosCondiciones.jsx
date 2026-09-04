@@ -27,8 +27,8 @@ const TerminosCondiciones = () => {
             <KeyTakeaways
                 title="TL;DR: lo esencial de estos términos"
                 items={[
-                    'El sitio funciona como vitrina: seleccionas tus perfumes aquí y el pedido se confirma por WhatsApp.',
-                    'No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido.',
+                    'Somos perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con catálogo web informativo: seleccionas y confirmas en tienda física o por WhatsApp.',
+                    'No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido en tienda o por WhatsApp. No somos tienda digital pura.',
                     'Los tiempos de entrega son estimados y varían según ciudad y transportadora.',
                     'Cambios, devoluciones y garantías se rigen por la legislación colombiana: escríbenos a amazingstoresoporte@gmail.com para gestionarlos.',
                 ]}
@@ -128,8 +128,10 @@ const TerminosCondiciones = () => {
                 </h2>
 
                 <p>
-                    Nuestro sitio web funciona como una plataforma de exhibición y
-                    selección de productos.
+                    Somos principalmente una perfumería física ubicada en Manizales
+                    (Centro Comercial Los Fundadores, Local 101) con atención presencial.
+                    Nuestro sitio web es únicamente un catálogo informativo para consultar
+                    productos y precios; no es una tienda digital con pago online.
                 </p>
 
                 <p className="mt-3">

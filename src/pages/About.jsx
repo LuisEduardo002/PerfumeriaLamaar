@@ -14,10 +14,11 @@ const About = () => {
     <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold mb-4">Sobre LAMMAR — LAMAAR PERFUM</h1>
       <p className="mb-6 text-lg leading-relaxed text-slate-700">
-        LAMMAR es una perfumería exclusiva nacida en Manizales, Caldas, con la misión de acercar
-        fragancias 100% originales de diseñador, árabes y nicho a toda Colombia sin intermediarios
-        opacos, con asesoría honesta y envíos confiables. Operamos bajo el nombre comercial LAMAAR
-        PERFUM y atendemos de lunes a sábado de 9:00 a.m. a 6:00 p.m. por WhatsApp y correo.
+        LAMMAR es una perfumería física y exclusiva ubicada en Centro Comercial Los Fundadores,
+        Local 101, Manizales, Caldas, con la misión de acercar fragancias 100% originales de
+        diseñador, árabes y nicho con atención presencial y a toda Colombia con envíos confiables.
+        Operamos bajo el nombre comercial LAMAAR PERFUM, atendemos presencialmente y también por
+        WhatsApp/correo de lunes a sábado de 9:00 a.m. a 6:00 p.m. No operamos principalmente como tienda digital.
       </p>
 
       <div className="mb-8">
@@ -44,10 +45,12 @@ const About = () => {
             nuestros primeros clientes, crecimos hasta superar las 240 referencias disponibles hoy.
           </p>
           <p className="mt-3">
-            Desde el primer día operamos como vitrina digital: eliges tus perfumes en el catálogo,
-            los agregas al carrito y confirmas el pedido por WhatsApp. No exigimos registro, no
-            almacenamos tarjetas y no vendemos datos. Ese modelo simple nos permite mantener precios
-            competitivos y atención cercana, sin fricción tecnológica innecesaria.
+            Desde el primer día operamos principalmente como perfumería física en Manizales con
+            atención presencial en Centro Comercial Los Fundadores, Local 101; el sitio web es solo
+            un catálogo informativo para consultar precio, stock y características. Eliges tus perfumes
+            en el catálogo, los agregas al carrito y confirmas el pedido en tienda física o por
+            WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos una
+            tienda digital pura con pago online.
           </p>
         </div>
 

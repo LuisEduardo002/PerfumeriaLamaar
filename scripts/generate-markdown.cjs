@@ -212,7 +212,7 @@ LAMMAR (nombre comercial LAMAAR PERFUM) es una perfumería exclusiva nacida en M
 
 LAMMAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando best-sellers como Yara, Asad y Hawas y, gracias a la confianza de nuestros primeros clientes, crecimos hasta superar las ${perfumes.length} referencias disponibles hoy.
 
-Operamos como vitrina digital: eliges en el catálogo, agregas al carrito y confirmas el pedido por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos.
+Operamos principalmente como perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con atención presencial; el sitio web es solo catálogo informativo: eliges en el catálogo, agregas al carrito y confirmas el pedido en tienda o por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos tienda digital pura.
 
 ## 2. Qué hacemos — y qué no
 
@@ -308,8 +308,8 @@ Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp,
 
 ## TL;DR: lo esencial
 
-- El sitio funciona como vitrina: seleccionas tus perfumes aquí y el pedido se confirma por WhatsApp.
-- No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido.
+- Somos perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con catálogo web informativo: seleccionas tus perfumes aquí y el pedido se confirma en tienda física o por WhatsApp.
+- No necesitas crear cuenta ni pagar en el sitio; los métodos de pago se coordinan al confirmar el pedido en tienda o por WhatsApp. No somos tienda digital pura.
 - Los tiempos de entrega son estimados y varían según ciudad y transportadora.
 - Cambios, devoluciones y garantías se rigen por la legislación colombiana: escríbenos a amazingstoresoporte@gmail.com.
 
@@ -334,7 +334,7 @@ Estos Términos y Condiciones regulan el acceso y uso del sitio web de LAMAAR PE
 
 ## 2. Funcionamiento del sitio web
 
-Nuestro sitio web funciona como una plataforma de exhibición y selección de productos. El usuario puede seleccionar productos, agregarlos al carrito, modificar las cantidades y revisar el contenido de su pedido. El carrito puede utilizar localStorage para conservar temporalmente los productos seleccionados. El sitio no requiere la creación de una cuenta de usuario.
+Somos principalmente una perfumería física en Manizales (Centro Comercial Los Fundadores, Local 101) con atención presencial. Nuestro sitio web es únicamente un catálogo informativo para consultar productos y precios; no es una tienda digital con pago online. El usuario puede seleccionar productos, agregarlos al carrito, modificar las cantidades y revisar el contenido de su pedido. El carrito puede utilizar localStorage para conservar temporalmente los productos seleccionados. El sitio no requiere la creación de una cuenta de usuario.
 
 ## 3. Realización de pedidos mediante WhatsApp
 

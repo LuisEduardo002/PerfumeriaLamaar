@@ -25,7 +25,7 @@ export const NAP = {
   },
   geo: { latitude: 5.0703, longitude: -75.5138 },
   hours: { days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '18:00' },
-  description: 'Perfumería exclusiva colombiana: perfumes originales de diseñador, árabes y fragancias nicho con pedidos por WhatsApp y envíos a toda Colombia.',
+  description: 'Perfumería física y exclusiva en Manizales, Caldas (Centro Comercial Los Fundadores, Local 101) con atención presencial y más de 240 perfumes 100% originales de diseñador, árabes y nicho. Ventas en tienda física, asesoría y pedidos por WhatsApp con envíos a toda Colombia. No es tienda digital con pago online.',
 };
 
 export const SOCIAL = {

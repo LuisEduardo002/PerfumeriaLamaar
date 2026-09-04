@@ -126,8 +126,8 @@ describe('Homepage structured data and metadata', () => {
   });
 
   it('has Organization JSON-LD as primary identity', () => {
-    assert.ok(indexHtml.includes('"@type": ["Organization", "LocalBusiness", "OnlineStore"]'),
-      'should have Organization as primary @type in JSON-LD');
+    assert.ok(indexHtml.includes('"@type": ["Store", "LocalBusiness", "Organization"]'),
+      'should have Store/LocalBusiness as primary @type (physical store, not OnlineStore)');
   });
 
   it('has logo in Organization JSON-LD', () => {
