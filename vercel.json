@@ -18,7 +18,33 @@
             ]
         },
         {
-            "source": "/(.*).html",
+            "source": "/.well-known/oauth-protected-resource",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=3600"
+                }
+            ]
+        },
+        {
+            "source": "/openapi.json",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=3600"
+                }
+            ]
+        },
+        {
+            "source": "/(.*)",
             "headers": [
                 {
                     "key": "Vary",
@@ -45,6 +71,26 @@
             "destination": "/api/negotiate"
         },
         {
+            "source": "/privacy",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/about",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/nosotros",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/contact",
+            "destination": "/api/negotiate"
+        },
+        {
+            "source": "/contacto",
+            "destination": "/api/negotiate"
+        },
+        {
             "source": "/terminos",
             "destination": "/api/negotiate"
         },
@@ -54,7 +100,7 @@
         },
         {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "/api/negotiate"
         }
     ]
 }

@@ -1,0 +1,341 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LAMMAR Perfumería API",
+    "version": "1.0.0",
+    "description": "API de LAMMAR — Perfumería exclusiva en Manizales, Colombia. Catálogo de perfumes 100% originales, fichas de producto con notas olfativas, y recursos para agentes (Markdown, sitemap, llms.txt). Todos los recursos HTML soportan negociación `Accept: text/markdown` con `Vary: Accept, Accept-Encoding`.",
+    "contact": {
+      "name": "LAMMAR Soporte",
+      "email": "amazingstoresoporte@gmail.com",
+      "url": "https://lamaarperfum.store"
+    },
+    "license": {
+      "name": "Proprietary",
+      "url": "https://lamaarperfum.store/terminos"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://lamaarperfum.store",
+      "description": "Producción"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": ["catalog:read", "product:read"]
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Inicio — Perfumería en Manizales",
+        "description": "Página de inicio con colecciones, fragancias destacadas y ventajas. Soporta `Accept: text/markdown` para agentes.",
+        "operationId": "getHome",
+        "tags": ["Páginas"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown según Accept",
+            "content": {
+              "text/html": {
+                "schema": { "type": "string" }
+              },
+              "text/markdown": {
+                "schema": { "type": "string" }
+              }
+            },
+            "headers": {
+              "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } },
+              "Link": { "schema": { "type": "string", "example": "</>; rel=\"alternate\"; type=\"text/markdown\"" } }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable — ningún tipo solicitado está disponible",
+            "content": {
+              "text/plain": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/catalogo": {
+      "get": {
+        "summary": "Catálogo de fragancias",
+        "description": "Listado completo con filtros por marca, categoría y género. Soporta Markdown vía Accept.",
+        "operationId": "getCatalog",
+        "tags": ["Catálogo"],
+        "parameters": [
+          { "name": "genero", "in": "query", "schema": { "type": "string", "enum": ["Masculino", "Femenino", "Unisex"] }, "required": false },
+          { "name": "q", "in": "query", "schema": { "type": "string" }, "required": false }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            },
+            "headers": {
+              "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/producto/{slug}": {
+      "get": {
+        "summary": "Ficha de producto por slug",
+        "description": "Detalle de un perfume: marca, precio, ml, notas de salida/corazón/fondo, stock y compra por WhatsApp. Slug derivado del nombre (ej. al-noble-ameer).",
+        "operationId": "getProductBySlug",
+        "tags": ["Producto"],
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string", "example": "al-noble-ameer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ficha del producto (HTML o Markdown)",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            },
+            "headers": {
+              "Vary": { "schema": { "type": "string", "example": "Accept, Accept-Encoding" } }
+            }
+          },
+          "404": {
+            "description": "Producto no encontrado — cuerpo Markdown con enlaces a sitemap/llms.txt",
+            "content": {
+              "text/markdown": { "schema": { "type": "string" } },
+              "text/html": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["product:read"] }]
+      }
+    },
+    "/privacy": {
+      "get": {
+        "summary": "Política de Privacidad (English alias)",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/privacidad": {
+      "get": {
+        "summary": "Política de Privacidad",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/about": {
+      "get": {
+        "summary": "Sobre nosotros — About LAMMAR",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/nosotros": {
+      "get": {
+        "summary": "Sobre nosotros (alias ES)",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/contact": {
+      "get": {
+        "summary": "Contacto — Contact",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/contacto": {
+      "get": {
+        "summary": "Contacto (alias ES)",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/terminos": {
+      "get": {
+        "summary": "Términos y Condiciones",
+        "tags": ["Legal"],
+        "responses": {
+          "200": {
+            "description": "HTML o Markdown",
+            "content": {
+              "text/html": { "schema": { "type": "string" } },
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        },
+        "security": [{ "OAuth2": ["catalog:read"] }]
+      }
+    },
+    "/sitemap.xml": {
+      "get": {
+        "summary": "Sitemap XML",
+        "tags": ["Descubrimiento"],
+        "responses": {
+          "200": {
+            "description": "Sitemap con todas las URLs indexables",
+            "content": { "application/xml": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Resumen para LLMs",
+        "tags": ["Descubrimiento"],
+        "responses": {
+          "200": {
+            "description": "Markdown con overview del sitio para agentes",
+            "content": { "text/markdown": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "summary": "Esta especificación OpenAPI",
+        "tags": ["Descubrimiento"],
+        "responses": {
+          "200": {
+            "description": "OpenAPI 3.1 JSON",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
+    "/.well-known/oauth-protected-resource": {
+      "get": {
+        "summary": "RFC 9728 Protected Resource Metadata",
+        "description": "Metadatos de recurso protegido con scopes_supported para descubrimiento automático de permisos.",
+        "operationId": "getProtectedResourceMetadata",
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "JSON con scopes_supported",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.0 con scopes granulares para acceso de agentes con mínimo privilegio.",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://lamaarperfum.store/oauth/authorize",
+            "tokenUrl": "https://lamaarperfum.store/oauth/token",
+            "scopes": {
+              "catalog:read": "Leer catálogo y listar productos",
+              "product:read": "Leer fichas de producto detalladas",
+              "cart:read": "Leer carrito (localStorage, no servidor)",
+              "order:write": "Crear pedidos vía WhatsApp (requiere confirmación humana)"
+            }
+          },
+          "clientCredentials": {
+            "tokenUrl": "https://lamaarperfum.store/oauth/token",
+            "scopes": {
+              "catalog:read": "Leer catálogo y listar productos",
+              "product:read": "Leer fichas de producto detalladas",
+              "cart:read": "Leer carrito",
+              "order:write": "Crear pedidos"
+            }
+          }
+        }
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT emitido por el Authorization Server con scopes incluidos en claim 'scope'."
+      }
+    },
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "required": ["id", "nombre", "marca", "precio", "categoria", "genero", "ml", "stock", "descripcion"],
+        "properties": {
+          "id": { "type": "integer", "example": 1 },
+          "nombre": { "type": "string", "example": "AL NOBLE AMEER" },
+          "marca": { "type": "string", "example": "Lattafa" },
+          "precio": { "type": "integer", "example": 198000 },
+          "categoria": { "type": "string", "example": "Arabes" },
+          "genero": { "type": "string", "enum": ["Masculino", "Femenino", "Unisex"] },
+          "ml": { "type": "integer", "example": 100 },
+          "stock": { "type": "integer", "example": 10 },
+          "descripcion": { "type": "string" },
+          "slug": { "type": "string", "example": "al-noble-ameer" }
+        }
+      }
+    }
+  },
+  "tags": [
+    { "name": "Páginas", "description": "Páginas HTML con negociación Markdown" },
+    { "name": "Catálogo", "description": "Listado y filtrado" },
+    { "name": "Producto", "description": "Fichas individuales" },
+    { "name": "Legal", "description": "Privacidad y términos" },
+    { "name": "Descubrimiento", "description": "Sitemap, llms.txt, OpenAPI" },
+    { "name": "Auth", "description": "Metadatos de autorización" }
+  ]
+}

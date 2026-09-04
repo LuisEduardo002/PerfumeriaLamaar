@@ -12,38 +12,62 @@
     <meta name="description" content="Perfumería exclusiva en Manizales, Colombia. Descubre perfumes originales de diseñador, árabes y fragancias nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp." />
     <meta name="keywords" content="perfumes, fragancias, perfumería, Lattafa, Dior, Chanel, Creed, Tom Ford, Colombia, comprar perfumes" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://lamaarperfum.store/" />
 
     <!-- Google Search Console: pega aquí tu token de verificación (método etiqueta HTML)
          o verifica por registro DNS en tu proveedor de dominio -->
     <meta name="google-site-verification" content="REEMPLAZA_CON_TU_TOKEN_DE_GSC" />
     
+    <!-- WebSite schema for search box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "LAMMAR",
+      "url": "https://lamaarperfum.store/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://lamaarperfum.store/catalogo?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="LAMMAR | Perfumería Exclusiva" />
     <meta property="og:description" content="Descubre la colección de perfumes exclusivos y fragancias de diseñador y nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp." />
-    <meta property="og:image" content="/images/og-image.jpg" />
+    <meta property="og:image" content="https://lamaarperfum.store/images/og-image.jpg" />
+    <meta property="og:url" content="https://lamaarperfum.store/" />
+    <meta property="og:site_name" content="LAMMAR" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="LAMMAR | Perfumería Exclusiva" />
     <meta property="twitter:description" content="Descubre la colección de perfumes exclusivos y fragancias de diseñador y nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp." />
 
-    <!-- Schema.org: Negocio local / tienda online -->
+    <!-- Schema.org: Organization (primary identity) + LocalBusiness + OnlineStore -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "OnlineStore",
+      "@type": ["Organization", "LocalBusiness", "OnlineStore"],
       "name": "LAMMAR",
       "alternateName": "LAMAAR PERFUM",
       "url": "https://lamaarperfum.store",
       "description": "Perfumería exclusiva colombiana: perfumes originales de diseñador, árabes y fragancias nicho con pedidos por WhatsApp y envíos a toda Colombia.",
-      "image": "/images/og-image.jpg",
+      "logo": "https://lamaarperfum.store/images/og-image.jpg",
+      "image": "https://lamaarperfum.store/images/og-image.jpg",
       "email": "amazingstoresoporte@gmail.com",
       "telephone": "+57 304 6420608",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Centro Comercial Los Fundadores, Local 101",
         "addressLocality": "Manizales",
         "addressRegion": "Caldas",
+        "postalCode": "170001",
         "addressCountry": "CO"
       },
       "geo": {
@@ -56,6 +80,7 @@
         "name": "Colombia"
       },
       "currenciesAccepted": "COP",
+      "paymentAccepted": "Efectivo, Transferencia, WhatsApp Pay",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -68,7 +93,12 @@
         "telephone": "+57 304 6420608",
         "email": "amazingstoresoporte@gmail.com",
         "availableLanguage": "es"
-      }
+      },
+      "sameAs": [
+        "https://wa.me/573046420608",
+        "https://www.instagram.com/lammar_perfum",
+        "https://www.facebook.com/lammarperfum"
+      ]
     }
     </script>
     
@@ -80,15 +110,30 @@
   <body>
     <div id="root">
       <!-- Fallback sin JavaScript: visible para crawlers de IA/Google que no ejecutan JS.
-           React reemplaza este contenido al hidratar. Asegura H1 + 500+ caracteres en HTML crudo. -->
+           React reemplaza este contenido al hidratar. Asegura H1 + 500+ caracteres, jerarquía secuencial y ratio >5%. -->
       <header style="padding:24px;text-align:center;font-family:Montserrat,sans-serif">
         <p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">LAMMAR — Manizales, Colombia</p>
         <h1 style="font-family:'Playfair Display',serif;font-size:32px;color:#111;margin:12px 0">LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador</h1>
+        <p style="color:#475569;max-width:600px;margin:0 auto">Perfumería exclusiva con más de 240 fragancias 100% originales. Pedidos por WhatsApp y envíos a toda Colombia.</p>
       </header>
       <main style="max-width:800px;margin:0 auto;padding:0 24px 32px;font-family:Montserrat,sans-serif;color:#334155;line-height:1.7">
-        <p>Perfumería exclusiva en Manizales, Colombia. En LAMMAR encuentras perfumes 100% originales de diseñador, árabes y fragancias nicho de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino. Cada fragancia cuenta con garantía de autenticidad, asesoría personalizada por WhatsApp y envíos a toda Colombia con seguimiento.</p>
-        <p>Explora colecciones para caballero y dama, descubre notas de salida, corazón y fondo de cada perfume, compara precios y arma tu pedido en el carrito. Al confirmar, se genera un mensaje automático para coordinar el pago y la entrega directamente por WhatsApp al +57 304 6420608. Sin registros ni pagos dentro del sitio: eliges aquí y confirmas por tu canal favorito.</p>
-        <p><a href="/catalogo" style="color:#4B1E28;font-weight:600">Explorar catálogo completo</a> · <a href="/privacidad" style="color:#4B1E28">Política de privacidad</a> · <a href="/terminos" style="color:#4B1E28">Términos y condiciones</a></p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#111;margin:24px 0 12px">Encuentra la esencia que te define</h2>
+        <p>En LAMMAR encuentras perfumes 100% originales de diseñador, árabes y fragancias nicho de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino. Cada fragancia cuenta con garantía de autenticidad, asesoría personalizada por WhatsApp y envíos a toda Colombia con seguimiento.</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#111;margin:24px 0 12px">Elige tu colección</h2>
+        <h3 style="font-size:18px;color:#111;margin:12px 0 8px">Caballero</h3>
+        <p>Fragancias para hombre: amaderadas, orientales y frescas de larga duración.</p>
+        <h3 style="font-size:18px;color:#111;margin:12px 0 8px">Dama</h3>
+        <p>Fragancias para mujer: florales, dulces y gourmand con estela envolvente.</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#111;margin:24px 0 12px">Fragancias destacadas</h2>
+        <p>Las opciones más cotizadas y queridas por nuestros clientes. Descubre best-sellers como Yara, Asad y Hawas entre más de 240 referencias disponibles en el <a href="/catalogo" style="color:#4B1E28;font-weight:600">catálogo completo</a>.</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#111;margin:24px 0 12px">Por qué elegir LAMMAR</h2>
+        <h3 style="font-size:16px;color:#111;margin:12px 0 8px">100% Originales</h3>
+        <p>Garantía directa de autenticidad en cada fragancia.</p>
+        <h3 style="font-size:16px;color:#111;margin:12px 0 8px">Envíos Nacionales</h3>
+        <p>Despachos rápidos a toda Colombia con seguimiento.</p>
+        <h3 style="font-size:16px;color:#111;margin:12px 0 8px">Asesoría Personalizada</h3>
+        <p>Te ayudamos a encontrar tu perfume ideal por WhatsApp al +57 304 6420608.</p>
+        <p style="margin-top:24px"><a href="/catalogo" style="color:#4B1E28;font-weight:600">Explorar catálogo completo</a> · <a href="/about" style="color:#4B1E28">Sobre nosotros</a> · <a href="/contact" style="color:#4B1E28">Contacto</a> · <a href="/privacy" style="color:#4B1E28">Privacidad</a> · <a href="/terminos" style="color:#4B1E28">Términos</a></p>
       </main>
     </div>
     <script type="module" src="/src/main.jsx"></script>

@@ -8,7 +8,7 @@ const PoliticaPrivacidad = () => {
         title: 'Política de Privacidad',
         description:
             'Conoce cómo LAMMAR trata la información personal de sus usuarios: datos recopilados, finalidades del tratamiento, seguridad y derechos de los titulares.',
-        canonical: '/privacidad',
+        canonical: '/privacy',
     });
     return (
         <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">

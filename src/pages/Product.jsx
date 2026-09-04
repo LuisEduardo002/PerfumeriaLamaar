@@ -15,6 +15,119 @@ import Faq from '../components/common/Faq';
 import ShareButton from '../components/common/ShareButton';
 import { faqItems } from '../data/faq';
 
+const SITE_URL = 'https://lamaarperfum.store';
+
+function injectProductSchema(product) {
+  if (!product) return;
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${product.nombre} de ${product.marca}`,
+    "brand": {
+      "@type": "Brand",
+      "name": product.marca
+    },
+    "description": product.descripcion,
+    "image": product.imagenes?.length ? product.imagenes.map(img => `${SITE_URL}${img}`) : [`${SITE_URL}${product.imagen}`],
+    "sku": String(product.id),
+    "offers": {
+      "@type": "Offer",
+      "url": `${SITE_URL}/producto/${slugify(product.nombre)}`,
+      "priceCurrency": "COP",
+      "price": product.precio.toString(),
+      "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "LAMMAR"
+      }
+    },
+    "category": product.categoria,
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Género",
+        "value": product.genero
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Tamaño",
+        "value": `${product.ml} ml`
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Notas de salida",
+        "value": product.notas?.salida?.join(', ') || '—'
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Notas de corazón",
+        "value": product.notas?.corazon?.join(', ') || '—'
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Notas de fondo",
+        "value": product.notas?.fondo?.join(', ') || '—'
+      }
+    ]
+  };
+
+  // Remove existing product schema
+  const existing = document.getElementById('product-schema');
+  if (existing) existing.remove();
+
+  // Inject new schema
+  const script = document.createElement('script');
+  script.id = 'product-schema';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function injectBreadcrumbSchema(product) {
+  if (!product) return;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": `${SITE_URL}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Catálogo",
+        "item": `${SITE_URL}/catalogo`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.marca,
+        "item": `${SITE_URL}/catalogo?marca=${encodeURIComponent(product.marca)}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": product.nombre,
+        "item": `${SITE_URL}/producto/${slugify(product.nombre)}`
+      }
+    ]
+  };
+
+  const existing = document.getElementById('breadcrumb-schema');
+  if (existing) existing.remove();
+
+  const script = document.createElement('script');
+  script.id = 'breadcrumb-schema';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
 const noteGroups = [
   { key: 'salida', label: 'Salida' },
   { key: 'corazon', label: 'Corazón' },
@@ -80,6 +193,19 @@ export default function Product() {
       : 'Descubre perfumes originales de diseñador y nicho en LAMMAR.',
     canonical: product ? `/producto/${slugify(product.nombre)}` : undefined,
   });
+
+  // Inject Product and Breadcrumb structured data for SEO
+  useEffect(() => {
+    if (product) {
+      injectProductSchema(product);
+      injectBreadcrumbSchema(product);
+    } else {
+      const productSchema = document.getElementById('product-schema');
+      const breadcrumbSchema = document.getElementById('breadcrumb-schema');
+      if (productSchema) productSchema.remove();
+      if (breadcrumbSchema) breadcrumbSchema.remove();
+    }
+  }, [product]);
 
   if (loading) {
     return <main className="flex-grow py-20 text-center text-slate-500">Cargando fragancia...</main>;

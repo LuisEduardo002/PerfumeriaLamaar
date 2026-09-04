@@ -13,6 +13,8 @@ import Product from '../pages/Product';
 import NotFound from '../pages/NotFound';
 import Privacy from '../pages/Privacy';
 import Terms from '../pages/TerminosCondiciones.jsx';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
 import { getAllProducts, getBrands, getCategories } from '../services/productService';
 import { trackPageView } from '../utils/ga4';
 
@@ -85,6 +87,26 @@ const router = createBrowserRouter([
       {
         path: 'privacidad',
         element: <Privacy />,
+      },
+      {
+        path: 'privacy',
+        element: <Privacy />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'nosotros',
+        element: <About />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
+      },
+      {
+        path: 'contacto',
+        element: <Contact />,
       },
       {
         path: 'terminos',

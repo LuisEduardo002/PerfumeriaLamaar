@@ -17,6 +17,54 @@ import useSEO from '../hooks/useSEO';
 import Faq from '../components/common/Faq';
 import { faqItems } from '../data/faq';
 
+const SITE_URL = 'https://lamaarperfum.store';
+
+function injectCatalogSchema(products) {
+  if (!products || products.length === 0) return;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": products.map((product, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": `${product.nombre} de ${product.marca}`,
+        "brand": {
+          "@type": "Brand",
+          "name": product.marca
+        },
+        "url": `${SITE_URL}/producto/${product.nombre
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/[\s_]+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '')}`,
+        "image": product.imagenes?.length ? product.imagenes[0] : product.imagen,
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": product.precio.toString(),
+          "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+        }
+      }
+    }))
+  };
+
+  const existing = document.getElementById('catalog-schema');
+  if (existing) existing.remove();
+
+  const script = document.createElement('script');
+  script.id = 'catalog-schema';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
 const CATALOG_STATE_KEY = 'lammar-catalog-state';
 
 export default function Catalog() {
@@ -58,6 +106,16 @@ export default function Catalog() {
     setSortBy,
     resetFilters,
   } = useProducts({}, catalogData);
+
+  // Inject Catalog ItemList schema for SEO
+  useEffect(() => {
+    if (products && products.length > 0) {
+      injectCatalogSchema(products.slice(0, 30)); // Limit to first 30 for performance
+    } else {
+      const catalogSchema = document.getElementById('catalog-schema');
+      if (catalogSchema) catalogSchema.remove();
+    }
+  }, [products]);
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const restoredScrollRef = useRef(false);

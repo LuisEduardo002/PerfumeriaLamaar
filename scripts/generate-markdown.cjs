@@ -256,6 +256,112 @@ LAMAAR PERFUM — Correo: amazingstoresoporte@gmail.com — WhatsApp: 304 642060
 `;
 
 fs.writeFileSync(path.join(outBase, 'privacidad.md'), privacyMd);
+fs.writeFileSync(path.join(outBase, 'privacy.md'), privacyMd);
+
+// --- About ---
+const aboutMd = `# Sobre LAMMAR — LAMAAR PERFUM
+
+> Perfumería exclusiva en Manizales, Colombia, con más de ${perfumes.length} perfumes 100% originales de diseñador y nicho.
+
+LAMMAR (nombre comercial LAMAAR PERFUM) es una perfumería exclusiva nacida en Manizales, Caldas, para acercar fragancias auténticas a toda Colombia sin intermediarios opacos, con asesoría honesta y envíos confiables. Atendemos lunes a sábado de 9:00 a 18:00 por WhatsApp y correo.
+
+## TL;DR: por qué LAMMAR
+
+- Más de ${perfumes.length} perfumes originales de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra y Xerjoff.
+- Garantía de autenticidad en cada fragancia: 100% originales, sin imitaciones.
+- Asesoría personalizada por WhatsApp al +57 304 6420608.
+- Envíos a toda Colombia con transportadora y seguimiento, desde Manizales.
+
+## 1. Nuestra historia
+
+LAMMAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando best-sellers como Yara, Asad y Hawas y, gracias a la confianza de nuestros primeros clientes, crecimos hasta superar las ${perfumes.length} referencias disponibles hoy.
+
+Operamos como vitrina digital: eliges en el catálogo, agregas al carrito y confirmas el pedido por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos.
+
+## 2. Qué hacemos — y qué no
+
+Somos curadores de fragancias. Cada ficha incluye marca, precio en COP, tamaño en ml, género, categoría y notas olfativas de salida, corazón y fondo.
+
+- Sí hacemos: asesoría por WhatsApp, envíos nacionales, cambios y garantías según la ley colombiana.
+- No hacemos: no vendemos réplicas, no pedimos pago dentro del sitio, no creamos cuentas obligatorias.
+
+## 3. Nuestros valores
+
+- **Autenticidad:** solo perfumes originales con lote verificable.
+- **Transparencia:** precios y stock visibles, sin letra pequeña oculta.
+- **Cercanía:** respuesta humana por WhatsApp, no bots evasivos.
+- **Responsabilidad:** tratamiento de datos mínimo y conforme a la ley colombiana.
+
+Un perfume es identidad: elegirlo merece tiempo, información clara y acompañamiento.
+
+## 4. Dónde estamos y cómo operamos
+
+Base logística en Manizales, Caldas — Centro Comercial Los Fundadores, Local 101, CP 170001. Despachamos a toda Colombia. Horario: lunes a sábado 9:00–18:00 (COT).
+
+**LAMAAR PERFUM — LAMMAR** — Manizales, Caldas, Colombia — amazingstoresoporte@gmail.com — +57 304 6420608
+
+## 5. Compromiso con agentes
+
+Para que IA y agentes puedan recomendarnos, publicamos catálogo completo, políticas de privacidad y términos, datos de contacto validados y estructura JSON-LD de tipo Organization y LocalBusiness. Sitemap y llms.txt actualizados.
+
+[Catálogo](${SITE_URL}/catalogo) · [Contacto](${SITE_URL}/contact) · [Privacidad](${SITE_URL}/privacy)
+`;
+
+fs.writeFileSync(path.join(outBase, 'about.md'), aboutMd);
+fs.writeFileSync(path.join(outBase, 'nosotros.md'), aboutMd);
+
+// --- Contact ---
+const contactMd = `# Contacto — LAMMAR
+
+> Atención al cliente desde Manizales para toda Colombia — WhatsApp +57 304 6420608 — amazingstoresoporte@gmail.com — Lun. a sáb. 9:00–18:00.
+
+¿Dudas sobre un perfume, tu pedido o un cambio? Escríbenos y te respondemos en horario laboral.
+
+## TL;DR: cómo contactarnos rápido
+
+- **WhatsApp preferente:** +57 304 6420608 (respuesta más rápida, Lun. a sáb. 9:00–18:00 COT).
+- **Correo:** amazingstoresoporte@gmail.com — responde en máximo 24 horas hábiles.
+- **Dirección operativa:** Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia.
+- **Para pedidos:** indica nombre, productos y ciudad para cotizar envío y confirmar disponibilidad.
+
+[WhatsApp directo](https://wa.me/573046420608) · [Correo](mailto:amazingstoresoporte@gmail.com)
+
+## 1. Datos oficiales de contacto
+
+**Nombre comercial:** LAMAAR PERFUM (marca pública: LAMMAR)
+**Dirección:** Centro Comercial Los Fundadores, Local 101, Manizales, Caldas 170001, Colombia
+**Coordenadas:** 5.0703, -75.5138
+**Teléfono / WhatsApp:** +57 304 6420608
+**Correo:** amazingstoresoporte@gmail.com
+**Horario:** Lunes a sábado 9:00–18:00 (COT)
+**Web:** ${SITE_URL}
+
+Estos datos coinciden con los publicados en nuestra ficha Organization/LocalBusiness JSON-LD y en el footer del sitio (NAP consistente).
+
+## 2. Qué atendemos por cada canal
+
+- **WhatsApp:** cotizaciones, confirmación de pedidos, seguimiento de envíos, asesoría de fragancias.
+- **Correo:** solicitudes formales, PQRS, derechos de datos personales, garantías y reclamaciones.
+- **Instagram / Facebook:** novedades y atención ligera.
+
+Incluye: nombre completo, número de WhatsApp, referencia del perfume (ej. “AL NOBLE AMEER de Lattafa 100 ml”) y ciudad de entrega.
+
+## 3. Tiempos de respuesta y envíos
+
+Respondemos WhatsApp en minutos dentro del horario laboral; correos en máximo 24 horas hábiles. Los envíos se despachan desde Manizales con tracking; los tiempos son estimados según ciudad (1–3 días capitales, 2–5 días resto).
+
+No procesamos pagos dentro del sitio. Los métodos se coordinan al confirmar el pedido por WhatsApp. Consulta [Términos y Condiciones](${SITE_URL}/terminos).
+
+## 4. Privacidad y datos
+
+Al contactarnos por WhatsApp o correo nos compartes voluntariamente datos personales para gestionar tu pedido. Solo los usamos para esa finalidad. Consulta nuestra [Política de Privacidad](${SITE_URL}/privacy).
+
+---
+*Temas relacionados: [Sobre nosotros](${SITE_URL}/about) · [Catálogo](${SITE_URL}/catalogo) · [Privacidad](${SITE_URL}/privacy)*
+`;
+
+fs.writeFileSync(path.join(outBase, 'contact.md'), contactMd);
+fs.writeFileSync(path.join(outBase, 'contacto.md'), contactMd);
 
 // --- Terms ---
 const termsMd = `# Términos y Condiciones — LAMMAR
@@ -361,6 +467,35 @@ LAMAAR PERFUM — Correo: amazingstoresoporte@gmail.com — Colombia
 
 fs.writeFileSync(path.join(outBase, 'terminos.md'), termsMd);
 
+// --- 404 ---
+const notFoundMd = `# 404 — Página no encontrada — LAMMAR
+
+> Lo sentimos, la página que estás buscando no existe o ha sido movida.
+
+La URL que solicitaste no corresponde a ninguna página de LAMMAR. Puede que el enlace esté desactualizado, que el producto haya sido retirado o que hayas escrito mal la dirección.
+
+## ¿Dónde ir ahora?
+
+- [Inicio](${SITE_URL}/) — Perfumería en Manizales, colecciones y fragancias destacadas
+- [Catálogo](${SITE_URL}/catalogo) — Listado completo de perfumes con filtros por marca, categoría y género
+- [Política de Privacidad](${SITE_URL}/privacidad) — Qué datos tratamos y con qué finalidad
+- [Términos y Condiciones](${SITE_URL}/terminos) — Condiciones de compra, envíos y devoluciones
+
+## Mapa del sitio y recursos para agentes
+
+- [Sitemap XML](${SITE_URL}/sitemap.xml) — Lista completa de URLs indexables
+- [llms.txt](${SITE_URL}/llms.txt) — Resumen del sitio para modelos de lenguaje
+- [OpenAPI](${SITE_URL}/openapi.json) — Especificación de la API
+
+Si llegaste aquí desde un enlace externo, por favor verifica la URL o utiliza el buscador del catálogo.
+
+---
+
+*Contacto: amazingstoresoporte@gmail.com — WhatsApp: +57 304 6420608 — Manizales, Caldas, Colombia*
+`;
+
+fs.writeFileSync(path.join(outBase, '404.md'), notFoundMd);
+
 // --- Product pages ---
 for (const p of perfumes) {
   const md = `# ${p.nombre} — ${p.marca} — LAMMAR
@@ -388,4 +523,4 @@ Agrega al carrito y confirma tu pedido por WhatsApp. Envíos a toda Colombia.
   fs.writeFileSync(path.join(outProductoBase, `${p.slug}.md`), md);
 }
 
-console.log(`✓ Markdown generado: ${perfumes.length} productos + 4 páginas estáticas en ${outBase}`);
+console.log(`✓ Markdown generado: ${perfumes.length} productos + 8 páginas estáticas (home, catalogo, privacidad/privacy, terminos, about/nosotros, contact/contacto, 404) en ${outBase}`);

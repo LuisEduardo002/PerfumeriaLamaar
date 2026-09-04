@@ -92,3 +92,101 @@ describe('Machine-readable files', () => {
     assert.ok(exists, 'llms.txt should exist');
   });
 });
+
+describe('Homepage structured data and metadata', () => {
+  const indexPath = path.join(distDir, 'index.html');
+  let indexHtml = '';
+
+  it('index.html exists', () => {
+    assert.ok(fs.existsSync(indexPath), 'dist/index.html should exist');
+    indexHtml = fs.readFileSync(indexPath, 'utf8');
+  });
+
+  it('has canonical URL', () => {
+    assert.ok(indexHtml.includes('<link rel="canonical" href="https://lamaarperfum.store/" />'),
+      'should have canonical link with absolute URL');
+  });
+
+  it('has html lang attribute', () => {
+    assert.ok(indexHtml.includes('<html lang="es">'), 'should have lang="es" on html element');
+  });
+
+  it('has og:type meta tag', () => {
+    assert.ok(indexHtml.includes('<meta property="og:type" content="website" />'),
+      'should have og:type meta tag');
+  });
+
+  it('has absolute og:image URL', () => {
+    assert.ok(indexHtml.includes('<meta property="og:image" content="https://lamaarperfum.store/images/og-image.jpg" />'),
+      'should have absolute og:image URL');
+  });
+
+  it('has Organization JSON-LD as primary identity', () => {
+    assert.ok(indexHtml.includes('"@type": ["Organization", "LocalBusiness", "OnlineStore"]'),
+      'should have Organization as primary @type in JSON-LD');
+  });
+
+  it('has logo in Organization JSON-LD', () => {
+    assert.ok(indexHtml.includes('"logo": "https://lamaarperfum.store/images/og-image.jpg"'),
+      'should have logo property in Organization JSON-LD');
+  });
+
+  it('has og:url and og:site_name', () => {
+    assert.ok(indexHtml.includes('<meta property="og:url" content="https://lamaarperfum.store/" />'),
+      'should have og:url');
+    assert.ok(indexHtml.includes('<meta property="og:site_name" content="LAMMAR" />'),
+      'should have og:site_name');
+  });
+});
+
+describe('Trust anchor pages (About, Contact, Privacy)', () => {
+  const checkAnchor = (file, minLength = 500) => {
+    const p = path.join(markdownBase, file);
+    assert.ok(fs.existsSync(p), `${file} should exist`);
+    const content = fs.readFileSync(p, 'utf8');
+    assert.ok(content.length >= minLength, `${file} should have at least ${minLength} chars (got ${content.length})`);
+    return content;
+  };
+
+  it('generates markdown for about', () => {
+    const c = checkAnchor('about.md');
+    assert.ok(c.includes('Sobre LAMMAR') || c.includes('LAMMAR'), 'about should contain brand');
+    assert.ok(c.includes('Manizales'), 'about should mention Manizales');
+  });
+
+  it('generates markdown for nosotros (ES alias)', () => {
+    checkAnchor('nosotros.md');
+  });
+
+  it('generates markdown for contact', () => {
+    const c = checkAnchor('contact.md');
+    assert.ok(c.includes('Contacto') || c.includes('contact'), 'contact should have title');
+    assert.ok(c.includes('304 6420608'), 'contact should contain phone');
+    assert.ok(c.includes('amazingstoresoporte@gmail.com'), 'contact should contain email');
+    assert.ok(c.includes('Manizales'), 'contact should contain address');
+  });
+
+  it('generates markdown for contacto (ES alias)', () => {
+    checkAnchor('contacto.md');
+  });
+
+  it('generates markdown for privacy (EN alias)', () => {
+    const c = checkAnchor('privacy.md');
+    assert.ok(c.includes('Política de Privacidad') || c.includes('Privacy'), 'privacy should contain title');
+  });
+
+  it('sitemap includes trust anchor URLs', () => {
+    const p = path.join(distDir, 'sitemap.xml');
+    const sitemap = fs.readFileSync(p, 'utf8');
+    for (const url of ['/about', '/contact', '/privacy', '/privacidad']) {
+      assert.ok(sitemap.includes(`<loc>https://lamaarperfum.store${url}</loc>`), `sitemap should contain ${url}`);
+    }
+  });
+
+  it('dist index fallback contains trust anchor links', () => {
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    assert.ok(indexHtml.includes('href="/about"'), 'index fallback should link to /about');
+    assert.ok(indexHtml.includes('href="/contact"'), 'index fallback should link to /contact');
+    assert.ok(indexHtml.includes('href="/privacy"'), 'index fallback should link to /privacy');
+  });
+});

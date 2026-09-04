@@ -9,7 +9,9 @@ LAMMAR (LAMAAR PERFUM) es una perfumería exclusiva con un catálogo de más de 
 - [Inicio](/): colecciones para caballero y dama, fragancias destacadas y ventajas de la tienda.
 - [Catálogo](/catalogo): listado completo de perfumes con búsqueda y filtros por marca, categoría y género.
 - [Página de producto](/producto/al-noble-ameer): precio, tamaño (ml), notas olfativas de salida/corazón/fondo, disponibilidad y preguntas frecuentes. Cada perfume tiene su propia URL amigable.
-- [Política de Privacidad](/privacidad): qué datos se tratan, con qué finalidad y derechos de los titulares.
+- [Sobre nosotros](/about): historia, valores y compromiso con la autenticidad — alias en español [/nosotros](/nosotros).
+- [Contacto](/contact): WhatsApp, correo, dirección, horario y tiempos de respuesta — alias en español [/contacto](/contacto).
+- [Política de Privacidad](/privacy): qué datos se tratan, con qué finalidad y derechos de los titulares — también en [/privacidad](/privacidad).
 - [Términos y Condiciones](/terminos): condiciones de compra, envíos, cambios y devoluciones.
 
 ## Datos clave

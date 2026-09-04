@@ -20,7 +20,7 @@ function readEnvValue(key) {
 const SITE_URL = (
   process.env.VITE_SITE_URL ||
   readEnvValue('VITE_SITE_URL') ||
-  'https://lammar.com'
+  'https://lamaarperfum.store'
 ).replace(/\/+$/, '');
 
 const slugify = (text) =>
@@ -37,6 +37,11 @@ const slugify = (text) =>
 const staticRoutes = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
   { loc: '/catalogo', priority: '0.9', changefreq: 'daily' },
+  { loc: '/about', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/nosotros', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/contacto', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/privacy', priority: '0.3', changefreq: 'yearly' },
   { loc: '/privacidad', priority: '0.3', changefreq: 'yearly' },
   { loc: '/terminos', priority: '0.3', changefreq: 'yearly' },
 ];

@@ -116,7 +116,7 @@ export default async function handler(request) {
         status: 406,
         headers: {
           'Content-Type': 'text/plain; charset=utf-8',
-          'Vary': 'Accept',
+          'Vary': 'Accept, Accept-Encoding',
           'Cache-Control': 'no-store',
         },
       }
@@ -124,32 +124,39 @@ export default async function handler(request) {
   }
 
   if (chosen === 'text/html') {
-    // Serve the SPA shell (index.html) with Vary header
+    // Determine if this is a known HTML route
+    const knownStatic = ['/', '/catalogo', '/privacidad', '/privacy', '/terminos', '/about', '/nosotros', '/contact', '/contacto'];
+    const isKnownStatic = knownStatic.includes(pathname);
+    const isProductRoute = pathname.startsWith('/producto/');
+    let isKnown = isKnownStatic;
+
+    // For product routes, check if the markdown file exists to determine if product exists
+    if (isProductRoute) {
+      const mdPath = getMarkdownPath(pathname);
+      const mdCheckUrl = new URL(mdPath, request.url);
+      try {
+        const check = await fetch(mdCheckUrl.toString(), { method: 'HEAD', headers: { 'x-middleware-bypass': '1' } });
+        isKnown = check.ok;
+      } catch {
+        isKnown = false;
+      }
+    } else if (!isKnown) {
+      // Unknown path (not in knownStatic and not product) -> 404
+      isKnown = false;
+    }
+
     const htmlUrl = new URL('/index.html', request.url);
     const htmlResponse = await fetch(htmlUrl.toString(), {
       headers: { 'x-middleware-bypass': '1' },
     });
 
     const headers = new Headers(htmlResponse.headers);
-    const existingVary = headers.get('Vary');
-    if (existingVary) {
-      const parts = existingVary.split(',').map((s) => s.trim().toLowerCase());
-      if (!parts.includes('accept')) {
-        headers.set('Vary', existingVary + ', Accept');
-      }
-    } else {
-      headers.set('Vary', 'Accept');
-    }
-    // Ensure Vary also includes Accept-Encoding if present
-    const vary = headers.get('Vary') || '';
-    if (!vary.toLowerCase().includes('accept-encoding') && htmlResponse.headers.get('Content-Encoding')) {
-      headers.set('Vary', vary ? vary + ', Accept-Encoding' : 'Accept, Accept-Encoding');
-    }
+    headers.set('Vary', 'Accept, Accept-Encoding');
     headers.set('Link', `<${pathname}>; rel="alternate"; type="text/markdown"`);
 
     const body = await htmlResponse.arrayBuffer();
     return new Response(body, {
-      status: htmlResponse.status,
+      status: isKnown ? htmlResponse.status : 404,
       headers,
     });
   }
@@ -168,14 +175,29 @@ export default async function handler(request) {
   }
 
   if (!mdResponse || !mdResponse.ok) {
-    // Fallback to HTML if markdown not found (e.g., unknown product slug)
+    // Markdown not found — check if this is a known product or static route
+    // If unknown, serve the 404 markdown with 404 status
+    const notFoundMdUrl = new URL('/__markdown/404.md', request.url);
+    try {
+      const notFoundResponse = await fetch(notFoundMdUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
+      if (notFoundResponse.ok) {
+        const body = await notFoundResponse.arrayBuffer();
+        const headers = new Headers();
+        headers.set('Content-Type', 'text/markdown; charset=utf-8');
+        headers.set('Vary', 'Accept, Accept-Encoding');
+        headers.set('Cache-Control', 'public, max-age=60');
+        headers.set('Link', `<${pathname}>; rel="alternate"; type="text/html"`);
+        return new Response(body, { status: 404, headers });
+      }
+    } catch {}
+    // Fallback to HTML 404 if markdown 404 not available
     const htmlUrl = new URL('/index.html', request.url);
     const fallback = await fetch(htmlUrl.toString(), { headers: { 'x-middleware-bypass': '1' } });
     const headers = new Headers(fallback.headers);
-    headers.set('Vary', 'Accept');
+    headers.set('Vary', 'Accept, Accept-Encoding');
     headers.set('Link', `<${pathname}>; rel="alternate"; type="text/markdown"`);
     const body = await fallback.arrayBuffer();
-    return new Response(body, { status: fallback.status, headers });
+    return new Response(body, { status: 404, headers });
   }
 
   const mdBody = await mdResponse.arrayBuffer();

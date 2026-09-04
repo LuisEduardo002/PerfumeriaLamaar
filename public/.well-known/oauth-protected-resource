@@ -1,0 +1,7 @@
+{
+  "resource": "https://lamaarperfum.store",
+  "authorization_servers": ["https://lamaarperfum.store/oauth"],
+  "scopes_supported": ["catalog:read", "product:read", "cart:read", "order:write"],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://lamaarperfum.store/openapi.json"
+}
