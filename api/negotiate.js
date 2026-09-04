@@ -297,10 +297,36 @@ export default async function handler(request) {
       isKnown = false;
     }
 
-    const htmlUrl = new URL('/index.html', request.url);
-    const htmlResponse = await fetch(htmlUrl.toString(), {
-      headers: { 'x-middleware-bypass': '1' },
-    });
+    // Try prerendered HTML for product/catalog first (price visible without JS)
+    let htmlResponse = null;
+    const tryPrerender = isProductRoute || pathname === '/catalogo' || pathname === '/catalogo/';
+    if (tryPrerender && isKnown) {
+      const prerenderCandidates = [
+        new URL(`${pathname.replace(/\/$/, '')}/index.html`, request.url).toString(),
+        new URL(pathname, request.url).toString(),
+      ];
+      for (const cand of prerenderCandidates) {
+        try {
+          const r = await fetch(cand, { headers: { 'x-middleware-bypass': '1' } });
+          // Check if it's actually prerendered (should contain Preis/price and JSON-LD Product)
+          const ct = r.headers.get('content-type') || '';
+          if (r.ok && ct.includes('text/html')) {
+            const clone = r.clone();
+            const text = await clone.text();
+            if (text.includes('itemprop="price"') || text.includes('"@type": "Product"')) {
+              htmlResponse = r;
+              break;
+            }
+          }
+        } catch {}
+      }
+    }
+    if (!htmlResponse) {
+      const htmlUrl = new URL('/index.html', request.url);
+      htmlResponse = await fetch(htmlUrl.toString(), {
+        headers: { 'x-middleware-bypass': '1' },
+      });
+    }
 
     const headers = new Headers(htmlResponse.headers);
     headers.set('Vary', 'Accept, Accept-Encoding');

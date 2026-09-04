@@ -521,6 +521,11 @@ Agrega al carrito y confirma tu pedido por WhatsApp. Envíos a toda Colombia.
 *Perfumería exclusiva en Manizales, Colombia — LAMMAR — WhatsApp: +57 304 6420608 — amazingstoresoporte@gmail.com*
 `;
   fs.writeFileSync(path.join(outProductoBase, `${p.slug}.md`), md);
+  // Brand-prefixed alias e.g. lattafa-yara for yara (user example URLs)
+  const brandSlug = slugify(`${p.marca} ${p.nombre}`);
+  if (brandSlug !== p.slug) {
+    fs.writeFileSync(path.join(outProductoBase, `${brandSlug}.md`), md);
+  }
 }
 
-console.log(`✓ Markdown generado: ${perfumes.length} productos + 8 páginas estáticas (home, catalogo, privacidad/privacy, terminos, about/nosotros, contact/contacto, 404) en ${outBase}`);
+console.log(`✓ Markdown generado: ${perfumes.length} productos + 8 páginas estáticas (home, catalogo, privacidad/privacy, terminos, about/nosotros, contact/contacto, 404) en ${outBase} (+brand aliases)`);

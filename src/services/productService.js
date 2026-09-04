@@ -41,10 +41,26 @@ export function getAllProducts() {
  * @returns {Promise<Object|undefined>} El producto encontrado o undefined
  */
 export function getProductById(idOrSlug) {
-  const raw = String(idOrSlug);
+  const raw = String(idOrSlug).toLowerCase().trim();
   const byLegacyId = perfumes.find((p) => String(p.id) === raw);
   if (byLegacyId) return Promise.resolve(byLegacyId);
-  const product = perfumes.find((p) => slugify(p.nombre) === raw);
+  // Exact slug (nombre only) e.g. "yara"
+  let product = perfumes.find((p) => slugify(p.nombre) === raw);
+  if (product) return Promise.resolve(product);
+  // Brand-prefixed slug e.g. "lattafa-yara" -> try stripping brand
+  // Also handles "lattafa-rasasi-hawas" etc: find product where slug ends with raw's suffix
+  const parts = raw.split('-');
+  // Try all suffixes: for "lattafa-yara" try "yara", for "rasasi-hawas-tropical" try "hawas-tropical" and "tropical"
+  for (let i = 1; i < parts.length; i++) {
+    const suffix = parts.slice(i).join('-');
+    product = perfumes.find((p) => slugify(p.nombre) === suffix);
+    if (product) return Promise.resolve(product);
+    // Also try with brand+nombre slug
+    product = perfumes.find((p) => slugify(`${p.marca} ${p.nombre}`) === raw);
+    if (product) return Promise.resolve(product);
+  }
+  // Final fallback: slugify with brand included
+  product = perfumes.find((p) => slugify(`${p.marca} ${p.nombre}`) === raw);
   return Promise.resolve(product);
 }
 

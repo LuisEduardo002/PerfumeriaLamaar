@@ -273,3 +273,88 @@ describe('Brand name discoverability (NAP + apex redirect)', () => {
     assert.ok(h3Matches.some(t => t.includes('dama') && t.includes('elegante')), 'H3 Dama should be keyword-rich');
   });
 });
+
+describe('Prerendered product HTML (price visible without JS)', () => {
+  // Helper to get 10 sample slugs
+  const getSampleSlugs = () => {
+    const src = fs.readFileSync(path.join(__dirname, '..', 'src/data/perfumes.js'), 'utf8');
+    const names = [...src.matchAll(/nombre:\s*"([^"]+)"/g)].map(m => m[1]).slice(0, 10);
+    const slugify = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    return names.map(n => ({ name: n, slug: slugify(n) }));
+  };
+
+  it('all catalog links point to prerendered product pages', () => {
+    const catalogHtml = fs.readFileSync(path.join(distDir, 'catalogo/index.html'), 'utf8');
+    const links = [...catalogHtml.matchAll(/href="\/producto\/([^"]+)"/g)].map(m => m[1]);
+    assert.ok(links.length >= 240, `catalog should have >=240 product links, got ${links.length}`);
+    // Check that every product link has a corresponding prerendered file
+    const missing = links.filter(slug => !fs.existsSync(path.join(distDir, 'producto', slug, 'index.html')));
+    assert.equal(missing.length, 0, `all catalog links should have prerendered HTML, missing: ${missing.slice(0,3).join(', ')}`);
+  });
+
+  it('10 sample product pages have visible price and JSON-LD matching', () => {
+    const samples = getSampleSlugs();
+    for (const { name, slug } of samples) {
+      const p = path.join(distDir, 'producto', slug, 'index.html');
+      assert.ok(fs.existsSync(p), `prerendered HTML should exist for ${slug}`);
+      const html = fs.readFileSync(p, 'utf8');
+      assert.ok(html.includes(name), `${slug} should contain name ${name}`);
+      assert.ok(html.includes('itemprop="price"'), `${slug} should have itemprop price visible`);
+      assert.ok(html.includes('"@type": "Product"'), `${slug} should have Product JSON-LD`);
+      const priceMatch = html.match(/itemprop="price" content="(\d+)"/);
+      const jsonPriceMatch = html.match(/"price": "(\d+)"/);
+      assert.ok(priceMatch, `${slug} should have visible price content`);
+      assert.ok(jsonPriceMatch, `${slug} should have JSON-LD price`);
+      assert.equal(priceMatch[1], jsonPriceMatch[1], `${slug} visible price and JSON-LD price must match`);
+      assert.ok(html.includes('itemprop="brand"'), `${slug} should have brand`);
+      assert.ok(html.includes('availability'), `${slug} should have availability`);
+      assert.ok(html.includes(`rel="canonical" href="https://lamaarperfum.store/producto/${slug}"`), `${slug} should have canonical`);
+      assert.ok(html.includes('<h1'), `${slug} should have H1`);
+      assert.ok(html.includes('property="og:title"'), `${slug} should have og:title`);
+      assert.ok(html.includes('property="og:image"'), `${slug} should have og:image`);
+      assert.ok(html.includes('alt="'), `${slug} should have alt text`);
+      assert.ok(html.includes('SKU:'), `${slug} should have SKU`);
+      assert.ok(html.includes('COP'), `${slug} should have COP currency`);
+    }
+  });
+
+  it('product pages handle brand-prefixed aliases (lattafa-yara etc.)', () => {
+    // User example: /producto/lattafa-yara should also have price
+    const checks = [
+      { slug: 'lattafa-yara', canonical: 'yara' },
+      { slug: 'lattafa-asad', canonical: 'asad' },
+    ];
+    for (const { slug, canonical } of checks) {
+      const p = path.join(distDir, 'producto', slug, 'index.html');
+      if (fs.existsSync(p)) {
+        const html = fs.readFileSync(p, 'utf8');
+        assert.ok(html.includes('itemprop="price"'), `${slug} alias should have price`);
+        assert.ok(html.includes(`rel="canonical" href="https://lamaarperfum.store/producto/${canonical}"`), `${slug} canonical should point to ${canonical}`);
+      }
+    }
+  });
+
+  it('Google Merchant feed exists and is valid', () => {
+    const feedPath = path.join(distDir, 'feed.xml');
+    assert.ok(fs.existsSync(feedPath), 'feed.xml should exist');
+    const feed = fs.readFileSync(feedPath, 'utf8');
+    assert.ok(feed.includes('<rss'), 'feed should be RSS');
+    assert.ok(feed.includes('<g:price>'), 'feed should have price');
+    assert.ok(feed.includes('<g:brand>'), 'feed should have brand');
+    assert.ok(feed.includes('<g:availability>'), 'feed should have availability');
+    const jsonFeed = JSON.parse(fs.readFileSync(path.join(distDir, 'feed.json'), 'utf8'));
+    assert.ok(jsonFeed.length >= 240, `feed.json should have 240+ entries, got ${jsonFeed.length}`);
+  });
+
+  it('sitemap includes all product URLs and is not blocked by robots', () => {
+    const sitemap = fs.readFileSync(path.join(distDir, 'sitemap.xml'), 'utf8');
+    const robots = fs.readFileSync(path.join(path.dirname(distDir), 'public', 'robots.txt'), 'utf8');
+    assert.ok(!robots.includes('Disallow: /producto/'), 'robots should not block /producto/');
+    assert.ok(!robots.includes('Disallow: /catalogo'), 'robots should not block /catalogo');
+    // Check 10 product URLs in sitemap
+    const samples = getSampleSlugs();
+    for (const { slug } of samples) {
+      assert.ok(sitemap.includes(`<loc>https://lamaarperfum.store/producto/${slug}</loc>`), `sitemap should contain /producto/${slug}`);
+    }
+  });
+});
