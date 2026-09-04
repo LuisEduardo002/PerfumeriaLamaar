@@ -88,37 +88,37 @@ function formatPrice(value) {
   return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value);
 }
 
-// --- Home ---
-const homeMd = `# LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador
+// --- Home --- SEO: perfumería Manizales originales elegante calidad
+const homeMd = `# Perfumería en Manizales — Perfumes Originales, Elegantes y de Calidad | LAMMAR
 
-> Perfumería exclusiva en Manizales, Colombia. Perfumes 100% originales de diseñador, árabes y fragancias nicho.
+> Perfumería elegante en Manizales, Colombia. Perfumes 100% originales y de calidad — diseñador, árabes y nicho. Elegancia y originalidad garantizada en Manizales.
 
-## Encuentra la esencia que te define
+## Perfumes Originales de Calidad en Manizales
 
-Descubre nuestra curaduría de perfumes de diseñador y fragancias nicho. La máxima expresión de lujo y personalidad a un clic.
+En LAMMAR Manizales encuentras perfumes 100% originales, elegantes y de calidad de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino. Cada fragancia elegante en Manizales cuenta con garantía de autenticidad y calidad.
 
-**Colección Exclusiva 2026**
+**Colección Exclusiva 2026 — Perfumes Originales en Manizales**
 
-[Explorar Catálogo](${SITE_URL}/catalogo)
+[Explorar Catálogo de Perfumes Originales en Manizales](${SITE_URL}/catalogo)
 
-## Fragancias Nicho
+## Fragancias Nicho Elegantes — Originales y de Calidad
 
-Aromas únicos importados directamente para ti. 100% Originales — Envío Garantizado.
+Aromas únicos, originales y de calidad importados para Manizales. 100% Originales, elegantes — Envío Garantizado a Manizales.
 
-## Elige tu colección
+## Fragancias Elegantes para Todos los Estilos en Manizales
 
-- **Caballero** — [Explorar fragancias](${SITE_URL}/catalogo?genero=Masculino)
-- **Dama** — [Explorar fragancias](${SITE_URL}/catalogo?genero=Femenino)
+- **Perfumes Originales para Caballero — Original y Elegante** — [Explorar fragancias elegantes para caballero en Manizales](${SITE_URL}/catalogo?genero=Masculino)
+- **Perfumes Originales para Dama Elegante** — [Explorar fragancias elegantes para dama en Manizales](${SITE_URL}/catalogo?genero=Femenino)
 
-## Fragancias Destacadas
+## Perfumes Originales de Calidad Más Buscados en Manizales
 
-Las opciones más cotizadas y queridas por nuestros clientes. Descubre en el [catálogo](${SITE_URL}/catalogo) más de ${perfumes.length} fragancias disponibles.
+Las opciones elegantes y originales más cotizadas en Manizales. Descubre en el [catálogo](${SITE_URL}/catalogo) más de ${perfumes.length} fragancias originales y de calidad disponibles en nuestra perfumería en Manizales.
 
-## Por qué elegir LAMMAR
+## ¿Por Qué Elegir Nuestra Perfumería Elegante en Manizales?
 
-- **100% Originales** — Garantía directa de autenticidad en cada fragancia.
-- **Envíos Nacionales** — Despachos rápidos a toda Colombia con seguimiento.
-- **Asesoría Personalizada** — Te ayudamos a encontrar tu perfume ideal por WhatsApp al +57 304 6420608.
+- **Perfumes 100% Originales — Calidad Garantizada en Manizales** — Garantía directa de autenticidad, elegancia y calidad en cada fragancia original.
+- **Envíos de Perfumes Originales en Manizales y Colombia** — Despachos rápidos y de calidad a Manizales y toda Colombia con seguimiento.
+- **Asesoría Elegante y Personalizada en Manizales** — Te ayudamos a elegir tu perfume original elegante y de calidad por WhatsApp al +57 304 6420608 en Manizales.
 
 ---
 

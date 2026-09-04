@@ -13,7 +13,11 @@ describe('Markdown generation', () => {
     const p = path.join(markdownBase, 'home.md');
     assert.ok(fs.existsSync(p), 'home.md should exist');
     const content = fs.readFileSync(p, 'utf8');
-    assert.ok(content.includes('# LAMMAR'), 'should contain H1');
+    assert.ok(content.includes('LAMMAR'), 'should contain brand LAMMAR');
+    assert.ok(content.includes('Perfumería') && content.toLowerCase().includes('manizales'), 'should contain Perfumería Manizales');
+    assert.ok(content.toLowerCase().includes('originales'), 'should contain originales');
+    assert.ok(content.toLowerCase().includes('elegante'), 'should contain elegante');
+    assert.ok(content.toLowerCase().includes('calidad'), 'should contain calidad');
     assert.ok(content.includes('Manizales'), 'should mention Manizales');
     assert.ok(content.length > 500, 'should be substantial (500+ chars)');
   });
@@ -237,9 +241,32 @@ describe('Brand name discoverability (NAP + apex redirect)', () => {
   it('brand LAMMAR appears in key SEO signals', () => {
     const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
     assert.ok(indexHtml.includes('<title>LAMMAR'), 'title should start with LAMMAR');
-    assert.ok(indexHtml.includes('LAMMAR | Perfumería en Manizales'), 'H1/fallback should contain brand');
+    assert.ok(indexHtml.includes('Perfumería'), 'fallback should contain Perfumería');
     assert.ok(indexHtml.includes('"name": "LAMMAR"'), 'JSON-LD name should be LAMMAR');
     assert.ok(indexHtml.includes('"alternateName": "LAMAAR PERFUM"'));
     assert.ok(indexHtml.includes('content="LAMMAR"') || indexHtml.includes('og:site_name" content="LAMMAR"'), 'og:site_name should be LAMMAR');
+  });
+
+  it('homepage H1 is keyword-rich for perfumería Manizales originales elegante calidad', () => {
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    // Check fallback H1 (SSR) and title contain target keywords
+    assert.match(indexHtml, /<h1[^>]*>[^<]*Perfumería[^<]*Manizales[^<]*Originales[^<]*Elegantes[^<]*Calidad[^<]*<\/h1>/i, 'H1 should contain Perfumería Manizales Originales Elegantes Calidad');
+    const lower = indexHtml.toLowerCase();
+    assert.ok(lower.includes('perfumería') && lower.includes('manizales'), 'should have perfumería Manizales');
+    assert.ok(lower.includes('originales'), 'should have originales');
+    assert.ok(lower.includes('elegante'), 'should have elegante');
+    assert.ok(lower.includes('calidad'), 'should have calidad');
+  });
+
+  it('homepage has proper H2/H3 hierarchy with Manizales keywords', () => {
+    const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+    // Count H2s with Manizales
+    const h2Matches = [...indexHtml.matchAll(/<h2[^>]*>(.*?)<\/h2>/gi)].map(m => m[1].toLowerCase());
+    assert.ok(h2Matches.length >= 3, `should have at least 3 H2s, got ${h2Matches.length}`);
+    const h2WithManizales = h2Matches.filter(t => t.includes('manizales')).length;
+    assert.ok(h2WithManizales >= 2, `at least 2 H2s should mention Manizales, got ${h2WithManizales}`);
+    const h3Matches = [...indexHtml.matchAll(/<h3[^>]*>(.*?)<\/h3>/gi)].map(m => m[1].toLowerCase());
+    assert.ok(h3Matches.some(t => t.includes('caballero') && t.includes('original')), 'H3 Caballero should be keyword-rich');
+    assert.ok(h3Matches.some(t => t.includes('dama') && t.includes('elegante')), 'H3 Dama should be keyword-rich');
   });
 });

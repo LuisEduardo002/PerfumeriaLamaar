@@ -14,9 +14,9 @@ import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   useSEO({
-    title: 'LAMMAR | Perfumería en Manizales — Perfumes Originales de Diseñador',
+    title: 'LAMMAR | Perfumería Elegante en Manizales — Perfumes 100% Originales y de Calidad',
     description:
-      'Perfumería exclusiva en Manizales, Colombia. Descubre perfumes originales de diseñador, árabes y fragancias nicho en LAMMAR. Encuentra tu esencia ideal y ordena directamente por WhatsApp.',
+      'Perfumería elegante en Manizales con perfumes 100% originales y de calidad. Diseñador, árabes y nicho en LAMMAR Manizales. Elegancia y originalidad garantizada. Pedidos por WhatsApp.',
     canonical: '/',
   });
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -48,14 +48,15 @@ export default function Home() {
                 <Sparkles className="w-3 h-3" /> Colección Exclusiva 2026
               </div>
 
-              {/* Título un poco más pequeño en móvil */}
-              <h1 className="text-3xl font-serif font-bold leading-tight text-[#111111] md:text-6xl">
-                Encuentra la esencia que te define
+              {/* H1 optimizado SEO local: perfumería Manizales originales elegante calidad */}
+              <h1 className="text-3xl font-serif font-bold leading-tight text-[#111111] md:text-[52px] md:leading-[1.05]">
+                Perfumería en Manizales — Perfumes Originales, Elegantes y de Calidad
               </h1>
+              <p className="text-sm font-semibold tracking-[0.18em] uppercase text-[#4B1E28] -mt-1">LAMMAR — Elegancia y Originalidad</p>
 
               {/* Descripción oculta en móvil ('hidden md:block') */}
               <p className="hidden md:block text-lg text-slate-600 font-light leading-relaxed">
-                Descubre nuestra curaduría de perfumes de diseñador y fragancias nicho. La máxima expresión de lujo y personalidad a un clic.
+                Más de 240 perfumes 100% originales de diseñador, árabes y nicho en Manizales. Calidad garantizada y elegancia en cada fragancia.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-1 md:pt-2 justify-center md:justify-start"> {/* Botón centrado en móvil */}
@@ -77,8 +78,8 @@ export default function Home() {
               <div className="relative flex h-96 w-80 flex-col justify-between rounded-3xl border border-[#C8A450]/40 bg-gradient-to-br from-[#F6F0E3]/90 to-white/90 p-8 shadow-2xl backdrop-blur-sm"> {/* Un poco transparente para ver el fondo */}
                 <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">LAMMAR Essential</span>
                 <div>
-                  <h2 className="font-serif text-3xl font-bold text-[#111111]">Fragancias Nicho</h2>
-                  <p className="text-sm text-slate-500 mt-2">Aromas únicos importados directamente para ti.</p>
+                  <h2 className="font-serif text-3xl font-bold text-[#111111]">Fragancias Nicho Elegantes</h2>
+                  <p className="text-sm text-slate-500 mt-2">Aromas únicos, originales y de calidad importados para Manizales.</p>
                 </div>
                 <div className="pt-4 border-t border-slate-200/50 flex justify-between items-center text-xs text-slate-600">
                   <span>100% Originales</span>
@@ -93,25 +94,25 @@ export default function Home() {
       <section className="bg-[#111111] py-14 md:py-20">
         <Container>
           <div className="mb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#C8A450]">Encuentra tu esencia</p>
-            <h2 className="mt-3 font-serif text-3xl text-white md:text-4xl">Elige tu colección</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#C8A450]">Elegancia y originalidad en Manizales</p>
+            <h2 className="mt-3 font-serif text-3xl text-white md:text-4xl">Fragancias Elegantes para Todos los Estilos en Manizales</h2>
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             <Link to="/catalogo?genero=Masculino" className="group relative isolate min-h-64 overflow-hidden rounded-3xl border border-[#C8A450]/50 md:min-h-80">
               <img src={caballeroImage} alt="Colección de perfumes para caballero" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#111111]/95 via-[#111111]/55 to-transparent" />
               <div className="relative flex h-full min-h-64 flex-col justify-end p-7 md:min-h-80 md:p-9">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C8A450]">Colección</p>
-                <h3 className="mt-2 font-serif text-4xl text-white">Caballero</h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C8A450]">Colección Original</p>
+                <h3 className="mt-2 font-serif text-4xl text-white">Caballero — Original y Elegante</h3>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm text-[#FAF9F6] transition group-hover:text-[#C8A450]">Explorar fragancias <ArrowRight className="h-4 w-4" /></span>
               </div>
             </Link>
             <Link to="/catalogo?genero=Femenino" className="group relative isolate min-h-64 overflow-hidden rounded-3xl border border-[#C8A450]/50 md:min-h-80">
-              <img src={damaImage} alt="Colección de perfumes para dama" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+              <img src={damaImage} alt="Colección de perfumes para dama elegante en Manizales" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#4B1E28]/95 via-[#4B1E28]/60 to-transparent" />
               <div className="relative flex h-full min-h-64 flex-col justify-end p-7 md:min-h-80 md:p-9">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C8A450]">Colección</p>
-                <h3 className="mt-2 font-serif text-4xl text-white">Dama</h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C8A450]">Colección Original</p>
+                <h3 className="mt-2 font-serif text-4xl text-white">Dama — Elegante y Original</h3>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm text-[#FAF9F6] transition group-hover:text-[#C8A450]">Explorar fragancias <ArrowRight className="h-4 w-4" /></span>
               </div>
             </Link>
@@ -126,8 +127,8 @@ export default function Home() {
       <section className="bg-[#FAF9F6] py-20">
         <Container>
           <SectionTitle
-            title="Fragancias Destacadas"
-            subtitle="Las opciones más cotizadas y queridas por nuestros clientes."
+            title="Perfumes Originales de Calidad Más Buscados en Manizales"
+            subtitle="Elegancia y originalidad garantizada — los más elegidos en nuestra perfumería en Manizales."
             centered
           />
           <FeaturedProductsCarousel products={featuredProducts} loading={loadingProducts} />
@@ -151,8 +152,8 @@ export default function Home() {
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-[#111111]">100% Originales</h3>
-                <p className="text-xs text-slate-500 mt-1">Garantía directa de autenticidad en cada fragancia.</p>
+                <h3 className="font-semibold text-[#111111]">Perfumes 100% Originales — Calidad Garantizada</h3>
+                <p className="text-xs text-slate-500 mt-1">Garantía directa de autenticidad y calidad elegante en cada fragancia original.</p>
               </div>
             </div>
 
@@ -161,8 +162,8 @@ export default function Home() {
                 <Truck className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-[#111111]">Envíos Nacionales</h3>
-                <p className="text-xs text-slate-500 mt-1">Despachos rápidos a toda Colombia con seguimiento.</p>
+                <h3 className="font-semibold text-[#111111]">Envíos de Perfumes Originales en Manizales y Colombia</h3>
+                <p className="text-xs text-slate-500 mt-1">Despachos rápidos y de calidad a Manizales y toda Colombia con seguimiento.</p>
               </div>
             </div>
 
@@ -171,8 +172,8 @@ export default function Home() {
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-[#111111]">Asesoría Personalizada</h3>
-                <p className="text-xs text-slate-500 mt-1">Te ayudamos a encontrar tu perfume ideal por WhatsApp.</p>
+                <h3 className="font-semibold text-[#111111]">Asesoría Elegante y Personalizada en Manizales</h3>
+                <p className="text-xs text-slate-500 mt-1">Te ayudamos a elegir tu perfume original elegante y de calidad por WhatsApp.</p>
               </div>
             </div>
           </div>
