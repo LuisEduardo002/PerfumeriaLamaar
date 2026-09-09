@@ -24,37 +24,38 @@ function formatPrice(value) {
   return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value);
 }
 
-// --- Home --- SEO: perfumería Manizales originales elegante calidad
-const homeMd = `# Perfumería en Manizales — Perfumes Originales, Elegantes y de Calidad | LAMMAR
+// --- Home --- SEO: única que mide pH + originales/elegantes/calidad Manizales
+const homeMd = `# La Única Perfumería en Manizales que Mide tu pH — Perfumes Originales, Elegantes y de Calidad | LAMMAR
 
-> Perfumería elegante en Manizales, Colombia. Perfumes 100% originales y de calidad — diseñador, árabes y nicho. Elegancia y originalidad garantizada en Manizales.
+> La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales y de calidad.
 
-## Perfumes Originales de Calidad en Manizales
+## La Única que Mide tu pH en Manizales — Perfumes Originales, Elegantes y de Calidad
 
-En LAMMAR Manizales encuentras perfumes 100% originales, elegantes y de calidad de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino. Cada fragancia elegante en Manizales cuenta con garantía de autenticidad y calidad.
+En LAMMAR Manizales medimos tu pH para recomendarte la fragancia que mejor se adapta a tu química personal. Entre más de ${perfumes.length} perfumes 100% originales, elegantes y de calidad de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino, encuentras tu esencia ideal con garantía de autenticidad, elegancia y calidad.
 
-**Colección Exclusiva 2026 — Perfumes Originales en Manizales**
+**Colección Exclusiva 2026 — Medición de pH incluida — Perfumes Originales y Elegantes de Calidad**
 
-[Explorar Catálogo de Perfumes Originales en Manizales](${SITE_URL}/catalogo)
+[Explorar Catálogo de Perfumes Originales, Elegantes y de Calidad en Manizales](${SITE_URL}/catalogo)
 
-## Fragancias Nicho Elegantes — Originales y de Calidad
+## ¿Por qué medir tu pH? — Calidad y elegancia personalizada
 
-Aromas únicos, originales y de calidad importados para Manizales. 100% Originales, elegantes — Envío Garantizado a Manizales.
+Cada piel reacciona distinto a cada fragancia. Nuestra medición de pH te asegura que el perfume que elijas evolucione de forma elegante, con calidad y duradera en tu piel.
 
-## Fragancias Elegantes para Todos los Estilos en Manizales
+## Fragancias Elegantes y Originales para Todos los Estilos en Manizales
 
-- **Perfumes Originales para Caballero — Original y Elegante** — [Explorar fragancias elegantes para caballero en Manizales](${SITE_URL}/catalogo?genero=Masculino)
-- **Perfumes Originales para Dama Elegante** — [Explorar fragancias elegantes para dama en Manizales](${SITE_URL}/catalogo?genero=Femenino)
+- **Perfumes Originales para Caballero — Original y Elegante con Calidad** — [Explorar fragancias elegantes para caballero en Manizales](${SITE_URL}/catalogo?genero=Masculino)
+- **Perfumes Originales para Dama Elegante — Calidad y Originalidad** — [Explorar fragancias elegantes para dama en Manizales](${SITE_URL}/catalogo?genero=Femenino)
 
-## Perfumes Originales de Calidad Más Buscados en Manizales
+## Perfumes Originales, Elegantes y de Calidad Más Buscados en Manizales
 
-Las opciones elegantes y originales más cotizadas en Manizales. Descubre en el [catálogo](${SITE_URL}/catalogo) más de ${perfumes.length} fragancias originales y de calidad disponibles en nuestra perfumería en Manizales.
+Las opciones elegantes, originales y de calidad más cotizadas en Manizales — Yara, Asad y Hawas entre más de ${perfumes.length} referencias originales y elegantes — seleccionadas con nuestra medición de pH en el [catálogo](${SITE_URL}/catalogo).
 
-## ¿Por Qué Elegir Nuestra Perfumería Elegante en Manizales?
+## ¿Por Qué Elegir Nuestra Experiencia Elegante, Personalizada y de Calidad?
 
+- **Medición de pH Única en Manizales** — Somos la única perfumería en Manizales que mide tu pH para una elección precisa, elegante y personalizada.
 - **Perfumes 100% Originales — Calidad Garantizada en Manizales** — Garantía directa de autenticidad, elegancia y calidad en cada fragancia original.
-- **Envíos de Perfumes Originales en Manizales y Colombia** — Despachos rápidos y de calidad a Manizales y toda Colombia con seguimiento.
-- **Asesoría Elegante y Personalizada en Manizales** — Te ayudamos a elegir tu perfume original elegante y de calidad por WhatsApp al +57 304 6420608 en Manizales.
+- **Envíos de Perfumes Originales y de Calidad en Manizales y Colombia** — Despachos rápidos y de calidad a Manizales y toda Colombia con seguimiento.
+- **Asesoría Elegante y Personalizada en Manizales** — Te ayudamos a elegir tu perfume original, elegante y de calidad por WhatsApp al +57 304 6420608 en Manizales.
 
 ---
 

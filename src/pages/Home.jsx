@@ -14,9 +14,9 @@ import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   useSEO({
-    title: 'LAMMAR | Perfumería Elegante en Manizales — Perfumes 100% Originales y de Calidad',
+    title: 'LAMMAR | Única Perfumería en Manizales que Mide tu pH — Experiencia Elegante y Personalizada',
     description:
-      'Perfumería elegante en Manizales con perfumes 100% originales y de calidad. Diseñador, árabes y nicho en LAMMAR Manizales. Elegancia y originalidad garantizada. Pedidos por WhatsApp.',
+      'La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales. Asesoría experta y envíos a toda Colombia.',
     canonical: '/',
   });
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -48,15 +48,15 @@ export default function Home() {
                 <Sparkles className="w-3 h-3" /> Colección Exclusiva 2026
               </div>
 
-              {/* H1 optimizado SEO local: perfumería Manizales originales elegante calidad */}
-              <h1 className="text-3xl font-serif font-bold leading-tight text-[#111111] md:text-[52px] md:leading-[1.05]">
-                Perfumería en Manizales — Perfumes Originales, Elegantes y de Calidad
+              {/* H1 — única que mide pH + keywords Originales/Elegantes/Calidad para SEO */}
+              <h1 className="text-3xl font-serif font-bold leading-tight text-[#111111] md:text-[44px] md:leading-[1.05]">
+                La Única Perfumería en Manizales que Mide tu pH — Perfumes Originales, Elegantes y de Calidad
               </h1>
-              <p className="text-sm font-semibold tracking-[0.18em] uppercase text-[#4B1E28] -mt-1">LAMMAR — Elegancia y Originalidad</p>
+              <p className="text-base font-semibold tracking-[0.14em] uppercase text-[#4B1E28] -mt-1">La Experiencia Más Elegante y Personalizada de Manizales</p>
 
               {/* Descripción oculta en móvil ('hidden md:block') */}
               <p className="hidden md:block text-lg text-slate-600 font-light leading-relaxed">
-                Más de 240 perfumes 100% originales de diseñador, árabes y nicho en Manizales. Calidad garantizada y elegancia en cada fragancia.
+                Medimos tu pH para encontrar tu fragancia perfecta entre más de 240 perfumes 100% originales y de calidad de diseñador, árabes y nicho. La experiencia más elegante y personalizada de Manizales.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-1 md:pt-2 justify-center md:justify-start"> {/* Botón centrado en móvil */}
