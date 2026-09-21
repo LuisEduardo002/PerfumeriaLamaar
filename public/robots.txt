@@ -1,10 +1,65 @@
-User-agent: *
-Allow: /
+# robots.txt — LAMMAR (LAMAAR PERFUM)
+# Objetivo: que Bing rastree MUCHO lo útil (/, /catalogo, /producto/*) y NADA lo inútil (params, APIs JSON, markdown duplicado, aliases).
+# Las IAs (GPTBot, Perplexity, Claude) sí necesitan /__markdown/ y /api/, por eso se les permite aparte.
+
+# 1) Bing / Google tradicional: solo HTML canónico
+User-agent: bingbot
+Allow: /$
+Allow: /catalogo$
+Allow: /producto/
+Allow: /about$
+Allow: /contact$
+Allow: /privacy$
+Allow: /terminos$
+Allow: /sitemap.xml$
+Allow: /llms.txt$
+Allow: /openapi.json$
+Allow: /feed.xml$
 Disallow: /page
 Disallow: /page/
 Disallow: /*?
+Disallow: /api/
+Disallow: /__markdown/
+Disallow: /nosotros
+Disallow: /contacto
+Disallow: /privacidad
+Disallow: /*.json$
 
-# Bots de IA: permitir explícitamente (ChatGPT, Perplexity, Claude)
+User-agent: Googlebot
+Allow: /$
+Allow: /catalogo$
+Allow: /producto/
+Allow: /about$
+Allow: /contact$
+Allow: /privacy$
+Allow: /terminos$
+Disallow: /page
+Disallow: /page/
+Disallow: /*?
+Disallow: /api/
+Disallow: /__markdown/
+Disallow: /nosotros
+Disallow: /contacto
+Disallow: /privacidad
+
+# 2) Resto de bots tradicionales: misma regla estricta
+User-agent: *
+Allow: /$
+Allow: /catalogo$
+Allow: /producto/
+Allow: /sitemap.xml$
+Allow: /llms.txt$
+Disallow: /page
+Disallow: /page/
+Disallow: /*?
+Disallow: /api/
+Disallow: /__markdown/
+Disallow: /nosotros
+Disallow: /contacto
+Disallow: /privacidad
+
+# 3) Bots de IA: necesitan markdown + API + todo el HTML (GEO)
+# Estos sí rastrean /__markdown/ y /api/ para citar precios/stock en ChatGPT.
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -20,9 +75,16 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Bloquea URLs con parámetros (?q=, ?genero=, etc.) para evitar contenido duplicado del catálogo.
-# La paginación tipo /page/2 no existe en este sitio (scroll infinito); se bloquea por prevención.
+User-agent: Bytespider
+Allow: /
 
-# Sitemap generado automáticamente en cada build (dist/sitemap.xml)
+User-agent: CCBot
+Allow: /
+
+# Notas:
+# - /*? bloquea ?q=, ?genero=, ?page= del catálogo (contenido duplicado).
+# - /nosotros, /contacto, /privacidad son alias con canonical a /about, /contact, /privacy: los usuarios pueden entrar, pero Bing no debe gastarse cuota en ellos.
+# - Los alias /producto/<marca>-<nombre> tienen noindex + canonical al slug principal: no van en sitemap.
+
+# Sitemap solo con canónicas (253 - 3 alias = 250 URLs)
 Sitemap: https://lamaarperfum.store/sitemap.xml
-

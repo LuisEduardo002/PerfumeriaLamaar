@@ -1,7 +1,8 @@
 /**
  * generate-sitemap.cjs
  * Genera dist/sitemap.xml después del build de Vite.
- * - Rutas estáticas + una URL por producto (slug del nombre).
+ * - SOLO canónicas primarias (no alias /nosotros, /contacto, /privacidad: tienen canonical a /about, /contact, /privacy).
+ * - Una URL por producto (slug principal, no alias <marca>-<nombre> que son noindex).
  * - El dominio se toma de VITE_SITE_URL (.env o variable de entorno del sistema).
  */
 const fs = require('fs');
@@ -10,15 +11,13 @@ const { SITE_URL } = require('./utils/site.cjs');
 const { slugify } = require('./utils/slug.cjs');
 const { loadPerfumes } = require('./utils/parsePerfumes.cjs');
 
+// Canónicas únicas: /about, /contact, /privacy (los alias ES viven para usuarios pero no gastan cuota de Bing).
 const staticRoutes = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
   { loc: '/catalogo', priority: '0.9', changefreq: 'daily' },
   { loc: '/about', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/nosotros', priority: '0.7', changefreq: 'monthly' },
   { loc: '/contact', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/contacto', priority: '0.7', changefreq: 'monthly' },
   { loc: '/privacy', priority: '0.3', changefreq: 'yearly' },
-  { loc: '/privacidad', priority: '0.3', changefreq: 'yearly' },
   { loc: '/terminos', priority: '0.3', changefreq: 'yearly' },
 ];
 

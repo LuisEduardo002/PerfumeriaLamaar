@@ -89,6 +89,20 @@ describe('Machine-readable files', () => {
     assert.ok(content.includes('Sitemap:'), 'should contain sitemap reference');
   });
 
+  it('robots.txt saves crawl budget: blocks params/API/markdown for Bing, allows for AI', () => {
+    const publicRobots = path.join(path.dirname(distDir), 'public', 'robots.txt');
+    const content = fs.readFileSync(publicRobots, 'utf8');
+    // Bloqueo de URLs inútiles (duplicadas / baja calidad)
+    assert.ok(content.includes('Disallow: /*?'), 'should block URL params (?genero=, ?q=)');
+    assert.ok(content.includes('Disallow: /api/'), 'should block JSON API for generic crawl (duplicate of HTML)');
+    assert.ok(content.includes('Disallow: /__markdown/'), 'should block markdown dup for Bing (AI still allowed below)');
+    // Bing tiene sección propia estricta
+    assert.ok(content.includes('User-agent: bingbot'), 'should have bingbot-specific quota rules');
+    // IAs sí pueden todo (GEO)
+    assert.ok(content.includes('User-agent: GPTBot'), 'should explicitly allow GPTBot');
+    assert.ok(content.includes('User-agent: OAI-SearchBot'), 'should explicitly allow OAI-SearchBot');
+  });
+
   it('llms.txt exists', () => {
     const p = path.join(distDir, 'llms.txt');
     const publicLlms = path.join(path.dirname(distDir), 'public', 'llms.txt');
@@ -182,8 +196,12 @@ describe('Trust anchor pages (About, Contact, Privacy)', () => {
   it('sitemap includes trust anchor URLs', () => {
     const p = path.join(distDir, 'sitemap.xml');
     const sitemap = fs.readFileSync(p, 'utf8');
-    for (const url of ['/about', '/contact', '/privacy', '/privacidad']) {
+    // Solo canónicas primarias (ahorro de cuota Bing): alias ES viven para usuarios pero no van en sitemap.
+    for (const url of ['/about', '/contact', '/privacy']) {
       assert.ok(sitemap.includes(`<loc>https://lamaarperfum.store${url}</loc>`), `sitemap should contain ${url}`);
+    }
+    for (const alias of ['/nosotros', '/contacto', '/privacidad']) {
+      assert.ok(!sitemap.includes(`<loc>https://lamaarperfum.store${alias}</loc>`), `sitemap should NOT contain alias ${alias} (canonical duplication waste)`);
     }
   });
 

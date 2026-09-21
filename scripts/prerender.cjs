@@ -2,11 +2,12 @@
  * prerender.cjs
  * SSG para productos y catálogo - genera HTML estático con precio visible sin JS
  * Se ejecuta después de vite build, leyendo dist/index.html como plantilla base
+ * Fuente única de marca/NAP: scripts/utils/site.cjs (no hardcodear teléfono o WhatsApp aquí).
  */
 const fs = require('fs');
 const path = require('path');
 
-const { SITE_URL } = require('./utils/site.cjs');
+const { SITE_URL, SITE_NAME, SITE_FULL_NAME, NAP, SOCIAL } = require('./utils/site.cjs');
 const { slugify } = require('./utils/slug.cjs');
 const { formatPriceCOP } = require('./utils/formatPrice.cjs');
 
@@ -90,11 +91,12 @@ function escapeHtml(str) {
 for (const p of perfumes) {
   const slug = p.slug;
   const url = `${SITE_URL}/producto/${slug}`;
-  const title = `${p.nombre} ${p.ml}ml Original | LAMMAR Perfumería`;
-  const desc = `Compra ${p.nombre} ${p.ml}ml original en LAMMAR Perfumería. ${p.descripcion.slice(0, 110)} Precio ${formatPriceCOP(p.precio)} COP, envío nacional y atención por WhatsApp.`;
+  const title = `${p.nombre} ${p.ml}ml Original | ${SITE_NAME} Perfumería`;
+  const desc = `Compra ${p.nombre} ${p.ml}ml original en ${SITE_NAME} Perfumería. ${p.descripcion.slice(0, 110)} Precio ${formatPriceCOP(p.precio)} COP, envío nacional y atención por WhatsApp.`;
   const availability = p.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
   const availabilityText = p.stock > 0 ? `${p.stock} unidades disponibles` : 'Agotado temporalmente';
   const priceVisible = formatPriceCOP(p.precio);
+  const whatsappLink = `${SOCIAL.whatsapp}?text=Hola%20${encodeURIComponent(SITE_NAME)}%20quiero%20${encodeURIComponent(p.nombre)}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -113,9 +115,8 @@ for (const p of perfumes) {
       "availability": availability,
       "itemCondition": "https://schema.org/NewCondition",
       "priceValidUntil": new Date(Date.now() + 30*24*60*60*1000).toISOString().slice(0,10),
-      "seller": { "@type": "Organization", "name": "LAMMAR", "url": SITE_URL }
+      "seller": { "@type": "Organization", "name": SITE_NAME, "url": SITE_URL }
     },
-    "aggregateRating": p.stock > 0 ? undefined : undefined
   };
   // Remove undefined
   const jsonLdStr = JSON.stringify(jsonLd, null, 2);
@@ -157,12 +158,12 @@ ${cssTag}
 <body>
 <div id="root">
 <header style="padding:24px;text-align:center;font-family:Montserrat,sans-serif">
-<p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">LAMMAR — Manizales, Colombia</p>
+<p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">${SITE_NAME} — Manizales, Colombia</p>
 <nav style="margin-top:8px"><a href="/" style="color:#4B1E28">Inicio</a> · <a href="/catalogo" style="color:#4B1E28">Catálogo</a> · <a href="/producto/${slug}" style="color:#4B1E28">${escapeHtml(p.nombre)}</a></nav>
 </header>
 <main style="max-width:1000px;margin:0 auto;padding:0 24px 32px;font-family:Montserrat,sans-serif;color:#334155;line-height:1.7">
 <article itemscope itemtype="https://schema.org/Product">
-<h1 style="font-family:'Playfair Display',serif;font-size:32px;color:#111;margin:12px 0" itemprop="name">${escapeHtml(p.nombre)} ${p.ml}ml Original | LAMMAR</h1>
+<h1 style="font-family:'Playfair Display',serif;font-size:32px;color:#111;margin:12px 0" itemprop="name">${escapeHtml(p.nombre)} ${p.ml}ml Original | ${SITE_NAME}</h1>
 <p style="color:#4B1E28;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:12px" itemprop="brand" itemscope itemtype="https://schema.org/Brand"><span itemprop="name">${escapeHtml(p.marca)}</span> · ${escapeHtml(p.categoria)} · ${escapeHtml(p.genero)} · ${p.ml} ml</p>
 <div style="margin:16px 0;display:flex;gap:16px;align-items:center">
 <img src="${p.imageUrl}" alt="${escapeHtml(p.nombre)} de ${escapeHtml(p.marca)} - perfume original ${p.ml}ml" style="width:320px;height:320px;object-fit:contain;border:1px solid #e5e5e5;border-radius:16px;background:#fff;padding:16px" itemprop="image" loading="eager" />
@@ -175,15 +176,16 @@ ${cssTag}
 <p style="font-size:12px;color:#64748b">SKU: <span itemprop="sku">${p.sku}</span> · Estado: <span>${p.stock>0?'Nuevo':'Agotado'}</span></p>
 <p style="font-size:14px;color:${p.stock>0?'#0f766e':'#9f1239'};font-weight:600">${availabilityText}</p>
 <p style="font-size:13px;color:#475569;margin-top:8px">Envío: <span>Envío nacional a toda Colombia con seguimiento. Entrega estimada 1-3 días.</span></p>
-<p style="font-size:13px;color:#475569">Autenticidad: <span>100% Original garantizado — LAMMAR Perfumería Manizales</span></p>
+<p style="font-size:13px;color:#475569">Autenticidad: <span>100% Original garantizado — ${SITE_FULL_NAME} Manizales</span></p>
 </div>
 <div style="margin-top:16px;display:flex;gap:12px">
-<a href="https://wa.me/573046420608?text=Hola%20LAMMAR%20quiero%20${encodeURIComponent(p.nombre)}" style="background:#4B1E28;color:#fff;padding:12px 24px;border-radius:9999px;text-decoration:none;font-weight:600">Consultar por WhatsApp</a>
+<a href="${whatsappLink}" style="background:#4B1E28;color:#fff;padding:12px 24px;border-radius:9999px;text-decoration:none;font-weight:600">Consultar por WhatsApp</a>
 <a href="/catalogo" style="border:1px solid #4B1E28;color:#4B1E28;padding:12px 24px;border-radius:9999px;text-decoration:none">Ver catálogo</a>
 </div>
 </div>
 </div>
 <p style="margin-top:16px;line-height:1.7" itemprop="description">${escapeHtml(p.descripcion)}</p>
+<p style="margin-top:12px;line-height:1.7">En ${SITE_FULL_NAME} Manizales te ayudamos a probar ${escapeHtml(p.nombre)} de ${escapeHtml(p.marca)} según tu pH. Fragancia ${escapeHtml(p.genero.toLowerCase())} de ${p.ml} ml, categoría ${escapeHtml(p.categoria)}, ideal para quienes buscan perfume original con buena fijación en clima de Manizales. Visítanos en ${NAP.address.streetAddress} o pide asesoría por WhatsApp ${NAP.telephone} con envío a toda Colombia.</p>
 <section style="margin-top:24px;border-top:1px solid #e5e5e5;padding-top:16px">
 <h2 style="font-family:'Playfair Display',serif;font-size:20px;color:#111">Notas olfativas</h2>
 <ul style="margin-top:8px;list-style:disc;padding-left:20px">
@@ -207,7 +209,7 @@ ${cssTag}
 <tr><td style="padding:8px;font-weight:600">Envío</td><td style="padding:8px">Envío nacional con tracking</td></tr>
 </table>
 </section>
-<p style="margin-top:24px;font-size:12px;color:#64748b">Compra segura en LAMMAR Perfumería Manizales — Perfumes originales, elegantes y de calidad.</p>
+<p style="margin-top:24px;font-size:12px;color:#64748b">Compra segura en ${SITE_FULL_NAME} Manizales — Perfumes originales, elegantes y de calidad.</p>
 </article>
 </main>
 </div>
@@ -220,13 +222,16 @@ ${jsTag}
   fs.writeFileSync(path.join(outDir, 'index.html'), html);
 
   // Brand-prefixed alias e.g. /producto/lattafa-yara for /producto/yara
+  // NOINDEX para no duplicar títulos en Bing/Google: el canonical ya apunta al original,
+  // pero Bing igual avisa "identical titles" si el alias es indexable. Lo dejamos navegable pero no indexable.
   const brandSlug = slugify(`${p.marca} ${p.nombre}`);
   if (brandSlug !== slug) {
     const brandUrl = `${SITE_URL}/producto/${brandSlug}`;
     // Keep canonical as original to avoid duplicate SEO, but make brand alias also crawlable with price visible
     const brandHtml = html
       .replace(`<link rel="canonical" href="${url}" />`, `<link rel="canonical" href="${url}" />\n<link rel="alternate" href="${brandUrl}" hreflang="es" />`)
-      .replace(`<meta property="og:url" content="${url}" />`, `<meta property="og:url" content="${brandUrl}" />`);
+      .replace(`<meta property="og:url" content="${url}" />`, `<meta property="og:url" content="${brandUrl}" />`)
+      .replace(`<meta name="robots" content="index, follow" />`, `<meta name="robots" content="noindex, follow" />`);
     const brandOutDir = path.join(distDir, 'producto', brandSlug);
     fs.mkdirSync(brandOutDir, { recursive: true });
     fs.writeFileSync(path.join(brandOutDir, 'index.html'), brandHtml);

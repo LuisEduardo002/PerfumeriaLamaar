@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-sitemap.cjs && node scripts/generate-markdown.cjs && node scripts/prerender.cjs",
+    "indexnow": "node scripts/submit-indexnow.cjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "node --test tests/*.js"

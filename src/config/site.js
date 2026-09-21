@@ -5,6 +5,8 @@
 export const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://lamaarperfum.store').replace(/\/+$/, '');
 export const SITE_NAME = 'LAMMAR';
 export const SITE_ALTERNATE_NAME = 'LAMAAR PERFUM';
+// Marca unificada: usar siempre "LAMMAR (LAMAAR PERFUM)" en textos visibles para que Google/ChatGPT entiendan que es la misma empresa.
+export const SITE_FULL_NAME = 'LAMMAR (LAMAAR PERFUM)';
 export const BRAND = SITE_NAME;
 
 export const NAP = {
@@ -33,6 +35,16 @@ export const SOCIAL = {
   instagram: 'https://www.instagram.com/lamaar_perfumm/',
   facebook: 'https://www.facebook.com/profile.php?id=61557995259913',
   tiktok: 'https://www.tiktok.com/@lamaar.perfume',
+};
+
+// IndexNow y servicio pH: espejo de scripts/utils/site.cjs (cliente no lee .env en build Edge).
+// Si cambias la key o pasos, cámbialos en ambos archivos.
+export const INDEXNOW_KEY = '6db2ccb300575995b1ab6ee52d751c3c';
+export const PH_SERVICE = {
+  name: 'Medición de pH para elección de perfume en Manizales',
+  steps: ['Limpieza de la piel', 'Aplicación de tira reactiva', 'Lectura en 30-60 segundos', 'Recomendación entre 240+ originales'],
+  cost: 'Incluida sin costo con tu visita',
+  schedule: 'Lunes a sábado 9:00-18:00, presencial, sin cita',
 };
 
 export const CURRENCY = 'COP';

@@ -5,6 +5,9 @@ import Container from '../components/layout/Container';
 import SectionTitle from '../components/common/SectionTitle';
 import FeaturedProductsCarousel from '../components/product/FeaturedProductsCarousel';
 import Button from '../components/common/Button';
+import Faq from '../components/common/Faq';
+import { phFaqItems } from '../data/faq';
+import { NAP, SOCIAL, SITE_FULL_NAME, PH_SERVICE } from '../config/site';
 import { getFeaturedProducts } from '../services/productService';
 import useSEO from '../hooks/useSEO';
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
@@ -14,9 +17,9 @@ import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   useSEO({
-    title: 'LAMMAR | Única Perfumería en Manizales que Mide tu pH — Experiencia Elegante y Personalizada',
+    title: 'LAMMAR | Perfumería en Manizales que Mide tu pH',
     description:
-      'La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales. Asesoría experta y envíos a toda Colombia.',
+      'Perfumería en Manizales que mide tu pH para elegir tu fragancia ideal. 240+ perfumes 100% originales con asesoría y envíos a Colombia.',
     canonical: '/',
   });
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -122,6 +125,30 @@ export default function Home() {
 
 
 
+
+      {/* Medición de pH verificable — prueba para Google/Bing/ChatGPT.
+          NAP/SOCIAL/PH_SERVICE vienen de src/config/site.js (fuente única). */}
+      <section className="bg-white py-14 md:py-20 border-y border-slate-100">
+        <Container>
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#C8A450] text-center">{SITE_FULL_NAME} — Misma perfumería en Manizales</p>
+          <h2 className="mt-3 font-serif text-3xl text-[#111111] md:text-4xl text-center">Medición de pH en tienda: cómo funciona y cómo verificarlo</h2>
+          <p className="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+            En nuestra tienda física medimos tu pH con tira reactiva para recomendarte entre 240+ perfumes originales.
+            Presencial, {PH_SERVICE.schedule}, en {NAP.address.full}.
+            {` ${PH_SERVICE.cost}.`}
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-4 text-left">
+            <div className="rounded-2xl border border-stone-200 p-5"><p className="font-semibold text-[#111111]">1. Limpieza</p><p className="text-sm text-slate-600 mt-1">Preparamos la piel para lectura limpia.</p></div>
+            <div className="rounded-2xl border border-stone-200 p-5"><p className="font-semibold text-[#111111]">2. Tira reactiva</p><p className="text-sm text-slate-600 mt-1">Aplicamos tira de pH en tienda.</p></div>
+            <div className="rounded-2xl border border-stone-200 p-5"><p className="font-semibold text-[#111111]">3. Lectura 30–60s</p><p className="text-sm text-slate-600 mt-1">Leemos si tu pH es más ácido o alcalino.</p></div>
+            <div className="rounded-2xl border border-stone-200 p-5"><p className="font-semibold text-[#111111]">4. Recomendación</p><p className="text-sm text-slate-600 mt-1">Elegimos entre Yara, Asad, Hawas y 240+ según tu pH y gusto.</p></div>
+          </div>
+          <p className="mt-6 text-center text-sm text-slate-600">
+            Verifícalo: WhatsApp <a className="font-semibold text-[#4B1E28]" href={SOCIAL.whatsapp}>{NAP.telephone}</a> · Instagram <a className="font-semibold text-[#4B1E28]" href={SOCIAL.instagram}>lamaar_perfumm</a> · Web {NAP.url.replace('https://', '')}
+          </p>
+          <Faq title="Preguntas sobre medición de pH y autenticidad" items={phFaqItems} />
+        </Container>
+      </section>
 
       {/* Featured Products Section */}
       <section className="bg-[#FAF9F6] py-20">

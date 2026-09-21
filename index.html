@@ -7,16 +7,20 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO Primary Tags -->
-    <title>LAMMAR | Única Perfumería en Manizales que Mide tu pH — Experiencia Elegante y Personalizada</title>
-    <meta name="description" content="La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales. Asesoría experta y envíos a toda Colombia." />
+    <!-- SEO Primary Tags: <title> <70 caracteres (Bing lo trunca si es más largo) -->
+    <title>LAMMAR | Perfumería en Manizales que Mide tu pH</title>
+    <meta name="description" content="Perfumería en Manizales que mide tu pH para elegir tu fragancia ideal. 240+ perfumes 100% originales con asesoría y envíos a Colombia." />
     <meta name="keywords" content="perfumería Manizales, perfumes originales Manizales, perfumes elegantes Manizales, perfumes calidad Manizales, Lattafa, Dior, Chanel, Creed, Tom Ford, Colombia, comprar perfumes Manizales" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://lamaarperfum.store/" />
 
-    <!-- Google Search Console: pega aquí tu token de verificación (método etiqueta HTML)
-         o verifica por registro DNS en tu proveedor de dominio -->
-    <meta name="google-site-verification" content="REEMPLAZA_CON_TU_TOKEN_DE_GSC" />
+    <!-- Google Search Console: propiedad https://lamaarperfum.store/ ya verificada (ver Configuración > Verificación).
+         No se necesita etiqueta google-site-verification porque se verificó por DNS (GoDaddy).
+         Si añades otra propiedad en el futuro, pega aquí su token. -->
+
+    <!-- Bing Webmaster Tools (esto es lo que usa ChatGPT para buscar):
+         bing.com/webmasters > Agregar sitio https://lamaarperfum.store/ > Verificación por etiqueta meta > copia el content
+         Cuando lo tengas, añade aquí: <meta name="msvalidate.01" content="TU_TOKEN" /> -->
     
     <!-- WebSite schema for search box -->
     <script type="application/ld+json">
@@ -36,28 +40,30 @@
     }
     </script>
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook (og:title corto, igual que <title>) -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="LAMMAR | Única Perfumería en Manizales que Mide tu pH" />
-    <meta property="og:description" content="La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Experiencia elegante y personalizada con perfumes 100% originales." />
+    <meta property="og:title" content="LAMMAR | Perfumería en Manizales que Mide tu pH" />
+    <meta property="og:description" content="Perfumería en Manizales que mide tu pH para elegir tu fragancia ideal. 240+ perfumes 100% originales con asesoría y envíos a Colombia." />
     <meta property="og:image" content="https://lamaarperfum.store/images/og-image.jpg" />
     <meta property="og:url" content="https://lamaarperfum.store/" />
     <meta property="og:site_name" content="LAMMAR" />
     
-    <!-- Twitter -->
+    <!-- Twitter (igual que <title> para no duplicar) -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="LAMMAR | Única Perfumería en Manizales que Mide tu pH" />
-    <meta property="twitter:description" content="La única perfumería en Manizales que mide tu pH. Experiencia elegante y personalizada con perfumes 100% originales." />
+    <meta property="twitter:title" content="LAMMAR | Perfumería en Manizales que Mide tu pH" />
+    <meta property="twitter:description" content="Perfumería en Manizales que mide tu pH. 240+ perfumes originales con asesoría y envíos a Colombia." />
 
-    <!-- Schema.org: Store físico principal (no tienda digital pura) -->
+    <!-- Schema.org: Store físico principal (no tienda digital pura).
+         Fuente única de NAP: src/config/site.js + scripts/utils/site.cjs. Si cambias dirección/teléfono, cambia allá y aquí. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@id": "https://lamaarperfum.store/#store",
       "@type": ["Store", "LocalBusiness", "Organization"],
       "name": "LAMMAR",
       "alternateName": "LAMAAR PERFUM",
       "url": "https://lamaarperfum.store",
-      "description": "Única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. La experiencia más elegante y personalizada de Manizales con más de 240 perfumes 100% originales de diseñador, árabes y nicho en tienda física (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89). Asesoría presencial y por WhatsApp.",
+      "description": "LAMMAR, nombre comercial LAMAAR PERFUM, es la misma perfumería en Manizales: única que mide tu pH para encontrar tu fragancia perfecta. La experiencia más elegante y personalizada de Manizales con más de 240 perfumes 100% originales de diseñador, árabes y nicho en tienda física (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89). Asesoría presencial y por WhatsApp. Instagram oficial: lamaar_perfumm, TikTok: @lamaar.perfume.",
       "logo": "https://lamaarperfum.store/images/og-image.jpg",
       "image": "https://lamaarperfum.store/images/og-image.jpg",
       "email": "amazingstoresoporte@gmail.com",
@@ -100,6 +106,25 @@
         "https://www.facebook.com/profile.php?id=61557995259913",
         "https://www.tiktok.com/@lamaar.perfume"
       ]
+    }
+    </script>
+
+    <!-- Servicio verificable: medición de pH. Usa @id para referenciar al Store sin duplicar dirección/teléfono. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Medición de pH para elección de perfume en Manizales",
+      "serviceType": "Asesoría de fragancia con medición de pH",
+      "provider": { "@id": "https://lamaarperfum.store/#store" },
+      "areaServed": "Manizales, Caldas, Colombia",
+      "description": "En tienda física LAMMAR (LAMAAR PERFUM) medimos el pH de tu piel con tira reactiva y te recomendamos entre 240+ perfumes originales según tu resultado. Servicio presencial incluido sin costo con tu visita, lun. a sáb. 9:00-18:00. Verificación: WhatsApp +57 304 6420608, Instagram https://www.instagram.com/lamaar_perfumm/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "COP",
+        "description": "Medición incluida con asesoría en tienda"
+      }
     }
     </script>
     
