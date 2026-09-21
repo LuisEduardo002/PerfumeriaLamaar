@@ -1,4 +1,4 @@
-# LAMMAR Perfumería — Tareas
+# LAMAAR Perfumería — Tareas
 
 ## Sprint 2 — Datos, Service Layer y Store del Carrito ✅
 

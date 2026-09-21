@@ -7,14 +7,14 @@ const TerminosCondiciones = () => {
     useSEO({
         title: 'Términos y Condiciones',
         description:
-            'Consulta los términos y condiciones de compra en LAMMAR: precios, envíos a toda Colombia, cambios, devoluciones y garantías de nuestros perfumes originales.',
+            'Consulta los términos y condiciones de compra en LAMAAR: precios, envíos a toda Colombia, cambios, devoluciones y garantías de nuestros perfumes originales.',
         canonical: '/terminos',
     });
     return (<main className="max-w-4xl mx-auto px-6 py-12 text-gray-800"> <h1 className="text-3xl font-bold mb-4">
         Términos y Condiciones </h1>
 
         <p className="mb-6">
-            Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp,
+            Antes de comprar en LAMAAR es útil saber cómo funciona el pedido por WhatsApp,
             qué pasa con los precios y promociones, en cuánto llega tu perfume y cómo solicitar
             un cambio, devolución o garantía. Esas son las condiciones que encontrarás a
             continuación. El tratamiento de tu información personal se detalla en nuestra{' '}
@@ -53,7 +53,7 @@ const TerminosCondiciones = () => {
                         </tr>
                         <tr>
                             <td className="px-4 py-3 font-medium">Confirmación</td>
-                            <td className="px-4 py-3">El pedido queda firme únicamente cuando LAMMAR lo confirma por sus canales oficiales.</td>
+                            <td className="px-4 py-3">El pedido queda firme únicamente cuando LAMAAR lo confirma por sus canales oficiales.</td>
                         </tr>
                         <tr>
                             <td className="px-4 py-3 font-medium">Pago</td>
@@ -471,7 +471,7 @@ const TerminosCondiciones = () => {
                 links={[
                     { to: '/privacidad', label: 'Política de Privacidad y datos personales' },
                     { to: '/catalogo', label: 'Catálogo de perfumes originales' },
-                    { to: '/', label: 'Inicio: perfumería exclusiva LAMMAR' },
+                    { to: '/', label: 'Inicio: perfumería exclusiva LAMAAR' },
                 ]}
             />
 

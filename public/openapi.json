@@ -1,11 +1,11 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "LAMMAR Perfumería API",
+    "title": "LAMAAR Perfumería API",
     "version": "1.0.0",
-    "description": "API de LAMMAR — Perfumería exclusiva en Manizales, Colombia. Catálogo de perfumes 100% originales, fichas de producto con notas olfativas, y recursos para agentes (Markdown, sitemap, llms.txt). Todos los recursos HTML soportan negociación `Accept: text/markdown` con `Vary: Accept, Accept-Encoding` y `Accept: application/json` con errores JSON estructurados `{error:{code,message,status,hint,links}}`.",
+    "description": "API de LAMAAR — Perfumería exclusiva en Manizales, Colombia. Catálogo de perfumes 100% originales, fichas de producto con notas olfativas, y recursos para agentes (Markdown, sitemap, llms.txt). Todos los recursos HTML soportan negociación `Accept: text/markdown` con `Vary: Accept, Accept-Encoding` y `Accept: application/json` con errores JSON estructurados `{error:{code,message,status,hint,links}}`.",
     "contact": {
-      "name": "LAMMAR Soporte",
+      "name": "LAMAAR Soporte",
       "email": "amazingstoresoporte@gmail.com",
       "url": "https://lamaarperfum.store"
     },
@@ -190,7 +190,7 @@
     },
     "/about": {
       "get": {
-        "summary": "Sobre nosotros — About LAMMAR",
+        "summary": "Sobre nosotros — About LAMAAR",
         "tags": ["Legal"],
         "responses": {
           "200": {

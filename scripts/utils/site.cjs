@@ -3,9 +3,9 @@ function readEnvValue(key){
   try{ const env=fs.readFileSync(path.join(__dirname,'..','..','.env'),'utf8'); const m=env.match(new RegExp(`^${key}=(.*)$`,'m')); return m?m[1].trim():null;}catch{return null;}
 }
 const SITE_URL=(process.env.VITE_SITE_URL||readEnvValue('VITE_SITE_URL')||'https://lamaarperfum.store').replace(/\/+$/,'');
-const SITE_NAME='LAMMAR';
-const SITE_ALTERNATE_NAME='LAMAAR PERFUM';
-const SITE_FULL_NAME='LAMMAR (LAMAAR PERFUM)';
+const SITE_NAME='LAMAAR';
+const SITE_ALTERNATE_NAME='LAMMAR';
+const SITE_FULL_NAME='LAMAAR Perfumería';
 const NAP={
   name:SITE_NAME, alternateName:SITE_ALTERNATE_NAME, fullName:SITE_FULL_NAME, url:SITE_URL,
   email:'amazingstoresoporte@gmail.com', telephone:'+57 304 6420608', telephoneDigits:'573046420608', whatsapp:'573046420608',

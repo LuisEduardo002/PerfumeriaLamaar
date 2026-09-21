@@ -1,4 +1,4 @@
-# robots.txt — LAMMAR (LAMAAR PERFUM)
+# robots.txt — LAMAAR (LAMAAR PERFUM)
 # Objetivo: que Bing rastree MUCHO lo útil (/, /catalogo, /producto/*) y NADA lo inútil (params, APIs JSON, markdown duplicado, aliases).
 # Las IAs (GPTBot, Perplexity, Claude) sí necesitan /__markdown/ y /api/, por eso se les permite aparte.
 

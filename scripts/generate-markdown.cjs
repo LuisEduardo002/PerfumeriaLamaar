@@ -26,13 +26,13 @@ function formatPrice(value) {
 }
 
 // --- Home --- SEO: única que mide pH + originales/elegantes/calidad Manizales
-const homeMd = `# La Única Perfumería en Manizales que Mide tu pH — Perfumes Originales, Elegantes y de Calidad | LAMMAR (LAMAAR PERFUM)
+const homeMd = `# La Única Perfumería en Manizales que Mide tu pH — Perfumes Originales, Elegantes y de Calidad | LAMAAR Perfumería
 
-> LAMMAR y LAMAAR PERFUM son la misma perfumería en Manizales. La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales y de calidad.
+> LAMAAR Perfumería (antes LAMMAR) en Manizales. La única perfumería en Manizales que mide tu pH para encontrar tu fragancia perfecta. Vive la experiencia más elegante y personalizada de Manizales con perfumes 100% originales y de calidad.
 
 ## La Única que Mide tu pH en Manizales — Perfumes Originales, Elegantes y de Calidad
 
-En LAMMAR Manizales medimos tu pH para recomendarte la fragancia que mejor se adapta a tu química personal. Entre más de ${perfumes.length} perfumes 100% originales, elegantes y de calidad de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino, encuentras tu esencia ideal con garantía de autenticidad, elegancia y calidad.
+En LAMAAR Manizales medimos tu pH para recomendarte la fragancia que mejor se adapta a tu química personal. Entre más de ${perfumes.length} perfumes 100% originales, elegantes y de calidad de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra, Xerjoff y Valentino, encuentras tu esencia ideal con garantía de autenticidad, elegancia y calidad.
 
 **Colección Exclusiva 2026 — Medición de pH incluida — Perfumes Originales y Elegantes de Calidad**
 
@@ -60,7 +60,7 @@ Las opciones elegantes, originales y de calidad más cotizadas en Manizales — 
 
 ## Medición de pH en tienda: cómo funciona y cómo verificarlo
 
-LAMMAR (LAMAAR PERFUM) es la misma perfumería. Medimos tu pH con tira reactiva, presencial, lun. a sáb. 9:00-18:00 en KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales. Incluida sin costo.
+LAMAAR Perfumería es la misma perfumería. Medimos tu pH con tira reactiva, presencial, lun. a sáb. 9:00-18:00 en KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales. Incluida sin costo.
 
 1. Limpieza de la piel.
 2. Aplicación de tira reactiva.
@@ -71,25 +71,25 @@ Verificación: WhatsApp +57 304 6420608, Instagram https://www.instagram.com/lam
 
 ### Preguntas frecuentes pH
 
-- ¿LAMMAR y LAMAAR PERFUM son lo mismo? Sí, misma perfumería en Manizales.
+- ¿LAMAAR y LAMMAR son lo mismo? Sí, nombre oficial LAMAAR Perfumería (antes LAMMAR).
 - ¿Miden pH real? Sí, con tira reactiva presencial 9:00-18:00.
 - ¿Necesito cita? No, solo visita en horario.
 - ¿Costo? Incluida sin costo con asesoría.
 
 ---
 
-*Contacto: amazingstoresoporte@gmail.com — WhatsApp: +57 304 6420608 — Manizales, Caldas, Colombia — Lun. a sáb. 9:00–18:00 — LAMMAR (LAMAAR PERFUM) — https://www.instagram.com/lamaar_perfumm/*
+*Contacto: amazingstoresoporte@gmail.com — WhatsApp: +57 304 6420608 — Manizales, Caldas, Colombia — Lun. a sáb. 9:00–18:00 — LAMAAR Perfumería — https://www.instagram.com/lamaar_perfumm/*
 `;
 
 fs.writeFileSync(path.join(outBase, 'home.md'), homeMd);
 fs.writeFileSync(path.join(outBase, 'index.md'), homeMd); // alias for /
 
 // --- Catalog ---
-const catalogMd = `# Catálogo de Fragancias — LAMMAR
+const catalogMd = `# Catálogo de Fragancias — LAMAAR
 
 > Explora nuestra exclusiva selección de perfumes de diseñador, árabes y fragancias nicho.
 
-En LAMMAR encuentras más de ${perfumes.length} fragancias 100% originales. Filtra por marca, categoría y género para encontrar tu esencia ideal.
+En LAMAAR encuentras más de ${perfumes.length} fragancias 100% originales. Filtra por marca, categoría y género para encontrar tu esencia ideal.
 
 ## Cómo comprar
 
@@ -119,7 +119,7 @@ ${perfumes
 fs.writeFileSync(path.join(outBase, 'catalogo.md'), catalogMd);
 
 // --- Privacy (simplified markdown, full content would be long - use key sections) ---
-const privacyMd = `# Política de Privacidad y Tratamiento de Datos Personales — LAMMAR
+const privacyMd = `# Política de Privacidad y Tratamiento de Datos Personales — LAMAAR
 
 > Última actualización: 21/08/2026
 
@@ -142,7 +142,7 @@ const privacyMd = `# Política de Privacidad y Tratamiento de Datos Personales �
 
 ## 1. Responsable
 
-**Nombre comercial:** LAMAAR PERFUM (marca pública: LAMMAR — misma empresa) — **País:** Colombia — **Correo:** amazingstoresoporte@gmail.com — **WhatsApp:** 304 6420608
+**Nombre comercial:** LAMAAR PERFUM (marca pública: LAMAAR — misma empresa) — **País:** Colombia — **Correo:** amazingstoresoporte@gmail.com — **WhatsApp:** 304 6420608
 
 ## 2. Información que recopilamos directamente desde nuestro sitio web
 
@@ -215,13 +215,13 @@ fs.writeFileSync(path.join(outBase, 'privacidad.md'), privacyMd);
 fs.writeFileSync(path.join(outBase, 'privacy.md'), privacyMd);
 
 // --- About ---
-const aboutMd = `# Sobre LAMMAR (LAMAAR PERFUM) — Misma perfumería en Manizales
+const aboutMd = `# Sobre LAMAAR Perfumería — Misma perfumería en Manizales
 
 > Perfumería exclusiva en Manizales, Colombia, con más de ${perfumes.length} perfumes 100% originales de diseñador y nicho.
 
-LAMMAR, nombre comercial LAMAAR PERFUM, es la misma perfumería exclusiva nacida en Manizales, Caldas, para acercar fragancias auténticas a toda Colombia sin intermediarios opacos, con asesoría honesta y envíos confiables. Atendemos lunes a sábado de 9:00 a 18:00 por WhatsApp y correo.
+LAMAAR Perfumería es la misma perfumería exclusiva nacida en Manizales, Caldas, para acercar fragancias auténticas a toda Colombia sin intermediarios opacos, con asesoría honesta y envíos confiables. Atendemos lunes a sábado de 9:00 a 18:00 por WhatsApp y correo.
 
-## TL;DR: por qué LAMMAR
+## TL;DR: por qué LAMAAR
 
 - Más de ${perfumes.length} perfumes originales de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra y Xerjoff.
 - Garantía de autenticidad en cada fragancia: 100% originales, sin imitaciones.
@@ -230,7 +230,7 @@ LAMMAR, nombre comercial LAMAAR PERFUM, es la misma perfumería exclusiva nacida
 
 ## 1. Nuestra historia
 
-LAMMAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando best-sellers como Yara, Asad y Hawas y, gracias a la confianza de nuestros primeros clientes, crecimos hasta superar las ${perfumes.length} referencias disponibles hoy.
+LAMAAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando best-sellers como Yara, Asad y Hawas y, gracias a la confianza de nuestros primeros clientes, crecimos hasta superar las ${perfumes.length} referencias disponibles hoy.
 
 Operamos principalmente como perfumería física en Manizales (KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1) con atención presencial; el sitio web es solo catálogo informativo: eliges en el catálogo, agregas al carrito y confirmas el pedido en tienda o por WhatsApp. No exigimos registro, no almacenamos tarjetas y no vendemos datos. No somos tienda digital pura.
 
@@ -254,7 +254,7 @@ Un perfume es identidad: elegirlo merece tiempo, información clara y acompañam
 
 Base logística en Manizales, Caldas — KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, CP 170001. Despachamos a toda Colombia. Horario: lunes a sábado 9:00–18:00 (COT).
 
-**LAMAAR PERFUM (marca pública: LAMMAR — misma empresa)** — Manizales, Caldas, Colombia — amazingstoresoporte@gmail.com — +57 304 6420608
+**LAMAAR PERFUM (marca pública: LAMAAR — misma empresa)** — Manizales, Caldas, Colombia — amazingstoresoporte@gmail.com — +57 304 6420608
 
 ## 5. Compromiso con agentes
 
@@ -267,7 +267,7 @@ fs.writeFileSync(path.join(outBase, 'about.md'), aboutMd);
 fs.writeFileSync(path.join(outBase, 'nosotros.md'), aboutMd);
 
 // --- Contact ---
-const contactMd = `# Contacto — LAMMAR
+const contactMd = `# Contacto — LAMAAR
 
 > Atención al cliente desde Manizales para toda Colombia — WhatsApp +57 304 6420608 — amazingstoresoporte@gmail.com — Lun. a sáb. 9:00–18:00.
 
@@ -284,7 +284,7 @@ const contactMd = `# Contacto — LAMMAR
 
 ## 1. Datos oficiales de contacto
 
-**Nombre público: LAMMAR — Nombre comercial: LAMAAR PERFUM (misma empresa)**
+**Nombre público: LAMAAR — Nombre comercial: LAMAAR PERFUM (misma empresa)**
 **Dirección:** KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia
 **Coordenadas:** 5.0549, -75.4850
 **Teléfono / WhatsApp:** +57 304 6420608
@@ -320,11 +320,11 @@ fs.writeFileSync(path.join(outBase, 'contact.md'), contactMd);
 fs.writeFileSync(path.join(outBase, 'contacto.md'), contactMd);
 
 // --- Terms ---
-const termsMd = `# Términos y Condiciones — LAMMAR
+const termsMd = `# Términos y Condiciones — LAMAAR
 
 > Última actualización: 21/08/2026
 
-Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp, qué pasa con los precios y promociones, en cuánto llega tu perfume y cómo solicitar un cambio, devolución o garantía. El tratamiento de tu información personal se detalla en nuestra [Política de Privacidad](${SITE_URL}/privacidad).
+Antes de comprar en LAMAAR es útil saber cómo funciona el pedido por WhatsApp, qué pasa con los precios y promociones, en cuánto llega tu perfume y cómo solicitar un cambio, devolución o garantía. El tratamiento de tu información personal se detalla en nuestra [Política de Privacidad](${SITE_URL}/privacidad).
 
 ## TL;DR: lo esencial
 
@@ -340,7 +340,7 @@ Antes de comprar en LAMMAR es útil saber cómo funciona el pedido por WhatsApp,
 | Aspecto | Detalle |
 |---|---|
 | Realización del pedido | Selección de productos en el sitio y confirmación por WhatsApp. |
-| Confirmación | El pedido queda firme únicamente cuando LAMMAR lo confirma por sus canales oficiales. |
+| Confirmación | El pedido queda firme únicamente cuando LAMAAR lo confirma por sus canales oficiales. |
 | Pago | Los métodos se informan durante la gestión del pedido; no hay pagos dentro del sitio. |
 | Envío | A la dirección confirmada por el cliente; tiempos estimados según ciudad y transportadora. |
 | Cambios y devoluciones | Gestionados según la legislación colombiana a través de nuestros canales de contacto. |
@@ -424,11 +424,11 @@ LAMAAR PERFUM — Correo: amazingstoresoporte@gmail.com — Colombia
 fs.writeFileSync(path.join(outBase, 'terminos.md'), termsMd);
 
 // --- 404 ---
-const notFoundMd = `# 404 — Página no encontrada — LAMMAR
+const notFoundMd = `# 404 — Página no encontrada — LAMAAR
 
 > Lo sentimos, la página que estás buscando no existe o ha sido movida.
 
-La URL que solicitaste no corresponde a ninguna página de LAMMAR. Puede que el enlace esté desactualizado, que el producto haya sido retirado o que hayas escrito mal la dirección.
+La URL que solicitaste no corresponde a ninguna página de LAMAAR. Puede que el enlace esté desactualizado, que el producto haya sido retirado o que hayas escrito mal la dirección.
 
 ## ¿Dónde ir ahora?
 
@@ -454,7 +454,7 @@ fs.writeFileSync(path.join(outBase, '404.md'), notFoundMd);
 
 // --- Product pages ---
 for (const p of perfumes) {
-  const md = `# ${p.nombre} — ${p.marca} — LAMMAR
+  const md = `# ${p.nombre} — ${p.marca} — LAMAAR
 
 > ${p.descripcion}
 
@@ -474,7 +474,7 @@ Agrega al carrito y confirma tu pedido por WhatsApp. Envíos a toda Colombia.
 
 ---
 
-*Perfumería exclusiva en Manizales, Colombia — LAMMAR — WhatsApp: +57 304 6420608 — amazingstoresoporte@gmail.com*
+*Perfumería exclusiva en Manizales, Colombia — LAMAAR — WhatsApp: +57 304 6420608 — amazingstoresoporte@gmail.com*
 `;
   fs.writeFileSync(path.join(outProductoBase, `${p.slug}.md`), md);
   // Brand-prefixed alias e.g. lattafa-yara for yara (user example URLs)

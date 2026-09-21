@@ -104,7 +104,7 @@ export default async function handler(request) {
       });
     }
     if (pathname === '/api/health') {
-      const body = JSON.stringify({ status: 'ok', service: 'LAMMAR API', version: '1.0.0', timestamp: new Date().toISOString() }, null, 2);
+      const body = JSON.stringify({ status: 'ok', service: 'LAMAAR API', version: '1.0.0', timestamp: new Date().toISOString() }, null, 2);
       return new Response(body, {
         status: 200,
         headers: {
@@ -307,7 +307,7 @@ export default async function handler(request) {
       data: {
         path: pathname,
         url: `${SITE_URL}${pathname}`,
-        title: pathname === '/' ? 'LAMMAR | Perfumería en Manizales' : pathname,
+        title: pathname === '/' ? 'LAMAAR | Perfumería en Manizales' : pathname,
         markdown: markdownContent ? markdownContent.slice(0, 4000) : null,
         markdown_url: `${SITE_URL}${mdPath}`,
         html_url: `${SITE_URL}${pathname}`,

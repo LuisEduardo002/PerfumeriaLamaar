@@ -62,7 +62,7 @@ function parsePerfumes(source) {
     perfumes.push({
       id: Number(id),
       nombre, marca, precio: Number(precio), categoria, genero, ml: Number(ml), stock: Number(stock), descripcion,
-      notas, slug: slugify(nombre), imageUrl, sku: `LAMMAR-${id}`,
+      notas, slug: slugify(nombre), imageUrl, sku: `LAMAAR-${id}`,
     });
   }
   return perfumes;
@@ -128,7 +128,7 @@ for (const p of perfumes) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeHtml(desc)}" />
-<meta name="keywords" content="${escapeHtml(p.nombre)}, ${escapeHtml(p.marca)}, perfumes, fragancias, ${escapeHtml(p.categoria)}, ${escapeHtml(p.genero)}, ${p.ml}ml, comprar perfumes, LAMMAR" />
+<meta name="keywords" content="${escapeHtml(p.nombre)}, ${escapeHtml(p.marca)}, perfumes, fragancias, ${escapeHtml(p.categoria)}, ${escapeHtml(p.genero)}, ${p.ml}ml, comprar perfumes, LAMAAR" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="${url}" />
 <meta property="og:type" content="product" />
@@ -136,7 +136,7 @@ for (const p of perfumes) {
 <meta property="og:description" content="${escapeHtml(desc)}" />
 <meta property="og:image" content="${p.imageUrl}" />
 <meta property="og:url" content="${url}" />
-<meta property="og:site_name" content="LAMMAR" />
+<meta property="og:site_name" content="LAMAAR" />
 <meta property="product:price:amount" content="${p.precio}" />
 <meta property="product:price:currency" content="COP" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -243,8 +243,8 @@ console.log(`✓ Prerender: ${perfumes.length} productos en dist/producto/*/inde
 // --- Catalog prerender ---
 const catalogLinks = perfumes.map(p => `<a href="/producto/${p.slug}" style="display:block;padding:8px 0;color:#4B1E28;text-decoration:none;border-bottom:1px solid #f1f5f9">${escapeHtml(p.nombre)} — ${escapeHtml(p.marca)} — ${formatPriceCOP(p.precio)} COP — ${escapeHtml(p.genero)} · ${p.ml}ml — ${p.stock>0?'Disponible':'Agotado'}</a>`).join('\n');
 
-const catalogTitle = `Catálogo de Perfumes Originales en Manizales | LAMMAR — ${perfumes.length} Fragancias Elegantes y de Calidad`;
-const catalogDesc = `Catálogo completo de ${perfumes.length} perfumes originales, elegantes y de calidad en LAMMAR Manizales. Diseñador, árabes y nicho con precio, marca, tamaño y disponibilidad.`;
+const catalogTitle = `Catálogo de Perfumes Originales en Manizales | LAMAAR — ${perfumes.length} Fragancias Elegantes y de Calidad`;
+const catalogDesc = `Catálogo completo de ${perfumes.length} perfumes originales, elegantes y de calidad en LAMAAR Manizales. Diseñador, árabes y nicho con precio, marca, tamaño y disponibilidad.`;
 const catalogJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -272,7 +272,7 @@ const catalogHtml = `<!doctype html>
 <meta property="og:title" content="${escapeHtml(catalogTitle)}" />
 <meta property="og:description" content="${escapeHtml(catalogDesc)}" />
 <meta property="og:url" content="${SITE_URL}/catalogo" />
-<meta property="og:site_name" content="LAMMAR" />
+<meta property="og:site_name" content="LAMAAR" />
 <script type="application/ld+json">
 ${JSON.stringify(catalogJsonLd, null, 2)}
 </script>
@@ -282,9 +282,9 @@ ${cssTag}
 <body>
 <div id="root">
 <header style="padding:24px;text-align:center;font-family:Montserrat,sans-serif">
-<p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">LAMMAR — Perfumería Elegante en Manizales</p>
+<p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C8A450;font-weight:600">LAMAAR — Perfumería Elegante en Manizales</p>
 <h1 style="font-family:'Playfair Display',serif;font-size:28px;color:#111;margin:12px 0">Catálogo de Perfumes Originales en Manizales</h1>
-<p style="color:#475569;max-width:700px;margin:0 auto">Explora ${perfumes.length} perfumes originales, elegantes y de calidad en LAMMAR Manizales. Todos con precio, marca, tamaño y disponibilidad visible.</p>
+<p style="color:#475569;max-width:700px;margin:0 auto">Explora ${perfumes.length} perfumes originales, elegantes y de calidad en LAMAAR Manizales. Todos con precio, marca, tamaño y disponibilidad visible.</p>
 </header>
 <main style="max-width:1000px;margin:0 auto;padding:0 24px 32px;font-family:Montserrat,sans-serif">
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:24px">
@@ -321,9 +321,9 @@ const feedItems = perfumes.map(p => `
 const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
 <channel>
-<title>LAMMAR — Perfumería en Manizales — Feed de Productos</title>
+<title>LAMAAR — Perfumería en Manizales — Feed de Productos</title>
 <link>${SITE_URL}</link>
-<description>Feed de ${perfumes.length} perfumes originales de LAMMAR para Google Merchant Center</description>
+<description>Feed de ${perfumes.length} perfumes originales de LAMAAR para Google Merchant Center</description>
 ${feedItems}
 </channel>
 </rss>`;

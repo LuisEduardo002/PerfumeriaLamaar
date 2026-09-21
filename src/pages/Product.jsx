@@ -39,7 +39,7 @@ function injectProductSchema(product) {
       "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       "seller": {
         "@type": "Organization",
-        "name": "LAMMAR"
+        "name": "LAMAAR"
       }
     },
     "category": product.categoria,
@@ -190,7 +190,7 @@ export default function Product() {
     title: product ? `${product.nombre} de ${product.marca} – Perfume Original` : 'Perfumes Originales',
     description: product
       ? `Compra ${product.nombre} de ${product.marca}, perfume original de ${product.ml} ml. ${product.descripcion}`.slice(0, 160)
-      : 'Descubre perfumes originales de diseñador y nicho en LAMMAR.',
+      : 'Descubre perfumes originales de diseñador y nicho en LAMAAR.',
     canonical: product ? `/producto/${slugify(product.nombre)}` : undefined,
   });
 
@@ -304,7 +304,7 @@ export default function Product() {
             </div>
             <ShareButton
               title={`${product.nombre} de ${product.marca}`}
-              text={`Mira este perfume original: ${product.nombre} de ${product.marca} en LAMMAR`}
+              text={`Mira este perfume original: ${product.nombre} de ${product.marca} en LAMAAR`}
               className="mt-3 w-full sm:w-auto"
             />
           </div>

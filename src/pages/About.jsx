@@ -7,14 +7,14 @@ const About = () => {
   useSEO({
     title: 'Sobre Nosotros — Quiénes somos',
     description:
-      'Conoce LAMMAR (LAMAAR PERFUM): perfumería exclusiva en Manizales, Colombia, con más de 240 perfumes 100% originales de diseñador y nicho. Historia, valores y compromiso con la autenticidad.',
+      'Conoce LAMAAR Perfumería: perfumería exclusiva en Manizales, Colombia, con más de 240 perfumes 100% originales de diseñador y nicho. Historia, valores y compromiso con la autenticidad.',
     canonical: '/about',
   });
   return (
     <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
-      <h1 className="text-3xl font-bold mb-4">Sobre LAMMAR — LAMAAR PERFUM</h1>
+      <h1 className="text-3xl font-bold mb-4">Sobre LAMAAR — LAMAAR PERFUM</h1>
       <p className="mb-6 text-lg leading-relaxed text-slate-700">
-        LAMMAR es una perfumería física y exclusiva ubicada en KPalogrande, Av. Lindsay, Frente
+        LAMAAR es una perfumería física y exclusiva ubicada en KPalogrande, Av. Lindsay, Frente
         coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas, con la misión de acercar
         fragancias 100% originales de diseñador, árabes y nicho con atención presencial y a toda
         Colombia con envíos confiables. Operamos bajo el nombre comercial LAMAAR PERFUM, atendemos
@@ -24,7 +24,7 @@ const About = () => {
 
       <div className="mb-8">
         <KeyTakeaways
-          title="TL;DR: por qué LAMMAR"
+          title="TL;DR: por qué LAMAAR"
           items={[
             'Más de 240 perfumes originales de casas como Lattafa, Rasasi, Al Haramain, Armaf, Maison Alhambra y Xerjoff.',
             'Garantía de autenticidad en cada fragancia: 100% originales, sin imitaciones ni réplicas.',
@@ -39,7 +39,7 @@ const About = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">1. Nuestra historia</h2>
           <p>
-            LAMMAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos
+            LAMAAR nació en Manizales, en el corazón del Eje Cafetero, al identificar que muchos
             amantes de la perfumería querían acceder a fragancias nicho y árabes auténticas sin
             pagar sobreprecios excesivos ni arriesgarse a imitaciones. Empezamos curando una
             selección pequeña de best-sellers — Yara, Asad, Hawas — y, gracias a la confianza de
@@ -93,7 +93,7 @@ const About = () => {
             (hora de Colombia).
           </p>
           <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm">
-            <p><strong>LAMAAR PERFUM — LAMMAR</strong></p>
+            <p><strong>LAMAAR PERFUM — LAMAAR</strong></p>
             <p>Manizales, Caldas, Colombia — KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, 170001</p>
             <p>Correo: amazingstoresoporte@gmail.com — WhatsApp: +57 304 6420608</p>
             <p>Horario: Lun. a sáb. 9:00–18:00 (COT)</p>
@@ -126,7 +126,7 @@ const About = () => {
         />
 
         <div className="pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-500">Última actualización: 21/08/2026 — LAMMAR / LAMAAR PERFUM</p>
+          <p className="text-sm text-gray-500">Última actualización: 21/08/2026 — LAMAAR / LAMAAR PERFUM</p>
         </div>
       </section>
     </main>

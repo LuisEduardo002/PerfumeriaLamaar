@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const SITE_NAME = 'LAMMAR';
+const SITE_NAME = 'LAMAAR';
 const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lamaarperfum.store').replace(/\/+$/, '');
 
 function setMetaTag(attribute, key, content) {

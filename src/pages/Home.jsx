@@ -17,7 +17,7 @@ import damaImage from '../assets/images/Yara.webp';
 
 export default function Home() {
   useSEO({
-    title: 'LAMMAR | Perfumería en Manizales que Mide tu pH',
+    title: 'LAMAAR | Perfumería en Manizales que Mide tu pH',
     description:
       'Perfumería en Manizales que mide tu pH para elegir tu fragancia ideal. 240+ perfumes 100% originales con asesoría y envíos a Colombia.',
     canonical: '/',
@@ -79,7 +79,7 @@ export default function Home() {
               className="relative hidden md:flex justify-center"
             >
               <div className="relative flex h-96 w-80 flex-col justify-between rounded-3xl border border-[#C8A450]/40 bg-gradient-to-br from-[#F6F0E3]/90 to-white/90 p-8 shadow-2xl backdrop-blur-sm"> {/* Un poco transparente para ver el fondo */}
-                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">LAMMAR Essential</span>
+                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">LAMAAR Essential</span>
                 <div>
                   <h2 className="font-serif text-3xl font-bold text-[#111111]">Fragancias Nicho Elegantes</h2>
                   <p className="text-sm text-slate-500 mt-2">Aromas únicos, originales y de calidad importados para Manizales.</p>

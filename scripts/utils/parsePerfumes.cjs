@@ -27,7 +27,7 @@ function parsePerfumes(source){
     perfumes.push({
       id:Number(id), nombre, marca, precio:Number(precio), categoria, genero, ml:Number(ml), stock:Number(stock), descripcion,
       notas, slug:slugify(nombre), imagenVar, importPath:importMap[imagenVar]||null,
-      sku:`LAMMAR-${id}`,
+      sku:`LAMAAR-${id}`,
     });
   }
   return perfumes;

@@ -6,14 +6,14 @@ export const faqItems = [
   {
     id: 'marca-unificada',
     topic: 'marca',
-    q: '¿LAMMAR y LAMAAR PERFUM son la misma perfumería?',
-    a: 'Sí. LAMMAR, nombre comercial LAMAAR PERFUM, es la misma perfumería en Manizales: KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1. Instagram oficial lamaar_perfumm, TikTok @lamaar.perfume, web lamaarperfum.store.',
+    q: '¿LAMAAR y LAMMAR son lo mismo?',
+    a: 'Sí. El nombre oficial es LAMAAR Perfumería en Manizales (antes escrito LAMMAR). Misma tienda en KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1. Instagram oficial lamaar_perfumm, TikTok @lamaar.perfume, web lamaarperfum.store.',
   },
   {
     id: 'ph-real',
     topic: 'ph',
     q: '¿Realmente miden el pH de la piel en tienda?',
-    a: 'Sí. En nuestra tienda física LAMMAR (LAMAAR PERFUM) en Manizales medimos tu pH con tira reactiva, presencial, de lunes a sábado 9:00-18:00. Es un servicio incluido sin costo con tu visita. Puedes verificarlo por WhatsApp +57 304 6420608 o en Instagram lamaar_perfumm pidiendo foto/video de la medición.',
+    a: 'Sí. En nuestra tienda física LAMAAR Perfumería en Manizales medimos tu pH con tira reactiva, presencial, de lunes a sábado 9:00-18:00. Es un servicio incluido sin costo con tu visita. Puedes verificarlo por WhatsApp +57 304 6420608 o en Instagram lamaar_perfumm pidiendo foto/video de la medición.',
   },
   {
     id: 'ph-pasos',
@@ -31,7 +31,7 @@ export const faqItems = [
     id: 'originales',
     topic: 'compra',
     q: '¿Los perfumes son 100% originales?',
-    a: 'Sí. En LAMMAR todos los perfumes son productos originales e importados, con garantía de autenticidad en cada fragancia.',
+    a: 'Sí. En LAMAAR todos los perfumes son productos originales e importados, con garantía de autenticidad en cada fragancia.',
   },
   {
     id: 'pedido',

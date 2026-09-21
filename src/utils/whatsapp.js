@@ -45,7 +45,7 @@ export function buildWhatsAppMessage(cartItems, total) {
 
   const message = `Hola 
 
-Realicé una compra en LAMMAR Perfumes y mi pedido es:
+Realicé una compra en LAMAAR Perfumes y mi pedido es:
 
 ${itemLines}
 

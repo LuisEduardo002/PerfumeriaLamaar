@@ -3,10 +3,10 @@
  * Used by client (import.meta.env) and Edge (hardcoded fallback)
  */
 export const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://lamaarperfum.store').replace(/\/+$/, '');
-export const SITE_NAME = 'LAMMAR';
-export const SITE_ALTERNATE_NAME = 'LAMAAR PERFUM';
-// Marca unificada: usar siempre "LAMMAR (LAMAAR PERFUM)" en textos visibles para que Google/ChatGPT entiendan que es la misma empresa.
-export const SITE_FULL_NAME = 'LAMMAR (LAMAAR PERFUM)';
+export const SITE_NAME = 'LAMAAR';
+export const SITE_ALTERNATE_NAME = 'LAMMAR';
+// Marca oficial: LAMAAR Perfumería (doble A). LAMMAR (doble M) se conserva como alternate para no perder búsquedas viejas.
+export const SITE_FULL_NAME = 'LAMAAR Perfumería';
 export const BRAND = SITE_NAME;
 
 export const NAP = {

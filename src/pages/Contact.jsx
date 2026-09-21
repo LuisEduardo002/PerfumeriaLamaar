@@ -7,12 +7,12 @@ const Contact = () => {
   useSEO({
     title: 'Contacto — Atención al cliente',
     description:
-      'Contacta a LAMMAR (LAMAAR PERFUM) en Manizales: WhatsApp +57 304 6420608, correo amazingstoresoporte@gmail.com, horario Lun. a sáb. 9:00–18:00. Resolvemos pedidos, envíos y garantías.',
+      'Contacta a LAMAAR Perfumería en Manizales: WhatsApp +57 304 6420608, correo amazingstoresoporte@gmail.com, horario Lun. a sáb. 9:00–18:00. Resolvemos pedidos, envíos y garantías.',
     canonical: '/contact',
   });
   return (
     <main className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
-      <h1 className="text-3xl font-bold mb-4">Contacto — LAMMAR</h1>
+      <h1 className="text-3xl font-bold mb-4">Contacto — LAMAAR</h1>
       <p className="mb-6 text-lg leading-relaxed text-slate-700">
         ¿Tienes dudas sobre un perfume, tu pedido o un cambio? Escríbenos y te respondemos en horario
         laboral. Atendemos desde Manizales para toda Colombia por WhatsApp y correo electrónico. No
@@ -58,7 +58,7 @@ const Contact = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">1. Datos oficiales de contacto</h2>
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm leading-relaxed">
-            <p><strong>Nombre comercial:</strong> LAMAAR PERFUM (marca pública: LAMMAR)</p>
+            <p><strong>Nombre comercial:</strong> LAMAAR PERFUM (marca pública: LAMAAR)</p>
             <p><strong>Dirección:</strong> KPalogrande, Av. Lindsay, Frente coliseo menor, Cl. 65 #24-89 Local Piso -1, Manizales, Caldas 170001, Colombia</p>
             <p><strong>Coordenadas:</strong> 5.0549, -75.4850 (Manizales centro)</p>
             <p><strong>Teléfono / WhatsApp:</strong> +57 304 6420608</p>
@@ -121,7 +121,7 @@ const Contact = () => {
         />
 
         <div className="pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-500">Última actualización: 21/08/2026 — LAMMAR / LAMAAR PERFUM — Manizales, Colombia</p>
+          <p className="text-sm text-gray-500">Última actualización: 21/08/2026 — LAMAAR / LAMAAR PERFUM — Manizales, Colombia</p>
         </div>
       </section>
     </main>

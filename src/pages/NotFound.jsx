@@ -7,7 +7,7 @@ export default function NotFound() {
   useSEO({
     title: 'Página no encontrada',
     description:
-      'La página que buscas no existe o ha sido movida. Explora el catálogo de perfumes exclusivos y fragancias de diseñador en LAMMAR.',
+      'La página que buscas no existe o ha sido movida. Explora el catálogo de perfumes exclusivos y fragancias de diseñador en LAMAAR.',
   });
   return (
     <main className="flex-grow flex items-center justify-center py-20">

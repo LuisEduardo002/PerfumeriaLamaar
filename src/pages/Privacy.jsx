@@ -7,7 +7,7 @@ const PoliticaPrivacidad = () => {
     useSEO({
         title: 'Política de Privacidad',
         description:
-            'Conoce cómo LAMMAR trata la información personal de sus usuarios: datos recopilados, finalidades del tratamiento, seguridad y derechos de los titulares.',
+            'Conoce cómo LAMAAR trata la información personal de sus usuarios: datos recopilados, finalidades del tratamiento, seguridad y derechos de los titulares.',
         canonical: '/privacy',
     });
     return (
@@ -17,7 +17,7 @@ const PoliticaPrivacidad = () => {
             </h1>
 
             <p className="mb-6">
-                Si llegaste aquí buscando qué datos recopilamos al comprar perfumes en LAMMAR,
+                Si llegaste aquí buscando qué datos recopilamos al comprar perfumes en LAMAAR,
                 cómo los usamos y qué puedes hacer sobre tu información personal, en esta página
                 encontrarás la respuesta completa según la legislación colombiana.
             </p>
@@ -455,7 +455,7 @@ const PoliticaPrivacidad = () => {
                     links={[
                         { to: '/terminos', label: 'Términos y Condiciones de compra' },
                         { to: '/catalogo', label: 'Catálogo de perfumes originales' },
-                        { to: '/', label: 'Inicio: perfumería exclusiva LAMMAR' },
+                        { to: '/', label: 'Inicio: perfumería exclusiva LAMAAR' },
                     ]}
                 />
 

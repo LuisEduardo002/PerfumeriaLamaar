@@ -13,7 +13,7 @@ describe('Markdown generation', () => {
     const p = path.join(markdownBase, 'home.md');
     assert.ok(fs.existsSync(p), 'home.md should exist');
     const content = fs.readFileSync(p, 'utf8');
-    assert.ok(content.includes('LAMMAR'), 'should contain brand LAMMAR');
+    assert.ok(content.includes('LAMAAR'), 'should contain brand LAMAAR');
     assert.ok(content.includes('Perfumería') && content.toLowerCase().includes('manizales'), 'should contain Perfumería Manizales');
     assert.ok(content.toLowerCase().includes('originales'), 'should contain originales');
     assert.ok(content.toLowerCase().includes('elegante'), 'should contain elegante');
@@ -152,7 +152,7 @@ describe('Homepage structured data and metadata', () => {
   it('has og:url and og:site_name', () => {
     assert.ok(indexHtml.includes('<meta property="og:url" content="https://lamaarperfum.store/" />'),
       'should have og:url');
-    assert.ok(indexHtml.includes('<meta property="og:site_name" content="LAMMAR" />'),
+    assert.ok(indexHtml.includes('<meta property="og:site_name" content="LAMAAR" />'),
       'should have og:site_name');
   });
 });
@@ -168,7 +168,7 @@ describe('Trust anchor pages (About, Contact, Privacy)', () => {
 
   it('generates markdown for about', () => {
     const c = checkAnchor('about.md');
-    assert.ok(c.includes('Sobre LAMMAR') || c.includes('LAMMAR'), 'about should contain brand');
+    assert.ok(c.includes('Sobre LAMAAR') || c.includes('LAMAAR'), 'about should contain brand');
     assert.ok(c.includes('Manizales'), 'about should mention Manizales');
   });
 
@@ -259,13 +259,13 @@ describe('Brand name discoverability (NAP + apex redirect)', () => {
     assert.ok(footer.includes('+57 304 6420608'));
   });
 
-  it('brand LAMMAR appears in key SEO signals', () => {
+  it('brand LAMAAR appears in key SEO signals', () => {
     const indexHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
-    assert.ok(indexHtml.includes('<title>LAMMAR'), 'title should start with LAMMAR');
+    assert.ok(indexHtml.includes('<title>LAMAAR'), 'title should start with LAMAAR');
     assert.ok(indexHtml.includes('Perfumería'), 'fallback should contain Perfumería');
-    assert.ok(indexHtml.includes('"name": "LAMMAR"'), 'JSON-LD name should be LAMMAR');
-    assert.ok(indexHtml.includes('"alternateName": "LAMAAR PERFUM"'));
-    assert.ok(indexHtml.includes('content="LAMMAR"') || indexHtml.includes('og:site_name" content="LAMMAR"'), 'og:site_name should be LAMMAR');
+    assert.ok(indexHtml.includes('"name": "LAMAAR"'), 'JSON-LD name should be LAMAAR');
+    assert.ok(indexHtml.includes('"alternateName": "LAMMAR"'), 'alternateName should preserve old spelling LAMMAR for SEO');
+    assert.ok(indexHtml.includes('content="LAMAAR"') || indexHtml.includes('og:site_name" content="LAMAAR"'), 'og:site_name should be LAMAAR');
   });
 
   it('homepage H1 is keyword-rich for perfumería Manizales originales elegante calidad', () => {
